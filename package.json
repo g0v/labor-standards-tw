@@ -1,0 +1,16 @@
+{
+  "name": "labor-standards-tw",
+  "version": "0.0.1",
+  "description": "Utility for Taiwan labor standards acts",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "nyc mocha test/*.js"
+  },
+  "author": "Yuren Ju <yurenju@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "nyc": "^10.2.0"
+  }
+}

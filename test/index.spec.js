@@ -9,12 +9,16 @@ describe('hourlySalary()', () => {
 
 describe('overtimePay()', () => {
   describe('休息日 (regular leave)', () => {
-    it('平均時薪 150 工作一小時，薪資為 400 元（勞基法 24 條）', () => {
-      expect(std.overtimePay(150, 1, std.REGULAR_LEAVE)).eq(400)
+    it('平均時薪 150 工作一小時，薪資為 900 元（勞基法 24 條）', () => {
+      expect(std.overtimePay(150, 1, std.REGULAR_LEAVE)).eq(900)
     });
 
-    it('平均時薪 150 工作兩小時，薪資為 400 元（勞基法 24 條）', () => {
-      expect(std.overtimePay(150, 2, std.REGULAR_LEAVE)).eq(400)
+    it('平均時薪 150 工作兩小時，薪資為 900 元（勞基法 24 條）', () => {
+      expect(std.overtimePay(150, 2, std.REGULAR_LEAVE)).eq(900)
+    });
+
+    it('平均時薪 150 工作 4 小時，薪資為 900 元（勞基法 24 條）', () => {
+      expect(std.overtimePay(150, 4, std.REGULAR_LEAVE)).eq(900)
     });
 
     it('平均時薪 150 工作五小時，薪資為 1900 元（勞基法 24 條）', () => {

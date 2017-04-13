@@ -4,7 +4,7 @@
   "description": "Utility for Taiwan labor standards acts",
   "main": "src/index.js",
   "scripts": {
-    "test": "nyc mocha test/*.js"
+    "test": "nyc mocha test/**/*.test.js"
   },
   "author": "Yuren Ju <yurenju@gmail.com>",
   "license": "MIT",

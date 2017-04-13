@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const std = require('../src/index');
+const std = require('../../src/index');
 
 //WIP
 describe('休假', () => {

@@ -1,9 +1,12 @@
 const expect = require('chai').expect;
-const std = require('../src/index');
+const std = require('../../src/index');
 
 describe('hourlySalary()', () => {
   it('以月薪 36,000 元計算，平均時薪為 150 元', () => {
-    expect(std.hourlySalary(36000)).eq(150);
+    let result = std.hourlySalary(36000);
+    expect(result.value).eq(150);
+    expect(result.reference[0].id).eq('勞動 2字第 0960130677 號函');
+    // https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&lc1=%5bc%5d%E5%8B%9E%E5%8B%95%E5%9F%BA%E6%BA%96%E6%B3%95%2c24&cnt=37&recordno=10
   });
 });
 

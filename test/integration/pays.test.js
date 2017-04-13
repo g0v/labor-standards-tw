@@ -13,7 +13,12 @@ describe('薪資給付', () => {
 
     describe('加班費', () => {
       describe('紀念日、節日、勞動節 (holiday)', () => {
-
+        it('經勞工同意後可於節日上班，以平均時薪 150 元計算並工作 2 小時，加給工資 1200 元');
+          const consent = true;
+          let result = std.overtimePay(150, 2, std.HOLIDAY, consent, accident);
+          expect(result.value).eq(1200);
+          expect(result.reference[0].id).eq('LSA-39');
+          expect(result.reference[1].id).eq('台八十三勞動一字第 102498 號函');
       });
 
       describe('例假日 (regular leave)', () => {
@@ -22,7 +27,7 @@ describe('薪資給付', () => {
           '加給工資 1200 元（勞基法 39, 40 條），額外休假一天', () => {
           const accident = true;
           const consent = true;
-          let result = std.overtimePay(150, 2, std.REGULAR_LEAVE, accident, consent);
+          let result = std.overtimePay(150, 2, std.REGULAR_LEAVE, consent, accident);
           expect(result.value).eq(1200);
           expect(result.extraLeave.value).eq(1);
           expect(result.extraLeave.unit).eq('day');
@@ -30,6 +35,8 @@ describe('薪資給付', () => {
           expect(result.reference[1].id).eq('LSA-40');
           //https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&lc1=%5bc%5d%E5%8B%9E%E5%8B%95%E5%9F%BA%E6%BA%96%E6%B3%95%2c40&cnt=19&recordno=10
           expect(result.reference[2].id).eq('台八十三勞動一字第 102498 號函');
+          expect(result.actionItems[0].according).eq('LSA-40');
+          expect(result.actionItems[0].value).eq('雇主因天災、事變或突發事件停止勞工假期，應於事後二十四小時內，詳述理由，報請當地主管機關核備。');
         });
 
         it('若「無」天災、事變或突發事件，但雇主要求於例假日工作並且徵得勞工同意時，此為違法加班' +
@@ -37,7 +44,7 @@ describe('薪資給付', () => {
           '加給工資 1200 元（勞基法 39, 40 條）', () => {
           const accident = false;
           const consent = true;
-          let result = std.overtimePay(150, 2, std.REGULAR_LEAVE, accident, consent);
+          let result = std.overtimePay(150, 2, std.REGULAR_LEAVE, consent, accident);
           /*
           expect result looks like this:
           {

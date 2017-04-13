@@ -92,64 +92,81 @@ describe('薪資給付', () => {
       });
 
       describe('休息日 (rest day)', () => {
-        it('月薪制勞工, 平均時薪 150 工作 1 小時，實領加班費為 900 元（勞基法 24 條）', () => {
+        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 1 小時，實領加班費為 900 元（勞基法 24 條）', () => {
           let result = std.overtimePay(150, 1, std.REST_DAY);
           expect(result.value).eq(900);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
-        it('月薪制勞工, 平均時薪 150 工作 2 小時，實領加班費為 900 元（勞基法 24 條）', () => {
+        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 2 小時，實領加班費為 900 元（勞基法 24 條）', () => {
           let result = std.overtimePay(150, 2, std.REST_DAY);
           expect(result.value).eq(900);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
-        it('月薪制勞工, 平均時薪 150 工作 4 小時，實領加班費為 900 元（勞基法 24 條）', () => {
+        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 4 小時，實領加班費為 900 元（勞基法 24 條）', () => {
           let result = std.overtimePay(150, 4, std.REST_DAY);
           expect(result.value).eq(900);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
-        it('月薪制勞工, 平均時薪 150 工作 5 小時，實領加班費為 1900 元（勞基法 24 條）', () => {
+        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 5 小時，實領加班費為 1900 元（勞基法 24 條）', () => {
           let result = std.overtimePay(150, 5, std.REST_DAY);
           expect(result.value).eq(1900);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
-        it('月薪制勞工, 平均時薪 150 工作 5.5 個小時，實領加班費為 1900 元（勞基法 24 條）', () => {
+        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 5.5 個小時，實領加班費為 1900 元（勞基法 24 條）', () => {
           let result = std.overtimePay(150, 5.5, std.REST_DAY);
           expect(result.value).eq(1900);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
-        it('月薪制勞工, 平均時薪 150 工作 8 個小時，實領加班費為 1900 元（勞基法 24 條）', () => {
+        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 8 個小時，實領加班費為 1900 元（勞基法 24 條）', () => {
           let result = std.overtimePay(150, 8, std.REST_DAY);
           expect(result.value).eq(1900);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
-        it('月薪制勞工, 平均時薪 150 工作 8.5 個小時，實領加班費為 2900 元（勞基法 24 條）', () => {
+        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 8.5 個小時，實領加班費為 3500 元（勞基法 24 條）', () => {
+          // 查無函釋
+          // 但在沒有使用變形工時的情況下, 休息日工資只包含前八小時,
+          // 第九小時起實領加班費每小時 400 元 (150 + 150 * 5 / 3)
+          // 可見 http://www.mol.gov.tw/service/19851/19852/19861/30631/
+          //      三、休息日加班費如何計算？
           let result = std.overtimePay(150, 8.5, std.REST_DAY);
-          expect(result.value).eq(2900);
+          expect(result.value).eq(3500);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
-        it('月薪制勞工, 平均時薪 150 工作 10 個小時，實領加班費為 2900 元（勞基法 24 條）', () => {
+        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 10 個小時，實領加班費為 3500 元（勞基法 24 條）', () => {
           let result = std.overtimePay(150, 10, std.REST_DAY);
-          expect(result.value).eq(2900);
+          expect(result.value).eq(3500);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
-        it('月薪制勞工, 平均時薪 150 工作 12 個小時，實領加班費為 2900 元（勞基法 24 條）', () => {
+        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 12 個小時，實領加班費為 3500 元（勞基法 24 條）', () => {
           let result = std.overtimePay(150, 12, std.REST_DAY);
-          expect(result.value).eq(2900);
+          expect(result.value).eq(3500);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
-        it('月薪制勞工, 平均時薪 150 工作 13 個小時，結果回傳不合法（勞基法 32 條）', () => {
+        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 13 個小時，結果回傳不合法（勞基法 32 條），' +
+           '實領加班費為 3900 元（勞基法 24 條）', () => {
+          // 超過工時上限的加班費法律沒有規定, 勞動部函釋系統也查不到
+          // 但其計算精神應該可以參考　台八十勞動二字第 20444 號　函釋
+          //   事業單位依勞動基準法第三十條第二項實施五天工作制，勞工於勞雇雙方協
+          //   定之休息日工作，該日工時以延時工作計算，發給工資，內政部業以 75.07.10（75）台
+          //   內勞字第四○五二三五號函釋在案；故該日工資之發給應依勞動基準法第二十四條規定
+          //   辦理。至於在該日工時逾四小時以上之部分，工資應如何計給，於該法未明定，可由勞
+          //   資雙方自行協商。惟不得低於前開規定。
+          // 即第 13 小時的加班費不應低於第 12 小時（400元）
           let result = std.overtimePay(150, 13, std.REST_DAY);
           expect(result.status).eq(std.ILLEGAL);
+          expect(result.value).eq(3900);
           expect(result.reference[0].id).eq('LSA-32');
+          expect(result.reference[1].id).eq('LSA-24');
+          expect(result.reference[2].id).eq('台八十勞動二字第 20444 號');
         });
       });
     });

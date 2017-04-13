@@ -78,6 +78,17 @@ describe('薪資給付', () => {
           expect(result.fines[0].min).eq(20000);
           expect(result.fines[0].max).eq(1000000);
         });
+
+        it('月薪制勞工，平均時薪 150 元並工作 10 小時，加給工資 1800 元（勞基法 39, 40 條）', () => {
+          const accident = true;
+          const consent = true;
+          let result = std.overtimePay(150, 10, std.REGULAR_LEAVE, accident, consent);
+          expect(result.value).eq(1800);
+          expect(result.reference[0].id).eq('LSA-39');
+          expect(result.reference[1].id).eq('LSA-40');
+          //https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&lc1=%5bc%5d%E5%8B%9E%E5%8B%95%E5%9F%BA%E6%BA%96%E6%B3%95%2c40&cnt=19&recordno=10
+          expect(result.reference[2].id).eq('台八十三勞動一字第 102498 號函');
+        });
       });
 
       describe('休息日 (rest day)', () => {

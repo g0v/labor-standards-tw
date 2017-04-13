@@ -34,7 +34,7 @@ describe('薪資給付', () => {
 
         it('若「無」天災、事變或突發事件，但雇主要求於例假日工作並且徵得勞工同意時，此為違法加班' +
           '工資加倍發給。月薪制勞工，平均時薪 150 元並工作 2 小時，' +
-          '加給工資 1200 元（勞基法 39, 40 條），額外休假一天', () => {
+          '加給工資 1200 元（勞基法 39, 40 條）', () => {
           const accident = false;
           const consent = true;
           let result = std.overtimePay(150, 2, std.REGULAR_LEAVE, accident, consent);
@@ -63,7 +63,7 @@ describe('薪資給付', () => {
           };
           */
           expect(result.value).eq(1200);
-          expect(result.extraLeave.value).eq(1);
+          expect(result.extraLeave.value).eq(0);
           expect(result.extraLeave.unit).eq('day');
           expect(result.reference[0].id).eq('LSA-39');
           expect(result.reference[1].id).eq('LSA-40');

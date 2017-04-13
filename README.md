@@ -21,7 +21,7 @@
 it('月薪制勞工, 平均時薪 150 工作 2 小時，實領加班費為 900 元（勞基法 24 條）');
 ```
 
-並且寫在相對應的測試檔案中，依照這個例子應被放置於 [pays.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/pays.test.js) 當中（這個測試案例）。
+並且寫在相對應的測試檔案中，依照這個例子應被放置於 [pays.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/pays.test.js) 當中。
 
 ### 2. 撰寫 API 的使用方法
 

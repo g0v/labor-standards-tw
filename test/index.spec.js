@@ -14,36 +14,65 @@ describe('overtimePay()', () => {
 
   describe('例假日 (regular leave)', () => {
     it('因天災、事變或突發事件，雇主認有繼續工作之必要時，徵得勞工同意後，' +
-       '工資加倍發給。月薪制勞工，平均時薪 150 元工作 2 小時，' +
-       '加給工資 300 元（勞基法 39, 40 條），額外休假一天', () => {
+       '工資加倍發給。月薪制勞工，平均時薪 150 元並工作 2 小時，' +
+       '加給工資 1200 元（勞基法 39, 40 條），額外休假一天', () => {
       const accident = true;
       const consent = true;
       let result = std.overtimePay(150, 2, std.REGULAR_LEAVE, accident, consent);
-      expect(result.value).eq(300);
+      expect(result.value).eq(1200);
       expect(result.extraLeave.value).eq(1);
       expect(result.extraLeave.unit).eq('day');
       expect(result.reference[0].id).eq('LSA-39');
       expect(result.reference[1].id).eq('LSA-40');
-      expect(result.reference[2].id).eq('這邊應該有個函釋說明無論工作幾個小時都要補修一整天');
+      //https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&lc1=%5bc%5d%E5%8B%9E%E5%8B%95%E5%9F%BA%E6%BA%96%E6%B3%95%2c40&cnt=19&recordno=10
+      expect(result.reference[2].id).eq('台八十三勞動一字第 102498 號函');
     });
 
     it('若「無」天災、事變或突發事件，但雇主要求於例假日工作並且徵得勞工同意時，此為違法加班' +
-       '工資加倍發給。月薪制勞工，平均時薪 150 元工作 2 小時，' +
-       '加給工資 300 元（勞基法 39, 40 條），額外休假一天', () => {
+       '工資加倍發給。月薪制勞工，平均時薪 150 元並工作 2 小時，' +
+       '加給工資 1200 元（勞基法 39, 40 條），額外休假一天', () => {
       const accident = false;
       const consent = true;
       let result = std.overtimePay(150, 2, std.REGULAR_LEAVE, accident, consent);
-      expect(result.value).eq(300);
+      /*
+      expect result looks like this:
+      {
+        status: std.ILLEGAL,
+        value: 1200,
+        extraLeave: {
+          value: 1,
+          unit: 'day'
+        },
+        reference: [
+          {
+            id: 'LSA-39',
+            description: '第三十六條所定之例假、休息日、第....',
+            url: 'http://laws.mol.gov.tw/FLAW/FLAWDOC01.aspx?lsid=FL014930&flno=39'
+          },
+          { id: 'LSA-40' },
+          { id: 'LSA-79' },
+          { id: '台八十三勞動一字第 102498 號函' }
+        ],
+        fines: [
+          { min: 20000, max: 1000000, according: 'LSA-79' }
+        ]
+      };
+      */
+      expect(result.value).eq(1200);
       expect(result.extraLeave.value).eq(1);
       expect(result.extraLeave.unit).eq('day');
       expect(result.reference[0].id).eq('LSA-39');
       expect(result.reference[1].id).eq('LSA-40');
       expect(result.reference[2].id).eq('LSA-79');
-      expect(result.reference[3].id).eq('這邊應該有個函釋說明無論工作幾個小時都要補修一整天');
+
+      // https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&lc1=%5bc%5d%E5%8B%9E%E5%8B%95%E5%9F%BA%E6%BA%96%E6%B3%95%2c40&cnt=19&recordno=10
+      expect(result.reference[3].id).eq('台八十三勞動一字第 102498 號函');
       expect(result.status).eq(std.ILLEGAL);
+
       // 79 條，罰則介於二萬到一百萬
-      expect(result.fine.min).eq(20000);
-      expect(result.fine.max).eq(1000000);
+      expect(result.fines[0].according).eq('LSA-79');
+      expect(result.fines[0].min).eq(20000);
+      expect(result.fines[0].max).eq(1000000);
     });
   });
 

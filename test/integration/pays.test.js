@@ -117,21 +117,26 @@ describe('薪資給付', () => {
           expect(result.reference[0].id).eq('LSA-24');
         });
 
-        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 8.5 個小時，實領加班費為 2900 元（勞基法 24 條）', () => {
+        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 8.5 個小時，實領加班費為 3500 元（勞基法 24 條）', () => {
+          // 查無函釋
+          // 但在沒有使用變形工時的情況下, 休息日工資只包含前八小時,
+          // 第九小時起實領加班費每小時 400 元 (150 + 150 * 5 / 3)
+          // 可見 http://www.mol.gov.tw/service/19851/19852/19861/30631/
+          //      三、休息日加班費如何計算？
           let result = std.overtimePay(150, 8.5, std.REST_DAY);
-          expect(result.value).eq(2900);
+          expect(result.value).eq(3500);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
-        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 10 個小時，實領加班費為 2900 元（勞基法 24 條）', () => {
+        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 10 個小時，實領加班費為 3500 元（勞基法 24 條）', () => {
           let result = std.overtimePay(150, 10, std.REST_DAY);
-          expect(result.value).eq(2900);
+          expect(result.value).eq(3500);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
-        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 12 個小時，實領加班費為 2900 元（勞基法 24 條）', () => {
+        it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 12 個小時，實領加班費為 3500 元（勞基法 24 條）', () => {
           let result = std.overtimePay(150, 12, std.REST_DAY);
-          expect(result.value).eq(2900);
+          expect(result.value).eq(3500);
           expect(result.reference[0].id).eq('LSA-24');
         });
 

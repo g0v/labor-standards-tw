@@ -1,6 +1,11 @@
 
 module.exports = {
-  hourlySalary(monthly) {
-    return monthly / 30 / 8;
-  }
+    hourlySalary(monthly) {
+	var obj = {
+	    reference: require('./reference.js'),
+	    value: monthly / 30 / 8,
+	    rest: []
+	};
+	return obj;
+    }
 }

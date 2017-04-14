@@ -33,7 +33,7 @@ it('月薪制勞工, 平均時薪 150 工作 2 小時，實領加班費為 900 �
 
 主要目標：
 * 工資：[pays.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/pays.test.js)
-* 工作時間、休息、休假：[leaves.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/leaves.test.js)
+* 工作時間、休息、休假：[workinghours-recess-holidaysleaves.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/workinghours-recess-holidaysleaves.test.js)
 * 變形工時：[transformed-workshift.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/transformed-workshift.test.js)
 
 次要目標：

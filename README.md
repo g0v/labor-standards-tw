@@ -1,12 +1,12 @@
 # labor-standards-tw
 
-台灣勞動基準法的函式庫，可用於計算加班費、確認班表是否違法等
+台灣勞動基準法的函式庫，可用於計算加班費、特休假、確認班表是否違法等。
 
 ## 開發狀況與如何貢獻
 
-才剛開始寫 test cases 相當早期。目前可以分成幾個階段：
+本專案目前正草創階段。目前可以分成幾個階段：
 
-1. 撰寫只有敘述的 test case
+1. 撰寫只有敘述的 test case （目前在這個階段）
 2. 撰寫 API 的使用方法
 3. 實作 API
 
@@ -19,7 +19,7 @@
 * 休息日的上班時數，例如 2 個小時
 
 以及明確的輸出：
-* 實領加班費
+* 實領加班費，例如 900 元
 
 依照這些輸入輸出，寫成一個只有敘述的測試案例：
 
@@ -28,6 +28,21 @@ it('月薪制勞工, 平均時薪 150 工作 2 小時，實領加班費為 900 �
 ```
 
 並且寫在相對應的測試檔案中，依照這個例子應被放置於 [pays.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/pays.test.js) 當中。
+
+依照不同的案例類型依照勞基法的大項分類，可以把你的測試放在不同位置：
+
+主要目標：
+* 工資：[pays.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/pays.test.js)
+* 工作時間、休息、休假：[leaves.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/leaves.test.js)
+* 變形工時：[transformed-workshift.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/transformed-workshift.test.js)
+
+次要目標：
+* 勞資會議：[labor-meeting.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/labor-meeting.test.js)
+* 女工與童工：[children-female-protection.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/children-female-protection.test.js)
+* 職業災害補償：[workers-compensation.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/workers-compensation.test.js)
+* 工作規則：[workers-rules.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/workers-rules.test.js)
+* 勞動契約：[labor-contract.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/labor-contract.test.js)
+
 
 ### 撰寫 API 的使用方法
 

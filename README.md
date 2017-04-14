@@ -90,6 +90,8 @@ npm test -- -w -G
 ## 相關資訊
 
 * [活動共筆：從砍七天假爭議談勞基法工時規定](https://g0v.hackpad.com/3hMbxYbFCxv)
+* [2016工時制度及工作彈性化措施手冊彈性化措施手冊(勞動部)](http://www.mol.gov.tw/topic/3067/14530/14533/)
+* [2016勞動法令&實務彙編(台北市勞工局)](http://bola.gov.taipei/lp.asp?ctNode=62983&CtUnit=34049&BaseDSD=7&mp=116003)
 
 ## 授權
 

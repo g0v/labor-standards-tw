@@ -12,13 +12,21 @@ describe('薪資給付', () => {
     });
 
     describe('加班費', () => {
+      describe('一般加班', () => {
+        it('月薪制勞工，平均時薪 150 元，平日工作 8 小時，其加班費為 0');
+        it('月薪制勞工，平均時薪 150 元，平日工作 10 小時，其加班費為 400');
+        it('月薪制勞工，平均時薪 150 元，平日工作 11 小時，其加班費為 650');
+        it('月薪制勞工，平均時薪 150 元，平日工作 13 小時，其加班費為 1150 並且為違法加班');
+      });
+
       describe('紀念日、節日、勞動節 (holiday)', () => {
-        it('經勞工同意後可於節日上班，以平均時薪 150 元計算並工作 2 小時，加給工資 1200 元');
+        it('經勞工同意後可於節日上班，以平均時薪 150 元計算並工作 2 小時，加給工資 1200 元', () => {
           const consent = true;
           let result = std.overtimePay(150, 2, std.HOLIDAY, consent, accident);
           expect(result.value).eq(1200);
           expect(result.reference[0].id).eq('LSA-39');
           expect(result.reference[1].id).eq('台八十三勞動一字第 102498 號函');
+        });
       });
 
       describe('例假日 (regular leave)', () => {

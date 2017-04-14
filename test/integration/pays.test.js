@@ -30,8 +30,8 @@ describe('薪資給付', () => {
       });
 
       describe('例假日 (regular leave)', () => {
-        it('因天災、事變或突發事件，雇主認有繼續工作之必要時，徵得勞工同意後，' +
-          '工資加倍發給。月薪制勞工，平均時薪 150 元並工作 2 小時，' +
+        it('因天災、事變或突發事件，雇主認有繼續工作之必要而停止例假，' +
+          '勞工出勤工資加倍發給。月薪制勞工，平均時薪 150 元並工作 2 小時，' +
           '加給工資 1200 元（勞基法 39, 40 條），並額外補休', () => {
           const accident = true;
           const consent = true;
@@ -92,21 +92,21 @@ describe('薪資給付', () => {
           expect(result.fines[0].max).eq(1000000);
         });
 
-        it('月薪制勞工，有天災並取得勞工同意時，平均時薪 150 元並工作 10 小時，加給工資 2400 元並給予補休（勞基法 39, 40 條）', () => {
+        it('月薪制勞工，僱主因天災停止例假，平均時薪 150 元並工作 10 小時，加給工資 1800 元並給予補休（勞基法 39, 40 條）', () => {
           const accident = true;
           const consent = true;
           let result = std.overtimePay(150, 10, std.REGULAR_LEAVE, accident, consent);
-          expect(result.value).eq(2400);
+          expect(result.value).eq(1800);
           expect(result.reference[0].id).eq('LSA-39');
           expect(result.reference[1].id).eq('LSA-40');
           expect(result.reference[2].id).eq('台八十三勞動一字第 102498 號函');
         });
 
-        it('月薪制勞工，「無」天災並取得勞工同意時，平均時薪 150 元並工作 10 小時為違法加班，罰款二萬至一百萬，加給工資 2400 元並無補休（勞基法 39, 40, 79 條）', () => {
+        it('月薪制勞工，「無」天災並取得勞工同意時，平均時薪 150 元並工作 10 小時為違法加班，罰款二萬至一百萬，加給工資 1600 元並無補休（勞基法 39, 40, 79 條）', () => {
           const accident = false;
           const consent = true;
           let result = std.overtimePay(150, 10, std.REGULAR_LEAVE, accident, consent);
-          expect(result.value).eq(2400);
+          expect(result.value).eq(1600);
           expect(result.reference[0].id).eq('LSA-39');
           expect(result.reference[1].id).eq('LSA-40');
           expect(result.reference[1].id).eq('LSA-79');

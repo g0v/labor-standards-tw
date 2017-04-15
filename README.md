@@ -90,6 +90,11 @@ npm test
 npm test -- -w -G
 ```
 
+### 如何貢獻
+
+如果你發現程式碼有錯誤，或任何需要改進的地方，請到 [issues](https://github.com/yurenju/labor-standards-tw/issues) 頁面開一個新的 issue。如果您想要參與開發，你可以依照本節前面提到的步驟，撰寫只有敘述的測試案例、設計 API 與實作 API。不過目前的階段比較適合先執行 (1), (2) 步驟，大多數的 API 設計好之後再一起開始實作比較不會因為設計變更跟著實作一起修改。
+
+若要提交你的修改，請送 pull request 到本專案，travis-ci 上面會有基本的語法與 coding style 檢查後，接著經由團隊成員審核後就會將您的變更合併入專案當中。
 
 ## 相關資訊
 

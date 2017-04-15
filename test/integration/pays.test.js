@@ -5,7 +5,7 @@ const std = require('../../src/index');
 describe('薪資給付', () => {
   describe('月薪', () => {
     it('以月薪 36,000 元計算，平均時薪為 150 元', () => {
-      let result = std.hourlySalary(36000);
+      var result = std.hourlySalary(36000);
       expect(result.value).eq(150);
       expect(result.reference[0].id).eq('勞動 2字第 0960130677 號函');
       // https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&lc1=%5bc%5d%E5%8B%9E%E5%8B%95%E5%9F%BA%E6%BA%96%E6%B3%95%2c24&cnt=37&recordno=10
@@ -22,7 +22,7 @@ describe('薪資給付', () => {
       describe('紀念日、節日、勞動節 (holiday)', () => {
         it('經勞工同意後可於節日上班，以平均時薪 150 元計算並工作 2 小時，加給工資 1200 元', () => {
           const consent = true;
-          let result = std.overtimePay(150, 2, std.HOLIDAY, consent, accident);
+          var result = std.overtimePay(150, 2, std.HOLIDAY, consent, accident);
           expect(result.value).eq(1200);
           expect(result.reference[0].id).eq('LSA-39');
           expect(result.reference[1].id).eq('台八十三勞動一字第 102498 號函');
@@ -35,7 +35,7 @@ describe('薪資給付', () => {
           '加給工資 1200 元（勞基法 39, 40 條），並額外補休', () => {
           const accident = true;
           const consent = true;
-          let result = std.overtimePay(150, 2, std.REGULAR_LEAVE, consent, accident);
+          var result = std.overtimePay(150, 2, std.REGULAR_LEAVE, consent, accident);
           expect(result.value).eq(1200);
           expect(result.extraLeave.value).eq(true);
           expect(result.extraLeave.according).eq('LSA-40');
@@ -52,7 +52,7 @@ describe('薪資給付', () => {
           '加給工資 1200 元（勞基法 39, 40 條），並且無額外補休', () => {
           const accident = false;
           const consent = true;
-          let result = std.overtimePay(150, 2, std.REGULAR_LEAVE, consent, accident);
+          var result = std.overtimePay(150, 2, std.REGULAR_LEAVE, consent, accident);
           /*
           expect result looks like this:
           {
@@ -95,7 +95,7 @@ describe('薪資給付', () => {
         it('月薪制勞工，僱主因天災停止例假，平均時薪 150 元並工作 10 小時，加給工資 1800 元並給予補休（勞基法 39, 40 條）', () => {
           const accident = true;
           const consent = true;
-          let result = std.overtimePay(150, 10, std.REGULAR_LEAVE, accident, consent);
+          var result = std.overtimePay(150, 10, std.REGULAR_LEAVE, accident, consent);
           expect(result.value).eq(1800);
           expect(result.reference[0].id).eq('LSA-39');
           expect(result.reference[1].id).eq('LSA-40');
@@ -105,7 +105,7 @@ describe('薪資給付', () => {
         it('月薪制勞工，「無」天災並取得勞工同意時，平均時薪 150 元並工作 10 小時為違法加班，罰款二萬至一百萬，加給工資 1600 元並無補休（勞基法 39, 40, 79 條）', () => {
           const accident = false;
           const consent = true;
-          let result = std.overtimePay(150, 10, std.REGULAR_LEAVE, accident, consent);
+          var result = std.overtimePay(150, 10, std.REGULAR_LEAVE, accident, consent);
           expect(result.value).eq(1600);
           expect(result.reference[0].id).eq('LSA-39');
           expect(result.reference[1].id).eq('LSA-40');
@@ -120,37 +120,37 @@ describe('薪資給付', () => {
 
       describe('休息日 (rest day)', () => {
         it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 1 小時，實領加班費為 900 元（勞基法 24 條）', () => {
-          let result = std.overtimePay(150, 1, std.REST_DAY);
+          var result = std.overtimePay(150, 1, std.REST_DAY);
           expect(result.value).eq(900);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
         it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 2 小時，實領加班費為 900 元（勞基法 24 條）', () => {
-          let result = std.overtimePay(150, 2, std.REST_DAY);
+          var result = std.overtimePay(150, 2, std.REST_DAY);
           expect(result.value).eq(900);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
         it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 4 小時，實領加班費為 900 元（勞基法 24 條）', () => {
-          let result = std.overtimePay(150, 4, std.REST_DAY);
+          var result = std.overtimePay(150, 4, std.REST_DAY);
           expect(result.value).eq(900);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
         it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 5 小時，實領加班費為 1900 元（勞基法 24 條）', () => {
-          let result = std.overtimePay(150, 5, std.REST_DAY);
+          var result = std.overtimePay(150, 5, std.REST_DAY);
           expect(result.value).eq(1900);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
         it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 5.5 個小時，實領加班費為 1900 元（勞基法 24 條）', () => {
-          let result = std.overtimePay(150, 5.5, std.REST_DAY);
+          var result = std.overtimePay(150, 5.5, std.REST_DAY);
           expect(result.value).eq(1900);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
         it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 8 個小時，實領加班費為 1900 元（勞基法 24 條）', () => {
-          let result = std.overtimePay(150, 8, std.REST_DAY);
+          var result = std.overtimePay(150, 8, std.REST_DAY);
           expect(result.value).eq(1900);
           expect(result.reference[0].id).eq('LSA-24');
         });
@@ -161,19 +161,19 @@ describe('薪資給付', () => {
           // 第九小時起實領加班費每小時 400 元 (150 + 150 * 5 / 3)
           // 可見 http://www.mol.gov.tw/service/19851/19852/19861/30631/
           //      三、休息日加班費如何計算？
-          let result = std.overtimePay(150, 8.5, std.REST_DAY);
+          var result = std.overtimePay(150, 8.5, std.REST_DAY);
           expect(result.value).eq(3500);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
         it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 10 個小時，實領加班費為 3500 元（勞基法 24 條）', () => {
-          let result = std.overtimePay(150, 10, std.REST_DAY);
+          var result = std.overtimePay(150, 10, std.REST_DAY);
           expect(result.value).eq(3500);
           expect(result.reference[0].id).eq('LSA-24');
         });
 
         it('月薪制勞工, 無使用變形工時, 平均時薪 150 工作 12 個小時，實領加班費為 3500 元（勞基法 24 條）', () => {
-          let result = std.overtimePay(150, 12, std.REST_DAY);
+          var result = std.overtimePay(150, 12, std.REST_DAY);
           expect(result.value).eq(3500);
           expect(result.reference[0].id).eq('LSA-24');
         });
@@ -188,7 +188,7 @@ describe('薪資給付', () => {
           //   辦理。至於在該日工時逾四小時以上之部分，工資應如何計給，於該法未明定，可由勞
           //   資雙方自行協商。惟不得低於前開規定。
           // 即第 13 小時的加班費不應低於第 12 小時（400元）
-          let result = std.overtimePay(150, 13, std.REST_DAY);
+          var result = std.overtimePay(150, 13, std.REST_DAY);
           expect(result.status).eq(std.ILLEGAL);
           expect(result.value).eq(3900);
           expect(result.reference[0].id).eq('LSA-32');

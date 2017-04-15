@@ -9,7 +9,7 @@ env:
 
 matrix:
   allow_failures:
-    - CI_TASK=test
+    - env: CI_TASK=test
 
 script:
   - npm run $CI_TASK

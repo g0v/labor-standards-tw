@@ -17,6 +17,21 @@ describe('變形工時', () => {
       ])
       expect(result.reference[0].id).eq('LSA-30');
     });
+
+    it('雙週班表工時' +
+       '[10, 10, 10, 10, 4, 0, 0], ' +
+       '[10, 10, 10, 10, 4, 0, 0]，' +
+       '為合法雙週變形工時，無加班費（勞基法 30 條）', () => {
+      let result = std.transformedWorkshift([
+        [10, 10, 10, 10, 4, 0, 0],
+        [10, 10, 10, 10, 4, 0, 0]
+      ], std.DUAL_WEEK_WORKSHIFT);
+      expect(result.overtime).eq([
+        [0, 0, 0, 0, 4, 0, 0],
+        [0, 0, 0, 0, 4, 0, 0]
+      ])
+      expect(result.reference[0].id).eq('LSA-30');
+    });
   });
 
   describe('四週', () => {

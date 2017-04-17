@@ -46,7 +46,38 @@ describe('工作時間、休息、休假', () => {
   });
 
   describe('休假', () => {
-    describe('特休', () => {
+    describe('特休 (paid leaves)', () => {
+      it('勞工在一公司工作了一個月，特休假為零天（勞基法 38 條）', () => {
+        let result = std.paidLeaves(30);
+        expect(result.value).eq(0);
+      });
+      it('勞工在一公司工作了七個月，特休假為三天（勞基法 38 條）', () => {
+        let result = std.paidLeaves(30 * 7);
+        expect(result.value).eq(3);
+      });
+      it('勞工在一公司工作了兩年，特休假為十天（勞基法 38 條）', () => {
+        let result = std.paidLeaves(365 * 2);
+        expect(result.value).eq(10);
+      });
+
+      it('勞工在一公司從 2017/4/1 開始工作，到了 4/30 時，特休假為零天（勞基法 38 條）', () => {
+        const start = new Date(2017, 4, 1);
+        const end = new Date(2017, 4, 30);
+        let result = std.paidLeaves(start, end);
+        expect(result.value).eq(0);
+      });
+      it('勞工在一公司從 2017/1/1 開始工作，到了 7/31 時，特休假為三天（勞基法 38 條）', () => {
+        const start = new Date(2017, 1, 1);
+        const end = new Date(2017, 7, 31);
+        let result = std.paidLeaves(start, end);
+        expect(result.value).eq(3);
+      });
+      it('勞工在一公司從 2017/1/1 開始工作，到了 2019/1/1，特休假為十天（勞基法 38 條）', () => {
+        const start = new Date(2017, 1, 1);
+        const end = new Date(2019, 1, 1);
+        let result = std.paidLeaves(start, end);
+        expect(result.value).eq(10);
+      });
     });
 
     describe('事假', () => {

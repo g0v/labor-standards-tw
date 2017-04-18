@@ -29,7 +29,7 @@ describe('工作時間、休息、休假', () => {
       expect(result.fines[0].max).eq(1000000);
     });
 
-    it('正常工時情況下，勞工於一個月內的連續三週（十五天）每天工作十二個小時，此違反勞基法 32 條一個月不能超過 46 小時', () => {
+    it('正常工時情況下，勞工於一個月內的連續三週（十五天）每天工作十二個小時，此違反勞基法 32 條一個月加班不能超過 46 小時', () => {
       let hours = Array.apply(null, Array(15)).map(Number.prototype.valueOf, 12);
       // this array will be [12, 12, 12, 12, ...] with 15 items;
       let total = hours
@@ -51,10 +51,12 @@ describe('工作時間、休息、休假', () => {
         let result = std.paidLeaves(30);
         expect(result.value).eq(0);
       });
+
       it('勞工在一公司工作了七個月，特休假為三天（勞基法 38 條）', () => {
         let result = std.paidLeaves(30 * 7);
         expect(result.value).eq(3);
       });
+
       it('勞工在一公司工作了兩年，特休假為十天（勞基法 38 條）', () => {
         let result = std.paidLeaves(365 * 2);
         expect(result.value).eq(10);
@@ -66,12 +68,21 @@ describe('工作時間、休息、休假', () => {
         let result = std.paidLeaves(start, end);
         expect(result.value).eq(0);
       });
+
       it('勞工在一公司從 2017/1/1 開始工作，到了 7/31 時，特休假為三天（勞基法 38 條）', () => {
         const start = new Date(2017, 1, 1);
         const end = new Date(2017, 7, 31);
         let result = std.paidLeaves(start, end);
         expect(result.value).eq(3);
       });
+
+      it('勞工在一公司從 2017/1/1 開始工作，到了 2018/12/31，特休假為七天（勞基法 38 條）', () => {
+        const start = new Date(2017, 1, 1);
+        const end = new Date(2019, 1, 1);
+        let result = std.paidLeaves(start, end);
+        expect(result.value).eq(10);
+      });
+
       it('勞工在一公司從 2017/1/1 開始工作，到了 2019/1/1，特休假為十天（勞基法 38 條）', () => {
         const start = new Date(2017, 1, 1);
         const end = new Date(2019, 1, 1);

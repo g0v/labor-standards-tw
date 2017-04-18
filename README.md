@@ -31,21 +31,21 @@
 it('月薪制勞工, 平均時薪 150 工作 2 小時，實領加班費為 900 元（勞基法 24 條）');
 ```
 
-並且寫在相對應的測試檔案中，依照這個例子應被放置於 [pays.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/pays.test.js) 當中。
+並且寫在相對應的測試檔案中，依照這個例子應被放置於 [pays.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/pays.test.js) 當中。
 
 依照不同的案例類型依照勞基法的大項分類，可以把你的測試放在不同位置：
 
 主要目標：
-* 工資：[pays.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/pays.test.js)
-* 工作時間、休息、休假：[workinghours-recess-holidaysleaves.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/workinghours-recess-holidaysleaves.test.js)
-* 變形工時：[transformed-workshift.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/transformed-workshift.test.js)
+* 工資：[pays.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/pays.test.js)
+* 工作時間、休息、休假：[workinghours-recess-holidaysleaves.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/workinghours-recess-holidaysleaves.test.js)
+* 變形工時：[transformed-workshift.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/transformed-workshift.test.js)
 
 次要目標：
-* 勞資會議：[labor-meeting.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/labor-meeting.test.js)
-* 女工與童工：[children-female-protection.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/children-female-protection.test.js)
-* 職業災害補償：[workers-compensation.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/workers-compensation.test.js)
-* 工作規則：[workers-rules.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/workers-rules.test.js)
-* 勞動契約：[labor-contract.test.js](https://github.com/yurenju/labor-standards-tw/blob/master/test/integration/labor-contract.test.js)
+* 勞資會議：[labor-meeting.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/labor-meeting.test.js)
+* 女工與童工：[children-female-protection.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/children-female-protection.test.js)
+* 職業災害補償：[workers-compensation.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/workers-compensation.test.js)
+* 工作規則：[workers-rules.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/workers-rules.test.js)
+* 勞動契約：[labor-contract.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/labor-contract.test.js)
 
 
 ### 撰寫 API 的使用方法
@@ -92,7 +92,7 @@ npm test -- -w -G
 
 ### 如何貢獻
 
-如果你發現程式碼有錯誤，或任何需要改進的地方，請到 [issues](https://github.com/yurenju/labor-standards-tw/issues) 頁面開一個新的 issue。如果您想要參與開發，你可以依照本節前面提到的步驟，撰寫只有敘述的測試案例、設計 API 與實作 API。不過目前的階段比較適合先執行 (1), (2) 步驟，大多數的 API 設計好之後再一起開始實作比較不會因為設計變更跟著實作一起修改。
+如果你發現程式碼有錯誤，或任何需要改進的地方，請到 [issues](https://github.com/g0v/labor-standards-tw/issues) 頁面開一個新的 issue。如果您想要參與開發，你可以依照本節前面提到的步驟，撰寫只有敘述的測試案例、設計 API 與實作 API。不過目前的階段比較適合先執行 (1), (2) 步驟，大多數的 API 設計好之後再一起開始實作比較不會因為設計變更跟著實作一起修改。
 
 若要提交你的修改，請送 pull request 到本專案，travis-ci 上面會有基本的語法與 coding style 檢查後，接著經由團隊成員審核後就會將您的變更合併入專案當中。
 
@@ -104,4 +104,4 @@ npm test -- -w -G
 
 ## 授權
 
-本專案依照 [MIT 授權](https://github.com/yurenju/labor-standards-tw/blob/master/LICENSE) 釋出，若需使用請確保您的使用方式符合 MIT 授權。
+本專案依照 [MIT 授權](https://github.com/g0v/labor-standards-tw/blob/master/LICENSE) 釋出，若需使用請確保您的使用方式符合 MIT 授權。

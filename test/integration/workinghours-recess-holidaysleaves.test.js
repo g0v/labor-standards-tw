@@ -43,6 +43,11 @@ describe('工作時間、休息、休假', () => {
       expect(result.fines[0].min).eq(20000);
       expect(result.fines[0].max).eq(1000000);
     });
+
+    it('一勞工連續工作八小時，其中應有一個小時的休息時間', () => {
+      let result = std.break(8);
+      expect(result.value).eq(1);
+    });
   });
 
   describe('休假', () => {

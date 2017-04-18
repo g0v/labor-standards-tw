@@ -14,7 +14,7 @@ describe('變形工時', () => {
       expect(result.overtime).eq([
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0]
-      ])
+      ]);
       expect(result.reference[0].id).eq('LSA-30');
     });
 
@@ -29,7 +29,7 @@ describe('變形工時', () => {
       expect(result.overtime).eq([
         [0, 0, 0, 0, 4, 0, 0],
         [0, 0, 0, 0, 4, 0, 0]
-      ])
+      ]);
       expect(result.reference[0].id).eq('LSA-30');
     });
   });
@@ -52,7 +52,7 @@ describe('變形工時', () => {
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0]
-      ])
+      ]);
       expect(result.reference[0].id).eq('LSA-30-1');
     });
 

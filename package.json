@@ -5,15 +5,15 @@
   "main": "src/index.js",
   "scripts": {
     "test": "nyc mocha test/**/*.test.js",
-    "lint": "eslint --ext .js src test"
+    "lint": "standard"
   },
   "author": "Yuren Ju <yurenju@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
-    "eslint": "^3.19.0",
     "mocha": "^3.2.0",
-    "nyc": "^10.2.0"
+    "nyc": "^10.2.0",
+    "standard": "^10.0.2"
   },
   "engines": {
     "node": ">= 6.0.0",

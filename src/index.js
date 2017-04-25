@@ -1,6 +1,6 @@
 
 module.exports = {
-  hourlySalary(monthly) {
-    return monthly / 30 / 8;
+  hourlySalary (monthly) {
+    return monthly / 30 / 8
   }
-};
+}

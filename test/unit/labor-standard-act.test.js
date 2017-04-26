@@ -1,4 +1,3 @@
-/* global describe, it */
 describe('勞基法', () => {
   describe('第 1 條', () => {
     /*

@@ -18,15 +18,15 @@
 
 ### 如何撰寫測試案例
 
-目前測試案例分門別類地放在 features 目錄底下
-* children.feature: 兒童勞工相關規定
-* female.feature: 女性勞工相關規定
-* overtime-pay.feature: 加班費計算
-* paid-leaves.feature: 特休
-* pays.feature: 工資
-* retirement.feature: 退休
-* transformed-workshit.feature: 變形工時
-* workhours.feature: 工作時間
+目前測試案例分門別類地放在 [features 目錄](features) 底下
+* [children.feature](features/children.feature): 兒童勞工相關規定
+* [female.feature](features/female.feature): 女性勞工相關規定
+* [overtime-pay.feature](features/overtime-pay.feature): 加班費計算
+* [paid-leaves.feature](features/paid-leaves.feature): 特休
+* [pays.feature](features/pays.feature): 工資
+* [retirement.feature](features/retirement.feature): 退休
+* [transformed-workshit.feature](features/transformed-workshit.feature): 變形工時
+* [workhours.feature](features/workhours.feature): 工作時間
 
 一個測試案例的範例如下：
 
@@ -65,12 +65,12 @@
 
 ### 撰寫 API 的使用方法
 
-當已經有只有敘述的測試案例後，接下來則是要設計這個測試案例在此函式庫裡面如何使用。我們採用 [cucumber.js](https://github.com/cucumber/cucumber-js/) 作為撰寫測試案例的工具，讓不寫程式的參與者也可以參與撰寫測試案例。
+當有足夠的測試案例後，接下來則是要設計這個測試案例在此函式庫裡面如何使用。我們採用 [cucumber.js](https://github.com/cucumber/cucumber-js/) 作為撰寫測試案例的工具，讓不寫程式的參與者也可以參與撰寫測試案例。
 
 當執行 `npm test` 時，cucumber 會列出所有尚未實作的步驟，比如說以下輸出：
 
 ```shell
-npm test
+$ npm test
 
 Warnings:
 
@@ -99,9 +99,7 @@ Warnings:
  * 共用步驟：不同類別的測試案例會共同使用到的步驟請放到 common-steps.js
  * 非共用步驟：只有在特定類別的測試案例會使用到，請依照分類放置於不同的 xxx-steps.js 檔案，沒有相關類別就開一個新檔案。
 
-這個例子是要計算加班費，所以可能會需要一個 API `overtimePay()` 來取得加班費，並且需要輸入平均時薪、時數與假別，所以這個 API 就可能可以如此設計：
-
-寫法可以參照以下檔案
+寫法可以參照 [retirement-steps.js](features/step_definitions/retirement-steps.js)
 
 ```javascript
 const { defineSupportCode } = require('cucumber')
@@ -124,7 +122,7 @@ defineSupportCode(function ({ Given, When, Then }) {
 })
 ```
 
-更多範例請至 step_definitions 閱讀。
+更多範例請至 [step_definitions](features/step_definitions) 閱讀。
 
 ### 實作 API
 

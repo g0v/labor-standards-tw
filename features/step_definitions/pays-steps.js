@@ -52,8 +52,7 @@ defineSupportCode(function ({Given, When, Then}) {
     this.consent = true
   })
 
-  When('工作 {number} 小時', function (number) {
-    this.workHours = number
+  When('計算加班費時', function () {
     this.result = std.overtimePay(this.hourly, this.workHours,
                                   this.dayType, this.consent, this.accident)
   })
@@ -73,7 +72,6 @@ defineSupportCode(function ({Given, When, Then}) {
   Then('違反勞基法 {int} 條', function (int) {
     expect(this.result.reference.some(ref => ref.title === `勞基法 ${int} 條`))
   })
-
 
   Then('根據 {stringInDoubleQuotes}', function (stringInDoubleQuotes) {
     expect(this.result.reference.some(ref => ref.title === stringInDoubleQuotes))

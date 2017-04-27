@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nyc mocha test/**/*.test.js",
     "lint": "standard",
-    "cucumber": "cucumber.js"
+    "cucumber": "cucumber.js --format-options '{\"snippetInterface\": \"synchronous\"}'"
   },
   "author": "Yuren Ju <yurenju@gmail.com>",
   "license": "MIT",

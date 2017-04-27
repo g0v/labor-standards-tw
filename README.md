@@ -10,61 +10,121 @@
 
 本專案目前正草創階段。目前可以分成幾個階段：
 
-1. 撰寫只有敘述的 test case （目前在這個階段）
+1. 撰寫測試案例 （目前在這個階段）
 2. 撰寫 API 的使用方法
 3. 實作 API
 
 其中第一個階段不需要有程式基礎，也歡迎大家在各個階段送 pull request，若有任何疑問，請 [登錄 g0v 的 slack](http://join.g0v.today/) 並且加入 #labor 頻道。
 
-### 撰寫只有敘述的 test case
+### 如何撰寫測試案例
 
-剛開始還沒確定如何實作時，可以先從只有敘述的測試案例開始，比如說你想要寫跟休息日相關的測試案例，可以明確的給定輸入：
-* 平均時薪，例如 150
-* 休息日的上班時數，例如 2 個小時
+目前測試案例分門別類地放在 features 目錄底下
+* children.feature: 兒童勞工相關規定
+* female.feature: 女性勞工相關規定
+* overtime-pay.feature: 加班費計算
+* paid-leaves.feature: 特休
+* pays.feature: 工資
+* retirement.feature: 退休
+* transformed-workshit.feature: 變形工時
+* workhours.feature: 工作時間
 
-以及明確的輸出：
-* 實領加班費，例如 900 元
+一個測試案例的範例如下：
 
-依照這些輸入輸出，寫成一個只有敘述的測試案例：
-
-```javascript
-it('月薪制勞工, 平均時薪 150 工作 2 小時，實領加班費為 900 元（勞基法 24 條）');
+```cucumber
+場景: 時薪制的薪資計算
+  假設 一個時薪制的勞工，基本時薪為 120 元
+  當 在平常日
+  而且 工作 8 小時
+  而且 計算他的當日薪資時
+  那麼 薪資為 960 元
 ```
 
-並且寫在相對應的測試檔案中，依照這個例子應被放置於 [pays.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/pays.test.js) 當中。
+你可以用 `假設`、`假如`、`假定` 敘述前置條件，用 `當` 敘述執行的動作。`假設` 跟 `當` 的用途很像，如果你區分不出差異也沒什麼關係，會有人協助確認是否適當。
 
-依照不同的案例類型依照勞基法的大項分類，可以把你的測試放在不同位置：
+用 `那麼` 敘述依照前面的狀況，應該要有什麼結果。而無論是 `假設`、`當` 或 `那麼`，都可以用 `而且`、`並且`、`同時`、`但是` 串連各種條件。
 
-主要目標：
-* 工資：[pays.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/pays.test.js)
-* 工作時間、休息、休假：[workinghours-recess-holidaysleaves.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/workinghours-recess-holidaysleaves.test.js)
-* 變形工時：[transformed-workshift.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/transformed-workshift.test.js)
+除了以上提到的 `場景` 外，如果一次要套用很多條件，也可以使用 `場景大綱`：
 
-次要目標：
-* 勞資會議：[labor-meeting.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/labor-meeting.test.js)
-* 女工與童工：[children-female-protection.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/children-female-protection.test.js)
-* 職業災害補償：[workers-compensation.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/workers-compensation.test.js)
-* 工作規則：[workers-rules.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/workers-rules.test.js)
-* 勞動契約：[labor-contract.test.js](https://github.com/g0v/labor-standards-tw/blob/master/test/integration/labor-contract.test.js)
+```cucumber
+  場景大綱: 合法狀況下平日的加班費
+    假設 一個月薪制的勞工，平均時薪為 150 元
+    當 在平常日
+    而且 工作 <hours> 小時
+    而且 計算加班費時
 
+    那麼 他的加班費為 <overtimePay> 元
+
+    例子:
+      | hours | overtimePay |
+      | 8     | 0           |
+      | 10    | 400         |
+      | 11    | 650         |
+```
+
+更多例子請到 features 目錄底下閱讀。如果你沒有使用 github 的經驗，也可以在 [這份文件](https://docs.google.com/document/d/1PSJjU1-by0wPVDq5dndjdHUulUMKspQ2bRtWsP1Pv0M/edit?usp=sharing) 寫下測試案例，團隊成員會不定期把那些測試案例記錄到系統裡面。
 
 ### 撰寫 API 的使用方法
 
-當已經有只有敘述的測試案例後，接下來則是要設計這個測試案例在此函式庫裡面有如何使用。比如說舉上面這個例子：
+當已經有只有敘述的測試案例後，接下來則是要設計這個測試案例在此函式庫裡面如何使用。我們採用 [cucumber.js](https://github.com/cucumber/cucumber-js/) 作為撰寫測試案例的工具，讓不寫程式的參與者也可以參與撰寫測試案例。
 
-```javascript
-it('月薪制勞工, 平均時薪 150 工作 2 小時，實領加班費為 900 元（勞基法 24 條）');
+當執行 `npm test` 時，cucumber 會列出所有尚未實作的步驟，比如說以下輸出：
+
+```shell
+npm test
+
+Warnings:
+
+1) Scenario: 女性勞工不得於晚上十點後工作 - features/female.feature:5
+   Step: 假如一女性勞工 - features/female.feature:6
+   Message:
+     Undefined. Implement with the following snippet:
+
+       Given('一女性勞工', function () {
+         // Write code here that turns the phrase above into concrete actions
+         return 'pending';
+       });
+
+2) Scenario: 女性勞工不得於晚上十點後工作 - features/female.feature:5
+   Step: 當於 23 點時工作 - features/female.feature:7
+   Message:
+     Undefined. Implement with the following snippet:
+
+       When('於 {int} 點時工作', function (int) {
+         // Write code here that turns the phrase above into concrete actions
+         return 'pending';
+       });
 ```
+
+表示有兩個步驟沒有實作，這時請依據這個步驟是不是共用步驟決定要放置到那個檔案。
+ * 共用步驟：不同類別的測試案例會共同使用到的步驟請放到 common-steps.js
+ * 非共用步驟：只有在特定類別的測試案例會使用到，請依照分類放置於不同的 xxx-steps.js 檔案，沒有相關類別就開一個新檔案。
 
 這個例子是要計算加班費，所以可能會需要一個 API `overtimePay()` 來取得加班費，並且需要輸入平均時薪、時數與假別，所以這個 API 就可能可以如此設計：
 
+寫法可以參照以下檔案
+
 ```javascript
-it('月薪制勞工, 平均時薪 150 工作 2 小時，實領加班費為 900 元（勞基法 24 條）', () => {
-  let result = std.overtimePay(150, 2, std.REST_DAY);
-  expect(result.value).eq(900);
-  expect(result.reference[0].id).eq('LSA-24');
-});
+const { defineSupportCode } = require('cucumber')
+const { expect } = require('chai')
+
+const std = require('../../src/index')
+
+defineSupportCode(function ({ Given, When, Then }) {
+  When('驗證退休資格時', function () {
+    this.result = std.retire(this.age)
+  })
+
+  Then('他 可 申請退休', function () {
+    expect(this.result.value).eq(true)
+  })
+
+  Then('他 不可 申請退休', function () {
+    expect(this.result.value).eq(false)
+  })
+})
 ```
+
+更多範例請至 step_definitions 閱讀。
 
 ### 實作 API
 
@@ -84,17 +144,13 @@ npm test
 
 剛開始大多數的測試案例都會失敗，隨著大家把每個 API 都實作完成後，測試案例的完成度就會愈來愈高，達 100% 後就完成了整個函式庫的實作。
 
-另外如果想要邊修改邊看測試狀況，在存檔後就自動執行測試，可以用以下指令：
-
-```
-npm test -- -w -G
-```
-
 ### 如何貢獻
 
 如果你發現程式碼有錯誤，或任何需要改進的地方，請到 [issues](https://github.com/g0v/labor-standards-tw/issues) 頁面開一個新的 issue。如果您想要參與開發，你可以依照本節前面提到的步驟，撰寫只有敘述的測試案例、設計 API 與實作 API。不過目前的階段比較適合先執行 (1), (2) 步驟，大多數的 API 設計好之後再一起開始實作比較不會因為設計變更跟著實作一起修改。
 
 若要提交你的修改，請送 pull request 到本專案，travis-ci 上面會有基本的語法與 coding style 檢查後，接著經由團隊成員審核後就會將您的變更合併入專案當中。
+
+若你想要貢獻測試案例但並不習慣使用 Github，請參照 如何撰寫測試案例 並且將測試案例寫在上述所提及的文件內。
 
 ## 相關資訊
 

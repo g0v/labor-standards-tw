@@ -1,4 +1,4 @@
-    #language: zh-TW
+#language: zh-TW
 
 功能: 解僱與遣散費
 

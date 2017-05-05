@@ -61,7 +61,7 @@
       | 11    | 650         |
 ```
 
-更多例子請到 features 目錄底下閱讀。如果你沒有使用 github 的經驗，也可以在 [這份文件](https://docs.google.com/document/d/1PSJjU1-by0wPVDq5dndjdHUulUMKspQ2bRtWsP1Pv0M/edit?usp=sharing) 寫下測試案例，團隊成員會不定期把那些測試案例記錄到系統裡面。
+更多例子請到 features 目錄底下閱讀。如果你沒有使用 github 的經驗，也可以在 [這份文件](https://hackmd.io/c/SJES19Fy-/) 寫下測試案例，團隊成員會不定期把那些測試案例記錄到系統裡面。
 
 ### 撰寫 API 的使用方法
 

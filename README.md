@@ -155,6 +155,7 @@ npm test
 * [活動共筆：從砍七天假爭議談勞基法工時規定](https://g0v.hackpad.com/3hMbxYbFCxv)
 * [2016工時制度及工作彈性化措施手冊彈性化措施手冊(勞動部)](http://www.mol.gov.tw/topic/3067/14530/14533/)
 * [2016勞動法令&實務彙編(台北市勞工局)](http://bola.gov.taipei/lp.asp?ctNode=62983&CtUnit=34049&BaseDSD=7&mp=116003)
+* [106年度勞基法新制上路中小企業因應須知](https://law.moeasmea.gov.tw/upload/106%E5%B9%B4%E5%BA%A6%E5%8B%9E%E5%9F%BA%E6%B3%95%E6%96%B0%E5%88%B6%E4%B8%8A%E8%B7%AF%E4%B8%AD%E5%B0%8F%E4%BC%81%E6%A5%AD%E5%9B%A0%E6%87%89%E9%A0%88%E7%9F%A5.pdf)
 
 ## 授權
 

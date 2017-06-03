@@ -1,8 +1,8 @@
 const { defineSupportCode } = require('cucumber')
-const { Labor } = require('../../src/index')
+const { Labor } = require('../../src')
 
 defineSupportCode(function ({ setWorldConstructor }) {
   setWorldConstructor(function () {
-    this.labor = {}
+    this.labor = new Labor()
   })
 })

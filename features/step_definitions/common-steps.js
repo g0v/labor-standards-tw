@@ -7,8 +7,16 @@ defineSupportCode(function ({ Given, When, Then }) {
     this.labor.age(age)
   })
 
+  Given('月薪為 {int} 元', function (salary) {
+    this.monthlySalary = salary
+  })
+
   When('工作 {int} 小時', function (hours) {
     this.workHours = hours
+  })
+
+  Given('在一公司工作 {int} 個月', function (months) {
+    this.workMonths = months
   })
 
   When('在一公司工作 {int} 年', function (years) {
@@ -16,7 +24,7 @@ defineSupportCode(function ({ Given, When, Then }) {
   })
 
   When('週一到週六每天工作八小時', function () {
-    let worktime = new WorkTime(Duration.WEEKLY, this.labor)
+    let worktime = new WorkTime(Duration.WEEK, this.labor)
     worktime.add(new Date(2017, 6, 5, 8), 8) // Monday
     worktime.add(new Date(2017, 6, 6, 8), 8)
     worktime.add(new Date(2017, 6, 7, 8), 8)
@@ -27,7 +35,7 @@ defineSupportCode(function ({ Given, When, Then }) {
   })
 
   When('在例假日工作時', function () {
-    let worktime = new WorkTime(Duration.DAILY, this.labor)
+    let worktime = new WorkTime(Duration.DAY, this.labor)
     worktime.add(new Date(2017, 6, 11, 8), 8)
     this.worktime = worktime
     this.result = worktime.validate()
@@ -36,7 +44,7 @@ defineSupportCode(function ({ Given, When, Then }) {
   When('驗證單天工作時間是否違法時', function () {
     const hours = this.workHours || 8
     const date = this.date || new Date(2017, 6, 5, 8)
-    const worktime = new WorkTime(Duration.DAILY, this.labor)
+    const worktime = new WorkTime(Duration.DAY, this.labor)
     worktime.add(date, hours)
     this.result = worktime.validate()
   })
@@ -47,9 +55,10 @@ defineSupportCode(function ({ Given, When, Then }) {
 
   When('在 {int} 點時工作', function (hours) {
     const date = this.date || new Date(2017, 6, 5, hours)
-    this.worktime = new WorkTime(Duration.DAILY)
+    this.worktime = new WorkTime(Duration.DAY)
     this.worktime.add(date, 1)
   })
+
 
   When('驗證是否在合法的時間範圍內工作', function () {
     this.result = this.worktime.validate()

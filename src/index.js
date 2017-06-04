@@ -6,8 +6,8 @@ module.exports = {
   }),
 
   Duration: Object.freeze({
-    DAILY: 1,
-    WEEKLY: 2
+    DAY: 1,
+    WEEK: 2
   }),
 
   Education: Object.freeze({
@@ -20,6 +20,17 @@ module.exports = {
     CHILD_LABOR: 3,
     PRE_ADULT: 4,
     ADULT: 5
+  }),
+
+  Gender: Object.freeze({
+    MALE: 'male',
+    FEMALE: 'female',
+    UNSPECIFIED: 'unspecified'
+  }),
+
+  Org: Object.freeze({
+    LABOR_MANAGEMENT_MEETING: 'Labor-Management Meeting',
+    UNION: 'union'
   }),
 
   Labor: require('./Labor'),

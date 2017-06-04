@@ -1,7 +1,7 @@
 const { defineSupportCode } = require('cucumber')
 const { expect } = require('chai')
 
-const { Education, Duration, WorkTime, ChildLaborType } = require('../../src/index')
+const { Education, ChildLaborType } = require('../../src/index')
 
 defineSupportCode(function ({ Given, When, Then }) {
   Given('無國民中學畢業', function () {

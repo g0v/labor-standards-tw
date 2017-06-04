@@ -1,23 +1,17 @@
 const {defineSupportCode} = require('cucumber')
 const {expect} = require('chai')
 
-const std = require('../../src/index')
-
 defineSupportCode(function ({Given, When, Then}) {
-  Given('一個勞工月薪為 {int} 元', function (int) {
-    this.result = std.hourlySalary(int)
+  Given('一個勞工月薪為 {int} 元', function (salary) {
+    this.labor.monthSalary(salary)
   })
 
-  Given('一個時薪制的勞工，基本時薪為 {int} 元', function (int) {
-    this.hourly = int
+  When('計算他的平均時薪時', function () {
+    this.result = this.labor.hourlyWage()
   })
 
-  Then('他計算加班費用的平均時薪為 {int} 元', function (int) {
-    expect(this.result.value).eq(int)
-  })
-
-  Then('薪資為 {int} 元', function (int) {
-    const result = std.pay(this.hourly, this.workHours, this.dayType)
-    expect(result.value).eq(int)
+  Then('根據 {stringInDoubleQuotes}，他計算加班費用的平均時薪為 {int} 元', function (explanation, wage) {
+    expect(this.result.value).eq(wage)
+    expect(this.result.according[0].lawTitle).eq(explanation)
   })
 })

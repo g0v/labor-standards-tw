@@ -7,8 +7,12 @@ defineSupportCode(function ({ Given, When, Then }) {
     this.labor.age(age)
   })
 
+  Given('一個勞工月薪為 {int} 元', function (salary) {
+    this.labor.monthSalary(salary)
+  })
+
   Given('月薪為 {int} 元', function (salary) {
-    this.monthlySalary = salary
+    this.labor.monthSalary(salary)
   })
 
   When('工作 {float} 小時', function (hours) {
@@ -82,6 +86,14 @@ defineSupportCode(function ({ Given, When, Then }) {
 
   When('驗證是否在合法的時間範圍內工作', function () {
     this.result = this.worktime.validate()
+  })
+
+  Given('一勞工在公司從 {int}/{int}/{int} 開始工作', function (year, month, date) {
+    this.labor.onBoard(new Date(year, month, date))
+  })
+
+  When('到了 {int}/{int}/{int} 時', function (year, month, date) {
+    this.endDate = new Date(year, month, date)
   })
 
   Then('違反 {stringInDoubleQuotes} {int} 條', function (lawTitle, article) {

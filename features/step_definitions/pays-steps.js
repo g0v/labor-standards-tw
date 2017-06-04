@@ -2,10 +2,6 @@ const {defineSupportCode} = require('cucumber')
 const {expect} = require('chai')
 
 defineSupportCode(function ({Given, When, Then}) {
-  Given('一個勞工月薪為 {int} 元', function (salary) {
-    this.labor.monthSalary(salary)
-  })
-
   When('計算他的平均時薪時', function () {
     this.result = this.labor.hourlyWage()
   })

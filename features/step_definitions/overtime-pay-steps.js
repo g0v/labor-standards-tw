@@ -4,7 +4,6 @@ const { expect } = require('chai')
 const { Duration, WorkTime } = require('../../src/index')
 
 defineSupportCode(function ({ Given, When, Then }) {
-
   Given('一個月薪制的勞工，平均時薪為 {int} 元', function (hourlySalary) {
     this.hourly = hourlySalary
   })

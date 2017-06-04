@@ -1,8 +1,6 @@
 const { defineSupportCode } = require('cucumber')
 const { expect } = require('chai')
 
-const std = require('../../src/index')
-
 defineSupportCode(function ({ Given, When, Then }) {
   When('驗證退休資格時', function () {
     this.labor.onBoard(new Date(2017 - this.workYears, 6, 1))

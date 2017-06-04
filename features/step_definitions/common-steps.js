@@ -11,7 +11,7 @@ defineSupportCode(function ({ Given, When, Then }) {
     this.monthlySalary = salary
   })
 
-  When('工作 {int} 小時', function (hours) {
+  When('工作 {float} 小時', function (hours) {
     this.workHours = hours
   })
 
@@ -59,6 +59,26 @@ defineSupportCode(function ({ Given, When, Then }) {
     this.worktime.add(date, 1)
   })
 
+  When('在平常日', function () {
+    this.date = new Date(2017, 6, 5, 8)
+  })
+
+  When('在國定假日', function () {
+    this.date = new Date(2017, 5, 30, 8)
+    this.holiday = true
+  })
+
+  When('在休息日', function () {
+    this.date = new Date(2017, 6, 3, 8)
+  })
+
+  When('在例假日', function () {
+    this.date = new Date(2017, 6, 4, 8)
+  })
+
+  When('不考慮變形工時的狀況', function () {
+    // do nothin
+  })
 
   When('驗證是否在合法的時間範圍內工作', function () {
     this.result = this.worktime.validate()
@@ -87,5 +107,16 @@ defineSupportCode(function ({ Given, When, Then }) {
     expect(penalty.possibilities[1].imprisonment.max).eq(years)
     expect(penalty.possibilities[2].fine.max).eq(max)
     expect(penalty.possibilities[2].imprisonment.max).eq(years)
+  })
+
+  Then('根據勞基法 {int} 條，罰款 {int} 元至 {int} 元', function (article, min, max) {
+    const penalties = this.result.violate().map(v => v.penalize())
+    const penalty = penalties.filter(penalty => {
+      return penalty.according[0].lawTitleAbbr === '勞基法' &&
+        penalty.according[0].article === article
+    })[0]
+    expect(penalty.possibilities.length).eq(1)
+    expect(penalty.possibilities[0].fine.min).eq(min)
+    expect(penalty.possibilities[0].fine.max).eq(max)
   })
 })

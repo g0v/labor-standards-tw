@@ -1,5 +1,5 @@
-const { defineSupportCode } = require('cucumber')
-const { expect } = require('chai')
+import { defineSupportCode } from 'cucumber'
+import { expect } from 'chai'
 
 // const { Education, ChildLaborType } = require('../../src/index')
 

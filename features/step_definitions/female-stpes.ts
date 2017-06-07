@@ -1,7 +1,7 @@
-const { defineSupportCode } = require('cucumber')
-const { expect } = require('chai')
+import { defineSupportCode } from 'cucumber'
+import { expect } from 'chai'
 
-const { Gender, Org } = require('../../src/index')
+import { Gender, Org } from '../../src'
 
 defineSupportCode(function ({ Given, When, Then }) {
   Given('一女性勞工', function () {

@@ -1,5 +1,5 @@
-const {defineSupportCode} = require('cucumber')
-const {expect} = require('chai')
+import {defineSupportCode} from 'cucumber'
+import {expect} from 'chai'
 
 defineSupportCode(function ({Given, When, Then}) {
   When('計算他的平均時薪時', function () {

@@ -1,7 +1,7 @@
-const { defineSupportCode } = require('cucumber')
-const { expect } = require('chai')
+import { defineSupportCode } from 'cucumber'
+import { expect } from 'chai'
 
-const { Duration, WorkTime } = require('../../src/index')
+import { Duration, WorkTime } from '../../src'
 
 defineSupportCode(function ({ Given, When, Then }) {
   Given('一個月薪制的勞工，平均時薪為 {int} 元', function (hourlySalary) {

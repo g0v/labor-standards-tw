@@ -1,5 +1,5 @@
-const { defineSupportCode } = require('cucumber')
-const { expect } = require('chai')
+import { defineSupportCode } from 'cucumber'
+import { expect } from 'chai'
 
 defineSupportCode(function ({ Given, When, Then }) {
   Given('他的平均薪資為 {int} 元', function (salary) {

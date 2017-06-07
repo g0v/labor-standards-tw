@@ -1,5 +1,5 @@
-const { defineSupportCode } = require('cucumber')
-const { expect } = require('chai')
+import { defineSupportCode } from 'cucumber'
+import { expect } from 'chai'
 
 defineSupportCode(function ({ Given, When, Then }) {
   When('驗證退休資格時', function () {

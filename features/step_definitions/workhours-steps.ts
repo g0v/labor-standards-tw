@@ -1,7 +1,7 @@
-const { defineSupportCode } = require('cucumber')
-const { expect } = require('chai')
+import { defineSupportCode } from 'cucumber'
+import { expect } from 'chai'
 
-const { Duration, WorkTime } = require('../../src/index')
+import { Duration, WorkTime } from '../../src/index'
 
 defineSupportCode(function ({ Given, When, Then }) {
   Given('正常工時情況下', function () {
@@ -27,7 +27,7 @@ defineSupportCode(function ({ Given, When, Then }) {
       19, 20, 21, 22, 23,
       26, 27, 28, 29, 30
     ]
-    this.worktime = new WorkTime(Duration.MOONTH, this.labor)
+    this.worktime = new WorkTime(Duration.MONTH, this.labor)
     regularDates.forEach(date => {
       this.worktime.add(new Date(2017, 6, date, 8), 9)
     })

@@ -1,5 +1,5 @@
-const { defineSupportCode } = require('cucumber')
-const { Labor } = require('../../src')
+import { defineSupportCode } from 'cucumber'
+import { Labor } from '../../src'
 
 defineSupportCode(function ({ setWorldConstructor }) {
   setWorldConstructor(function () {

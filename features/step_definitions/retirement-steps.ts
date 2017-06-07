@@ -1,11 +1,10 @@
-const { defineSupportCode } = require('cucumber')
-const { expect } = require('chai')
-
-const std = require('../../src/index')
+import { defineSupportCode } from 'cucumber'
+import { expect } from 'chai'
 
 defineSupportCode(function ({ Given, When, Then }) {
   When('驗證退休資格時', function () {
-    this.result = std.retire(this.age)
+    this.labor.onBoard(new Date(2017 - this.workYears, 6, 1))
+    this.result = this.labor.retire(new Date(2017, 6, 1))
   })
 
   Then('他 可 申請退休', function () {

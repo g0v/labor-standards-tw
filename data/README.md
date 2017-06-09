@@ -1,0 +1,1 @@
+lsa-en.xml 跟 lsa-zh.xml 是來自 [全國法規資料庫公開資料](http://law.moj.gov.tw/PublicData/DevelopGuide.aspx)，把中英文版的勞基法從整份文件取出儲存成 XML。mergeJson.js 會去拉 ronnywang 砍好的 [勞基法](https://github.com/ronnywang/tw-law-corpus/blob/json/%E5%8B%9E%E5%8B%95%E4%BA%BA%E5%8A%9B/%E5%8B%9E%E5%8B%95%E5%9F%BA%E6%BA%96/%E5%8B%9E%E5%8B%95%E5%9F%BA%E6%BA%96%E6%B3%95.json)，並且合併上述中英文版後，再把罰則相關的相依性補上去。

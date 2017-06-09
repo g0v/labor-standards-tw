@@ -1,6 +1,7 @@
 import Labor from './Labor'
 import Result from './Result'
 import WorkTime from './WorkTime'
+import Article from './Article'
 
 export enum Education {
   JUNIOR_HIGH_SCHOOL
@@ -37,4 +38,4 @@ export enum Org {
   UNION
 }
 
-export { Labor, WorkTime, Result }
+export { Labor, WorkTime, Result, Article }

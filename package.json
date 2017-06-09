@@ -10,8 +10,10 @@
   "author": "Yuren Ju <yurenju@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^7.0.29",
     "chai": "^4.0.1",
     "cucumber": "^2.0.0-rc.9",
+    "isomorphic-fetch": "^2.2.1",
     "ts-node": "^3.0.4",
     "tslint": "^5.4.3",
     "tslint-config-standard": "^5.0.2",

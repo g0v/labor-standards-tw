@@ -1,8 +1,8 @@
-import {Education, Result} from './'
+import {Article, Education, Result, ChildLaborType} from './'
 
 export default class Labor {
-  private _age: number
-  private _graduations: Object
+  private age: number
+  private _graduations: Object = {}
   private _authorityAgreed: boolean
   private _monthlySalary: number
   private _onboard: Date
@@ -13,7 +13,24 @@ export default class Labor {
   }
 
   validateChildLabor (): Result {
-    return new Result()
+    const result = new Result()
+    const age = this.getAge()
+    const agreed = this._authorityAgreed
+    const graduated = this.graduate[Education.JUNIOR_HIGH_SCHOOL]
+
+    if (age >= 15 && age < 16) {
+      result.value.type = ChildLaborType.CHILD_LABOR
+      result.according.push(new Article('勞動基準法', '44'))
+    } else if (age < 15 && (agreed || graduated)) {
+      result.value.type = ChildLaborType.FOLLOW_CHILD_LABOR_ARTICLES
+      result.according.push(new Article('勞動基準法', '45'))
+    } else if (age < 15 && (!agreed && !graduated)) {
+      const article = new Article('勞動基準法', '44')
+      result.value.type = ChildLaborType.ILLEGAL
+      result.according.push(article)
+    }
+
+    return result
   }
 
   authorityAgree (agreed: boolean): Labor {
@@ -21,9 +38,13 @@ export default class Labor {
     return this
   }
 
-  age (age: number): Labor {
-    this._age = age
+  setAge (age: number): Labor {
+    this.age = age
     return this
+  }
+
+  getAge (): number {
+    return this.age
   }
 
   onBoard (onboard: Date): Labor {

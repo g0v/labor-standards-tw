@@ -4,17 +4,17 @@ import { Duration, WorkTime, Labor } from '../../src/index'
 
 defineSupportCode(function ({ Given, When, Then }) {
   Given('一個 {int} 歲的勞工', function (age) {
-    let labor: Labor = this.labor
-    labor.age(age)
+    const labor: Labor = this.labor
+    labor.setAge(age)
   })
 
   Given('一個勞工月薪為 {int} 元', function (salary) {
-    let labor: Labor = this.labor
+    const labor: Labor = this.labor
     labor.monthSalary(salary)
   })
 
   Given('月薪為 {int} 元', function (salary) {
-    let labor: Labor = this.labor
+    const labor: Labor = this.labor
     labor.monthSalary(salary)
   })
 
@@ -31,8 +31,8 @@ defineSupportCode(function ({ Given, When, Then }) {
   })
 
   When('週一到週六每天工作八小時', function () {
-    let labor: Labor = this.labor
-    let worktime = new WorkTime(Duration.WEEK, labor)
+    const labor: Labor = this.labor
+    const worktime = new WorkTime(Duration.WEEK, labor)
     worktime.add(new Date(2017, 6, 5, 8), 8) // Monday
     worktime.add(new Date(2017, 6, 6, 8), 8)
     worktime.add(new Date(2017, 6, 7, 8), 8)
@@ -43,15 +43,15 @@ defineSupportCode(function ({ Given, When, Then }) {
   })
 
   When('在例假日工作時', function () {
-    let labor: Labor = this.labor
-    let worktime = new WorkTime(Duration.DAY, labor)
+    const labor: Labor = this.labor
+    const worktime = new WorkTime(Duration.DAY, labor)
     worktime.add(new Date(2017, 6, 11, 8), 8)
     this.worktime = worktime
     this.result = worktime.validate()
   })
 
   When('驗證單天工作時間是否違法時', function () {
-    let labor: Labor = this.labor
+    const labor: Labor = this.labor
     const hours = this.workHours || 8
     const date = this.date || new Date(2017, 6, 5, 8)
     const worktime = new WorkTime(Duration.DAY, labor)
@@ -64,7 +64,7 @@ defineSupportCode(function ({ Given, When, Then }) {
   })
 
   When('在 {int} 點時工作', function (hours) {
-    let labor: Labor = this.labor
+    const labor: Labor = this.labor
     const date = this.date || new Date(2017, 6, 5, hours)
     this.worktime = new WorkTime(Duration.DAY, labor)
     this.worktime.add(date, 1)
@@ -96,7 +96,7 @@ defineSupportCode(function ({ Given, When, Then }) {
   })
 
   Given('一勞工在公司從 {int}/{int}/{int} 開始工作', function (year, month, date) {
-    let labor: Labor = this.labor
+    const labor: Labor = this.labor
     labor.onBoard(new Date(year, month, date))
   })
 

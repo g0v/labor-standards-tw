@@ -28,34 +28,34 @@ defineSupportCode(function ({ Given, When, Then }) {
   Then('根據勞基法 {int} 條，適用勞基法童工相關法令', function (id) {
     const result: Result = this.result
     expect(result.value.type).eq(ChildLaborType.FOLLOW_CHILD_LABOR_ARTICLES)
-    expect(result.according.some(article => article.id === id)).eq(true)
+    expect(result.according.some(article => article.id === id.toString())).eq(true)
   })
 
   Then('根據勞基法 {int} 條，不為童工', function (id) {
     const result: Result = this.result
     expect(result.value.type).not.eq(ChildLaborType.CHILD_LABOR)
-    expect(result.according.some(article => article.id === id)).eq(true)
+    expect(result.according.some(article => article.id === id.toString())).eq(true)
   })
 
   Then('根據勞基法 {int} 條，為童工', function (id) {
     const result: Result = this.result
     expect(result.value.type).eq(ChildLaborType.CHILD_LABOR)
-    expect(result.according.some(article => article.id === id)).eq(true)
+    expect(result.according.some(article => article.id === id.toString())).eq(true)
   })
 
   Then('根據勞基法 {int} 條，為違法童工', function (id) {
     const result: Result = this.result
     expect(result.value.type).eq(ChildLaborType.ILLEGAL)
-    expect(result.according.some(article => article.id === id)).eq(true)
+    expect(result.according.some(article => article.id === id.toString())).eq(true)
   })
 
   Then('根據勞基法 {int} 條，不得從事危險性或有害性之工作', function (id) {
     const result: Result = this.result
-    expect(result.according.some(article => article.id === id)).eq(true)
+    expect(result.according.some(article => article.id === id.toString())).eq(true)
   })
 
   Then('根據勞基法 {int} 條，雇主應置備其法定代理人同意書及其年齡證明文件。', function (id) {
     const result: Result = this.result
-    expect(result.according.some(article => article.id === id)).eq(true)
+    expect(result.according.some(article => article.id === id.toString())).eq(true)
   })
 })

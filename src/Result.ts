@@ -4,7 +4,8 @@ export default class Result {
   value: any = {}
   according: Article[] = []
 
-  violate () {
-    // TBD
+  violate (): Article[] {
+    const articles: Article[] = []
+    return articles
   }
 }

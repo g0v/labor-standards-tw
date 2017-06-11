@@ -25,25 +25,181 @@ const zhnumMap = {
   '十': '0'
 }
 
-function zh2num (zh) {
-  let zhnum = zh.match(/第(.+)條/)[1]
-  let num = 0
-  const last = zhnum.substr(-1)
-
-  if (zhnumMap[last] !== 0) {
-    zhnum = zhnum.replace(/十/g, '')
+const penalties = {
+  '75': {
+    for: ['5'],
+    source: '75',
+    penalties: [
+      {
+        fine: { max: 750000 }
+      },
+      {
+        imprisonment: {
+          max: 5,
+          unit: 'year'
+        }
+      },
+      {
+        fine: { max: 750000 },
+        imprisonment: {
+          max: 5,
+          unit: 'year'
+        }
+      }
+    ]
+  },
+  '76': {
+    for: ['6'],
+    source: '76',
+    penalties: [
+      {
+        fine: { max: 450000 }
+      },
+      {
+        imprisonment: {
+          max: 3,
+          unit: 'year'
+        }
+      },
+      {
+        fine: { max: 450000 },
+        imprisonment: {
+          max: 3,
+          unit: 'year'
+        }
+      }
+    ]
+  },
+  '77': {
+    for: ['42', '44#2', '45#1', '47', '48', '49#3', '64#1'],
+    source: '77',
+    penalties: [
+      {
+        fine: { max: 300000 }
+      },
+      {
+        imprisonment: {
+          max: 6,
+          unit: 'month'
+        }
+      },
+      {
+        fine: { max: 300000 },
+        imprisonment: {
+          max: 6,
+          unit: 'month'
+        }
+      }
+    ]
+  },
+  '78#1': {
+    for: ['17', '55'],
+    source: '78',
+    penalties: [{
+      fine: {
+        min: 300000,
+        max: 15000000
+      }
+    }]
+  },
+  '78#2': {
+    for: ['13', '26', '50', '51', '56#2'],
+    source: '78',
+    penalties: [{
+      fine: {
+        min: 90000,
+        max: 450000
+      }
+    }]
+  },
+  '79#1': {
+    for: ['21#1', '22', '23', '24', '25', '30#1', '30#2', '30#3', '30#6',
+          '30#7', '32', '34', '35', '36', '37', '38', '39', '40', '41', '49#1',
+          '59'],
+    source: '79',
+    penalties: [{
+      fine: {
+        min: 20000,
+        max: 1000000
+      }
+    }]
+  },
+  '79#2': {
+    for: ['30#5', '49#5'],
+    source: '79',
+    penalties: [{
+      fine: {
+        min: 90000,
+        max: 450000
+      }
+    }]
+  },
+  '79#3': {
+    for: ['7', '9#1', '16', '19', '28#2', '46', '56#1', '65#1', '66', '67',
+          '68', '70', '74#2'],
+    source: '79',
+    penalties: [{
+      fine: {
+        min: 20000,
+        max: 300000
+      }
+    }]
   }
-
-  num = zhnum.split('').map(c => zhnumMap[c]).join('')
-  return num
 }
 
-function normalize (articles) {
-  if (!articles) return []
-  return articles.map(article => {
-    article.numbers = article.numbers.map(num => zh2num(num))
-    return article
+function parseKey(key) {
+  let [id, paragraph] = key.split('#')
+  if (paragraph) {
+    paragraph = parseInt(paragraph) - 1
+  }
+
+  return [id, paragraph]
+}
+
+function normalizeContent (content, lang) {
+  const RE_END_OF_LINE = lang === 'zh' ? /[。：]/ : /[.:]/
+  const RE_NUMBER_BULLET = lang === 'zh' ? /^[一二三四五六七八九十]{1,2}、/ : /^[0-9]{1,2}\./
+  const COLON = lang === 'zh' ? '：' : ':'
+
+  let parts = []
+  let result = []
+  let part = ''
+
+  content.split('\n').forEach(str => {
+    const last = str.substr(-1)
+
+    part += str.trim()
+
+    if (last.match(RE_END_OF_LINE)) {
+      parts.push(part)
+      part = ''
+    }
   })
+
+  let listMode = false
+  let newPart = ''
+  parts.forEach(part => {
+    const last = part.substr(-1)
+    if (last === COLON) {
+      listMode = true
+      newPart = part
+    } else if (listMode && part.match(RE_NUMBER_BULLET)) {
+      newPart += `\n${part}`
+    } else if (newPart !== '') {
+      result.push(newPart)
+      newPart = ''
+      result.push(part)
+      listMode = false
+    } else {
+      result.push(part)
+    }
+  })
+
+  if (listMode) {
+    result.push(newPart)
+  }
+
+  return result
 }
 
 fetch(ronnyUrl)
@@ -56,23 +212,67 @@ fetch(ronnyUrl)
   }
 
   const merged = articlesZh.map((articleZh, i) => {
-    const articleRonny = articlesRonny[i]
     const articleEn = articlesEn[i]
+    const id = articleZh['條號'].match(/第 ([0-9-]+) 條/)[1]
 
     return {
-      '條號': articleZh['條號'].match(/第 ([0-9-]+) 條/)[1],
+      '條號': id,
       '條文內容': {
-        zh: articleZh['條文內容'],
-        en: articleEn['條文內容']
-      },
-      '相關條文': {
-        '引用條文': normalize(articleRonny.relates['引用條文']),
-        '被引用條文': normalize(articleRonny.relates['被引用條文'])
+        zh: normalizeContent(articleZh['條文內容'], 'zh'),
+        en: normalizeContent(articleEn['條文內容'], 'en')
       }
     }
   })
 
   zh['LAWS']['法規']['法規內容']['條文'] = merged
   zh['LAWS']['法規']['法規簡稱'] = '勞基法'
+  return zh
+})
+.then(json => {
+  const articlesMap = {}
+  json['LAWS']['法規']['法規內容']['條文'].forEach(article => {
+    articlesMap[article['條號']] = article
+  })
+
+  Object.keys(penalties).forEach(key => {
+    const penalty = penalties[key]
+    let [id, paragraph] = parseKey(key)
+
+    const forArticles = penalty.for.map(forKey => {
+      let [forId, forParagraph] = parseKey(forKey)
+      const article = articlesMap[forId]
+
+      article['罰則參考'] = article['罰則參考'] || []
+
+      article['罰則參考'].push({
+        paragraph: forParagraph,
+        penalty: {id, paragraph}
+      })
+
+      return {id: forId, paragraph: forParagraph}
+    })
+
+    const penaltyArticle = articlesMap[id]
+    penaltyArticle['罰則'] = penaltyArticle['罰則'] || []
+    penaltyArticle['罰則'].push({
+      for: forArticles,
+      paragraph,
+      possibilities: penalty.penalties
+    })
+
+  })
+
+  return json
+})
+.then(json => {
+  json['LAWS']['法規']['法規內容']['條文'].forEach(article => {
+    if (article['罰則參考']) {
+      article['罰則參考'].sort((a, b) => a.paragraph - b.paragraph)
+    }
+  })
+  return json
+})
+.then(json => {
   shell.ShellString(JSON.stringify(zh, null, 2)).to('data/lsa.json')
 })
+.catch(err => console.error(err))

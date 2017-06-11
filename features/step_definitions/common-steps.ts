@@ -1,6 +1,6 @@
 import { defineSupportCode } from 'cucumber'
 import { expect } from 'chai'
-import { Duration, WorkTime, Labor } from '../../src/index'
+import { Duration, WorkTime, Labor, Result } from '../../src/index'
 
 defineSupportCode(function ({ Given, When, Then }) {
   Given('一個 {int} 歲的勞工', function (age) {
@@ -104,23 +104,25 @@ defineSupportCode(function ({ Given, When, Then }) {
     this.endDate = new Date(year, month, date)
   })
 
-  Then('違反 {stringInDoubleQuotes} {int} 條', function (lawTitle, article) {
-    const violations = this.result.violate()
+  Then('違反 {stringInDoubleQuotes} {int} 條', function (lawTitle: string, id: number) {
+    const result: Result = this.result
+    const violations = result.violate()
 
     expect(violations.some(violation => {
       return (
         violation.lawTitle === lawTitle ||
         violation.lawTitleAbbr === lawTitle
       ) &&
-        violation.article === article
+        violation.id === id.toString()
     }))
   })
 
-  Then('根據勞基法 {int} 條，罰款 {int} 元以下或處 {int} 個月以下有期徒刑、拘役或合併前面兩者罰則', function (article, max, years) {
-    const penalties = this.result.violate().map(v => v.penalize())
+  Then('根據勞基法 {int} 條，罰款 {int} 元以下或處 {int} 個月以下有期徒刑、拘役或合併前面兩者罰則', function (id, max, years) {
+    const result: Result = this.result
+    const penalties = result.violate().map(v => v.penalize())
     const penalty = penalties.filter(penalty => {
       return penalty.according[0].lawTitleAbbr === '勞基法' &&
-        penalty.according[0].article === article
+        penalty.according[0].id === id.toString()
     })[0]
     expect(penalty.possibilities.length).eq(3)
     expect(penalty.possibilities[0].fine.max).eq(max)

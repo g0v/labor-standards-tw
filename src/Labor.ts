@@ -26,8 +26,10 @@ export default class Labor {
       result.according.push(new Article('勞動基準法', '45'))
     } else if (age < 15 && (!agreed && !graduated)) {
       const article = new Article('勞動基準法', '44')
+      const violation = new Article('勞動基準法', '45')
       result.value.type = ChildLaborType.ILLEGAL
       result.according.push(article)
+      result.violations.push(violation)
     }
 
     return result

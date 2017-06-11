@@ -106,7 +106,7 @@ defineSupportCode(function ({ Given, When, Then }) {
 
   Then('違反 {stringInDoubleQuotes} {int} 條', function (lawTitle: string, id: number) {
     const result: Result = this.result
-    const violations = result.violate()
+    const violations = result.violations
 
     expect(violations.some(violation => {
       return (
@@ -119,11 +119,12 @@ defineSupportCode(function ({ Given, When, Then }) {
 
   Then('根據勞基法 {int} 條，罰款 {int} 元以下或處 {int} 個月以下有期徒刑、拘役或合併前面兩者罰則', function (id, max, years) {
     const result: Result = this.result
-    const penalties = result.violate().map(v => v.penalize())
+    const penalties = result.violations.map(v => v.penalize())
     const penalty = penalties.filter(penalty => {
-      return penalty.according[0].lawTitleAbbr === '勞基法' &&
-        penalty.according[0].id === id.toString()
+      return penalty.article.lawTitleAbbr === '勞基法' &&
+        penalty.article.id === id.toString()
     })[0]
+
     expect(penalty.possibilities.length).eq(3)
     expect(penalty.possibilities[0].fine.max).eq(max)
     expect(penalty.possibilities[1].imprisonment.max).eq(years)

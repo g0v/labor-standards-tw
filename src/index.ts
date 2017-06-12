@@ -10,7 +10,8 @@ export enum Education {
 export enum Day {
   REGULAR_DAY,
   REST_DAY,
-  REGULAR_LEAVE
+  REGULAR_LEAVE,
+  HOLIDAY
 }
 
 export enum Duration {

@@ -1,6 +1,6 @@
 import { defineSupportCode } from 'cucumber'
 import { expect } from 'chai'
-import { Duration, WorkTime, Labor, Result } from '../../src/index'
+import { Duration, WorkTime, Labor, Result, Day } from '../../src/index'
 
 defineSupportCode(function ({ Given, When, Then }) {
   Given('一個 {int} 歲的勞工', function (age) {
@@ -45,7 +45,7 @@ defineSupportCode(function ({ Given, When, Then }) {
   When('在例假日工作時', function () {
     const labor: Labor = this.labor
     const worktime = new WorkTime(Duration.DAY, labor)
-    worktime.add(new Date(2017, 6, 11, 8), 8)
+    worktime.add(new Date(2017, 6, 11, 8), 8, Day.REGULAR_LEAVE)
     this.worktime = worktime
     this.result = worktime.validate()
   })

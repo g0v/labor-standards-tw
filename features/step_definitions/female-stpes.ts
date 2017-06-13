@@ -5,16 +5,15 @@ import { Gender, Org } from '../../src'
 
 defineSupportCode(function ({ Given, When, Then }) {
   Given('一女性勞工', function () {
-    this.labor.gender(Gender.FEMALE)
+    this.labor.setGender(Gender.FEMALE)
   })
 
   When('沒有經過工會或勞資會議同意', function () {
-    this.worktime.approveBy(Org.LABOR_MANAGEMENT_MEETING, false)
-    this.worktime.approveBy(Org.UNION, false)
+    this.worktime.approvedBy(Org.UNION_OR_LABOR_MANAGEMENT_MEETING, false)
   })
 
   When('沒有根據勞基法 84-1 條與資方另行約定', function () {
-    this.worktime.sign841(false)
+    this.worktime.signed841(false)
   })
 
   When('請產假時', function () {

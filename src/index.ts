@@ -35,8 +35,7 @@ export enum Gender {
 }
 
 export enum Org {
-  LABOR_MANAGEMENT_MEETING,
-  UNION
+  UNION_OR_LABOR_MANAGEMENT_MEETING
 }
 
 export { Labor, WorkTime, Result, Article }

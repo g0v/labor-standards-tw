@@ -120,7 +120,7 @@ const penalties = {
     penalties: [{
       fine: {
         min: 20000,
-        max: 1000000
+        max: 1500000
       }
     }]
   },
@@ -130,7 +130,7 @@ const penalties = {
     penalties: [{
       fine: {
         min: 90000,
-        max: 450000
+        max: 675000
       }
     }]
   },
@@ -141,7 +141,7 @@ const penalties = {
     penalties: [{
       fine: {
         min: 20000,
-        max: 300000
+        max: 450000
       }
     }]
   }

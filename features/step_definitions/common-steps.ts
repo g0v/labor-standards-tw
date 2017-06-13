@@ -65,9 +65,9 @@ defineSupportCode(function ({ Given, When, Then }) {
 
   When('在 {int} 點時工作', function (hours) {
     const labor: Labor = this.labor
-    const date = this.date || new Date(2017, 6, 5, hours)
+    this.date = this.date || new Date(2017, 6, 5, hours)
     this.worktime = new WorkTime(Duration.DAY, labor)
-    this.worktime.add(date, 1)
+    this.worktime.add(this.date, 1)
   })
 
   When('在平常日', function () {
@@ -117,6 +117,19 @@ defineSupportCode(function ({ Given, When, Then }) {
     }))
   })
 
+  Then('違反 {stringInDoubleQuotes} {int} 條第 {int} 項', function (lawTitle: string, id: number, paragraph: number) {
+    const result: Result = this.result
+    const violations = result.violations
+
+    expect(violations.some(violation => {
+      return (
+        violation.lawTitle === lawTitle ||
+        violation.lawTitleAbbr === lawTitle
+      ) &&
+        violation.id === id.toString() && violation.paragraph === paragraph - 1
+    }))
+  })
+
   Then('根據勞基法 {int} 條，罰款 {int} 元以下或處 {int} 個月以下有期徒刑、拘役或合併前面兩者罰則', function (id, max, years) {
     const result: Result = this.result
     const penalties = result.violations.map(v => v.penalize())
@@ -133,10 +146,11 @@ defineSupportCode(function ({ Given, When, Then }) {
   })
 
   Then('根據勞基法 {int} 條，罰款 {int} 元至 {int} 元', function (article, min, max) {
-    const penalties = this.result.violate().map(v => v.penalize())
+    const result: Result = this.result
+    const penalties = result.violations.map(v => v.penalize())
     const penalty = penalties.filter(penalty => {
-      return penalty.according[0].lawTitleAbbr === '勞基法' &&
-        penalty.according[0].article === article
+      return penalty.article.lawTitleAbbr === '勞基法' &&
+        penalty.article.id === article.toString()
     })[0]
     expect(penalty.possibilities.length).eq(1)
     expect(penalty.possibilities[0].fine.min).eq(min)

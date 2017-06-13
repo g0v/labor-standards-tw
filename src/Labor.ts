@@ -1,7 +1,8 @@
-import {Article, Education, Result, ChildLaborType} from './'
+import {Article, Education, Result, ChildLaborType, Gender} from './'
 
 export default class Labor {
-  private age: number
+  private _gender: Gender
+  private _age: number
   private _graduations: Object = {}
   private _authorityAgreed: boolean
   private _monthlySalary: number
@@ -49,12 +50,21 @@ export default class Labor {
   }
 
   setAge (age: number): Labor {
-    this.age = age
+    this._age = age
     return this
   }
 
   getAge (): number {
-    return this.age
+    return this._age
+  }
+
+  setGender (gender: Gender): Labor {
+    this._gender = gender
+    return this
+  }
+
+  getGender (): Gender {
+    return this._gender
   }
 
   onBoard (onboard: Date): Labor {

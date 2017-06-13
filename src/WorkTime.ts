@@ -1,4 +1,4 @@
-import {Duration, Labor, Result, ChildLaborType, Article, Day} from './'
+import {Duration, Labor, Result, ChildLaborType, Article, Day, Org, Gender} from './'
 
 interface Time {
   date: Date
@@ -10,12 +10,16 @@ export default class WorkTime {
   duration: Duration
   labor: Labor
   times: Time[]
+  _approvedByOrg: boolean
+  _signed841: boolean
+  _providedProperFacilities: boolean
 
   constructor (duration: Duration, labor: Labor) {
     this.duration = duration
     this.labor = labor
     this.times = []
   }
+
   validate (): Result {
     const result = new Result()
     const type = this.labor.validateChildLabor().value.type
@@ -37,6 +41,30 @@ export default class WorkTime {
 
       return end > 20
     })
+
+    const between22and6 = this.times.some(t => {
+      const date = new Date(t.date.getTime())
+      const start = date.getHours()
+      const d = date.setHours(start + t.hours)
+      const end = date.getHours()
+
+      return start <= 6 || end <= 6 || start >= 22 || end >= 22
+    })
+
+    if (this.labor.getGender() === Gender.FEMALE) {
+      if (between22and6) {
+        if (this._approvedByOrg && this._providedProperFacilities) {
+          result.value.legal = true
+          result.according.push(new Article('勞動基準法', '49'))
+        } else if (this._signed841) {
+          result.value.legal = true
+          result.according.push(new Article('勞動基準法', '84-1'))
+        } else {
+          result.value.legal = false
+          result.violations.push(new Article('勞動基準法', '49', 0))
+        }
+      }
+    }
 
     if (isChildLabor && lateThen20) {
       result.value.legal = false
@@ -75,7 +103,23 @@ export default class WorkTime {
   add (date: Date, hours: number, dayType: Day = Day.REGULAR_DAY) {
     this.times.push({date, hours, dayType})
   }
+
   overtimePay (accident?: boolean, aggreed?: boolean) {
     // TBD
+  }
+
+  approvedBy (org: Org, approved: boolean) {
+    this._approvedByOrg = approved
+    return this
+  }
+
+  signed841 (signed: boolean) {
+    this._signed841 = signed
+    return this
+  }
+
+  providedProperFacilities (provided: boolean) {
+    this._providedProperFacilities = provided
+    return this
   }
 }

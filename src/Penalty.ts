@@ -25,7 +25,7 @@ export default class Penalty {
       throw new Error('本條文有多於一項，但是罰則是第幾款')
     } else {
       this.possibilities =
-        penalties.find(p => p.paragraph === this.article.paragraph)
+        penalties.find(p => p.paragraph === this.article.paragraph).possibilities
 
       if (!this.possibilities) {
         throw new Error(`沒有在該條文中找到第 ${this.article.paragraph + 1} 款`)

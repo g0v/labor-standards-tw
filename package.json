@@ -19,9 +19,7 @@
     "ts-node": "^3.0.4",
     "tslint": "^5.4.3",
     "tslint-config-standard": "^5.0.2",
-    "typescript": "^2.3.4"
-  },
-  "optionalDependencies": {
+    "typescript": "^2.3.4",
     "xml2json": "^0.11.0"
   },
   "engines": {

@@ -4,8 +4,11 @@ node_js:
   - '6'
 
 env:
-  - CI_TASK=lint
-  - CI_TASK=test
+  global:
+    - CXX="g++-4.8"
+  matrix:
+    - CI_TASK=lint
+    - CI_TASK=test
 
 matrix:
   allow_failures:
@@ -13,3 +16,11 @@ matrix:
 
 script:
   - npm run $CI_TASK
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+    - gcc-4.8

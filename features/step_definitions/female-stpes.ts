@@ -1,7 +1,7 @@
 import { defineSupportCode } from 'cucumber'
 import { expect } from 'chai'
 
-import { Gender, Org } from '../../src'
+import { Gender, Org, Labor, Result } from '../../src'
 
 defineSupportCode(function ({ Given, When, Then }) {
   Given('一女性勞工', function () {
@@ -17,23 +17,30 @@ defineSupportCode(function ({ Given, When, Then }) {
   })
 
   When('請產假時', function () {
+    const labor: Labor = this.labor
     let leave = new Date(2017, 12, 1)
-    let onboard = new Date(2016, 12 - this.workMonths, 1)
-    this.labor.onBoard(onboard)
-    this.result = this.labor.takeMaternityLeave(leave)
+    let onboard = new Date(2017, 12 - this.workMonths, 1)
+    labor.onBoard(onboard)
+    this.result = labor.takeMaternityLeave(leave)
   })
 
-  Then('根據勞基法 {int} 條，產假期間八週的薪資為 {int}', function (article, wages) {
-    expect(this.result.wages).eq(wages)
-    expect(this.result.according[0].article).eq(article.toString())
+  Then('根據勞基法 {int} 條，產假期間八週的薪資為 {int}', function (id, wages) {
+    const result: Result = this.result
+    expect(result.value.wages).eq(wages)
+    expect(result.according[0].id).eq(id.toString())
   })
 
   When('懷孕 {int} 個月但流產時', function (months) {
-    this.result = this.labor.miscarry(months)
+    const labor: Labor = this.labor
+    let leave = new Date(2017, 12, 1)
+    let onboard = new Date(2017, 12 - months, 1)
+    labor.onBoard(onboard)
+    this.result = labor.takeMaternityLeave(leave, true, months)
   })
 
   Then('根據勞基法 {int} 條，可以請 {int} 周的產假', function (article, weeks) {
-    expect(this.result.leave).eq(weeks)
-    expect(this.result.unit).eq('week')
+    const result: Result = this.result
+    expect(result.value.leave).eq(weeks)
+    expect(result.value.unit).eq('week')
   })
 })

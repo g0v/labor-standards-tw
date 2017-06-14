@@ -1,4 +1,5 @@
 import {Article, Education, Result, ChildLaborType, Gender} from './'
+import * as moment from 'moment'
 
 export default class Labor {
   private _gender: Gender
@@ -75,5 +76,30 @@ export default class Labor {
   monthSalary (salary: number): Labor {
     this._monthlySalary = salary
     return this
+  }
+
+  takeMaternityLeave (start: Date, miscarriage: boolean = false, pregnantMonth: number = 0 ) {
+    if (this.getGender() !== Gender.FEMALE) {
+      throw new Error('此勞工不為女性，不能請產假')
+    }
+
+    const onboard = moment(this._onboard)
+    const leaveDate = moment(start)
+    const ratio = leaveDate.diff(onboard, 'months') >= 6 ? 1 : 0.5
+    let week = 8
+
+    if (miscarriage) {
+      week = pregnantMonth >= 3 ? 4 : 0
+    }
+
+    const result: Result = new Result()
+    result.according.push(new Article('勞動基準法', '50'))
+    result.value = {
+      leave: week,
+      unit: 'week',
+      wages: this._monthlySalary / 30 * 7 * week * ratio
+    }
+
+    return result
   }
 }

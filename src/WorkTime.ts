@@ -159,7 +159,8 @@ export default class WorkTime {
           if (time.hours <= 8) {
             result.value.overtimePay = wage * 8
           } else {
-            result.value.overtimePay = wage * 8 + (time.hours - 8) * wage * 2
+            result.value.overtimePay = wage * 8 +
+                                      (time.hours - 8) * wage * 4 / 3
           }
         } else if (aggreed && !accident) {
           const explanation = new Article('函釋', '（76）台勞動字第 1742 號函')

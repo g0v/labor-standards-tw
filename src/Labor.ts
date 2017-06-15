@@ -95,7 +95,7 @@ export default class Labor {
     ])
 
     result.value.wage = this.getHourlyWage()
-    result.according.push()
+    result.according.push(explanation)
 
     return result
   }

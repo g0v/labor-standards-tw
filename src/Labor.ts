@@ -76,7 +76,28 @@ export default class Labor {
 
   monthSalary (salary: number): Labor {
     this._monthlySalary = salary
+    this.setHourlyWage(salary / 30 / 8)
     return this
+  }
+
+  calculateHourlyWage (): Result {
+    const result = new Result()
+    const explanation = new Article('函釋', '勞動 2字第 0960130677 號函')
+    explanation.setUrl('https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&N2=0960130677&cnt=1&now=1&lnabndn=1&recordno=1')
+    explanation.setBody([
+      '按月計酬之勞工於逾法定正常工時之時段延長工時，應依勞動基準法第 ' +
+      '24 條規定計給延時工資；其據以核計延時工資之「平日每小時工資額」' +
+      '究應如何計算，應視勞動契約之內容而定。原約定月薪給付總額相當於' +
+      ' 240 小時者（即「平日每小時工資額」係以月薪總額除以 30 再除以 8 ' +
+      '核計者），除勞資雙方重行約定者外，其「平日每小時工資額」仍可依據' +
+      '原公式推算（如月薪為 17280  元者即為 72 元），不因按時發布之基本' +
+      '工資調升至 95 元而當然變動。'
+    ])
+
+    result.value.wage = this.getHourlyWage()
+    result.according.push()
+
+    return result
   }
 
   paidLeaves (date: Date): Result {

@@ -8,6 +8,7 @@ export default class Labor {
   private _authorityAgreed: boolean
   private _monthlySalary: number
   private _onboard: Date
+  private _hourlyWage: number
 
   graduate (edu: Education, graduated: boolean): Labor {
     this._graduations[edu] = graduated
@@ -76,6 +77,15 @@ export default class Labor {
   monthSalary (salary: number): Labor {
     this._monthlySalary = salary
     return this
+  }
+
+  setHourlyWage (hourly: number): Labor {
+    this._hourlyWage = hourly
+    return this
+  }
+
+  getHourlyWage (): number {
+    return this._hourlyWage
   }
 
   takeMaternityLeave (start: Date, miscarriage: boolean = false, pregnantMonth: number = 0 ) {

@@ -104,8 +104,107 @@ export default class WorkTime {
     this.times.push({date, hours, dayType})
   }
 
-  overtimePay (accident?: boolean, aggreed?: boolean) {
-    // TBD
+  overtimePay (accident?: boolean, aggreed?: boolean): Result {
+    const result = new Result()
+    const wage = this.labor.getHourlyWage()
+
+    const explanation102498 = new Article('函釋', '台八十三勞動一字第 102498 號函')
+    explanation102498.setUrl('https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&N2=102498&cnt=1&now=1&lnabndn=1&recordno=1')
+    explanation102498.setBody(['勞動基準法第三十九條及第四十條規定，勞工於假日' +
+      '工作時，工資應加倍發給。所稱「加倍發給」，係指當日工資照給外，' +
+      '再加發一日工資。此乃因勞工於假日工作，即使未滿八小時，' +
+      '亦已無法充分運用假日之故，與同法第三十二條延長每日工資應依第二十四條' +
+      '按平日每小時工資額加或加倍發給工資之規定不同。'])
+
+    result.value.legal = true
+    result.according.push(new Article('勞動基準法', '24', 0))
+
+    if (this.duration === Duration.DAY) {
+      if (this.times.length !== 1) {
+        throw new Error(`單日計算加班費僅支援加入一個時間區段，` +
+          `目前有 ${this.times.length} 個區段`)
+      }
+
+      const time = this.times[0]
+      const overtimeHours = Math.max(0, time.hours - 8)
+
+      if (time.dayType === Day.REGULAR_DAY) {
+        if (overtimeHours === 0) {
+          result.value.overtimePay = 0
+        } else if (overtimeHours <= 2) {
+          result.value.overtimePay = overtimeHours * wage * 4 / 3
+        } else if (overtimeHours > 2 && overtimeHours <= 4) {
+          result.value.overtimePay = 2 * wage * 4 / 3 +
+                                    (overtimeHours - 2) * wage * 5 / 3
+        } else {
+          result.value.legal = false
+          result.value.overtimePay = 2 * wage * 4 / 3 +
+                              (overtimeHours - 2) * wage * 5 / 3
+          result.violations.push(new Article('勞動基準法', '32', 1))
+        }
+      } else if (time.dayType === Day.HOLIDAY) {
+        result.according.push(new Article('勞動基準法', '39'))
+        result.according.push(explanation102498)
+        if (time.hours <= 8) {
+          result.value.overtimePay = wage * 8
+        } else {
+          result.value.overtimePay = wage * 8 + (time.hours - 8) * wage * 2
+        }
+      } else if (time.dayType === Day.REGULAR_LEAVE) {
+        result.according.push(new Article('勞動基準法', '40'))
+        result.according.push(explanation102498)
+
+        if (accident) {
+          result.value.extraLeave = true
+          if (time.hours <= 8) {
+            result.value.overtimePay = wage * 8
+          } else {
+            result.value.overtimePay = wage * 8 + (time.hours - 8) * wage * 2
+          }
+        } else if (aggreed && !accident) {
+          const explanation = new Article('函釋', '（76）台勞動字第 1742 號函')
+          explanation.setUrl('https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&N2=1742&cnt=1&now=1&lnabndn=1&recordno=1')
+          explanation.setBody([
+            '一  勞動基準法第三十六條規定：「勞工每七日中至少應有一日之休息，' +
+            '作為例假」，此項例假依該法規定，事業單位如非因同法第四十條所' +
+            '列天災、事變或突發事件等法定原因，縱使勞工同意，亦不得使勞工',
+            '在該假日工作。',
+            '二  事業單位違反上開法令規定，除應依法處理並督責改進外，如勞工已' +
+            '有於例假日出勤之事實，其當日出勤之工資，仍應加倍發給。'
+          ])
+          result.according.push(explanation)
+          result.value.extraLeave = false
+          result.violations.push(new Article('勞動基準法', '40'))
+
+          if (time.hours <= 8) {
+            result.value.overtimePay = wage * 8
+          } else {
+            result.value.overtimePay = wage * 8 + (time.hours - 8) * wage * 2
+          }
+        }
+      } else if (time.dayType === Day.REST_DAY) {
+        result.according.push(new Article('勞動基準法', '24'))
+        if (aggreed) {
+          let hours = time.hours
+          if (time.hours <= 4) {
+            hours = 4
+          } else if (time.hours <= 8) {
+            hours = 8
+          } else if (time.hours <= 12) {
+            hours = 12
+          }
+
+          result.value.overtimePay = 2 * wage * 4 / 3 +
+                                     (hours - 2) * wage * 5 / 3
+
+          if (hours > 12) {
+            result.violations.push(new Article('勞動基準法', '32'))
+          }
+        }
+      }
+    }
+
+    return result
   }
 
   approvedBy (org: Org, approved: boolean) {

@@ -6,23 +6,45 @@ export default class Article {
   lawTitleAbbr: string
   id: string
   paragraph: number
+  body: string[]
   entity: Object
+  url: string
 
   constructor (lawTitle?: string, id?: string, paragraph?: number) {
     this.lawTitle = lawTitle
     this.id = id
-    this.lawTitleAbbr = lsa['LAWS']['法規']['法規簡稱'] || ''
     this.paragraph = paragraph
 
-    const articles = lsa['LAWS']['法規']['法規內容']['條文']
-    this.entity = articles.find(article => article['條號'] === id)
+    if (lawTitle === '勞動基準法') {
+      this.lawTitleAbbr = lsa['LAWS']['法規']['法規簡稱'] || ''
+      const articles = lsa['LAWS']['法規']['法規內容']['條文']
+      this.entity = articles.find(article => article['條號'] === id)
+    }
+  }
+
+  setUrl (url: string): Article {
+    this.url = url
+    return this
+  }
+
+  setBody (body: string[]): Article {
+    this.body = body
+    return this
+  }
+
+  getBody (): string[] {
+    if (this.entity) {
+      return this.entity['條文內容'].zh
+    } else {
+      return this.body
+    }
   }
 
   penalize (): Penalty {
     let article: Article
     if (this.entity['罰則參考'].length === 1) {
-      const penaltyId = this.entity['罰則參考'][0].penalty.id
-      article = new Article(this.lawTitle, penaltyId)
+      const { id, paragraph } = this.entity['罰則參考'][0].penalty
+      article = new Article(this.lawTitle, id, paragraph)
     } else if (this.paragraph !== undefined) {
       const ref = this.entity['罰則參考']
                       .find(ref => ref.paragraph === this.paragraph)

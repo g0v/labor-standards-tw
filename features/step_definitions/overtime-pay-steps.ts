@@ -1,22 +1,26 @@
+/* tslint:disable:no-unused-expression */
+
 import { defineSupportCode } from 'cucumber'
 import { expect } from 'chai'
 
-import { Duration, WorkTime } from '../../src'
+import { Duration, WorkTime, Labor, Result } from '../../src'
 
 defineSupportCode(function ({ Given, When, Then }) {
   Given('一個月薪制的勞工，平均時薪為 {int} 元', function (hourlySalary) {
-    this.hourly = hourlySalary
+    const labor: Labor = this.labor
+    labor.setHourlyWage(hourlySalary)
   })
 
   When('計算加班費時', function () {
     let worktime = new WorkTime(Duration.DAY, this.labor)
-    worktime.add(this.date, this.workHours, this.holiday)
+    worktime.add(this.date, this.workHours, this.dayType)
     this.result = worktime.overtimePay(this.accident, this.agreed)
   })
 
-  Then('根據勞基法 {int} 條，他的加班費至少為 {int} 元', function (article, overtimePay) {
-    expect(this.result.value).eq(overtimePay)
-    expect(this.according[0].article).eq(article.toString())
+  Then('根據勞基法 {int} 條，他的加班費至少為 {int} 元', function (id, overtimePay) {
+    const result: Result = this.result
+    expect(this.result.value.overtimePay).eq(overtimePay)
+    expect(this.result.according[0].id).eq(id.toString())
   })
 
   When('該勞工同意上班', function () {
@@ -27,10 +31,12 @@ defineSupportCode(function ({ Given, When, Then }) {
     this.accident = true
   })
 
-  Then('根據勞基法 {int} 條與 {stringInDoubleQuotes}，他的加給工資為 {int} 元', function (article, explanation, overtimePay) {
-    expect(this.result.value).eq(overtimePay)
-    expect(this.according[0].article).eq(article.toString())
-    expect(this.according[1].lawTitle).eq(explanation)
+  Then('根據勞基法 {int} 條與函釋 {stringInDoubleQuotes}，他的加給工資為 {int} 元', function (id, explanation, overtimePay) {
+    const result: Result = this.result
+
+    expect(result.value.overtimePay).eq(overtimePay)
+    expect(result.according.find(article => article.id === id.toString())).is.not.null
+    expect(result.according.find(article => article.id === explanation)).is.not.null
   })
 
   When('沒有發生天災、事變或突發事件', function () {
@@ -41,22 +47,25 @@ defineSupportCode(function ({ Given, When, Then }) {
     // do nothing
   })
 
-  When('根據勞基法 {int} 條，有額外補休', function (article) {
-    expect(this.result.according[0].article).eq(article.toString())
-    expect(this.result.extraLeave).eq(true)
+  When('根據勞基法 {int} 條，有額外補休', function (id) {
+    const result: Result = this.result
+    expect(result.according.find(article => article.id === id.toString())).is.not.null
+    expect(result.value.extraLeave).eq(true)
   })
 
-  Then('根據 {stringInDoubleQuotes}，加給工資為 {int} 元', function (explanation, overtimePay) {
-    expect(this.result.value).eq(overtimePay)
-    expect(this.according[0].lawTitle).eq(explanation)
+  Then('根據函釋 {stringInDoubleQuotes}，加給工資為 {int} 元', function (explanation, overtimePay) {
+    const result: Result = this.result
+    expect(result.according.find(article => article.id === explanation)).is.not.null
+    expect(result.value.overtimePay).eq(overtimePay)
   })
 
   Then('無額外補休', function () {
-    expect(this.result.extraLeave).eq(false)
+    expect(this.result.value.extraLeave).eq(false)
   })
 
-  Then('根據勞基法 {int} 條，實領加班費為 {int} 元', function (article, overtimePay) {
-    expect(this.result.value).eq(overtimePay)
-    expect(this.result.according[0].article).eq(article.toString())
+  Then('根據勞基法 {int} 條，實領加班費為 {int} 元', function (id, overtimePay) {
+    const result: Result = this.result
+    expect(result.value.overtimePay).eq(overtimePay)
+    expect(result.according.find(article => article.id === id)).is.not.null
   })
 })

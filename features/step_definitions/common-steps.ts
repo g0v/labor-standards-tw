@@ -72,19 +72,22 @@ defineSupportCode(function ({ Given, When, Then }) {
 
   When('在平常日', function () {
     this.date = new Date(2017, 6, 5, 8)
+    this.dayType = Day.REGULAR_DAY
   })
 
   When('在國定假日', function () {
     this.date = new Date(2017, 5, 30, 8)
-    this.holiday = true
+    this.dayType = Day.HOLIDAY
   })
 
   When('在休息日', function () {
     this.date = new Date(2017, 6, 3, 8)
+    this.dayType = Day.REST_DAY
   })
 
   When('在例假日', function () {
     this.date = new Date(2017, 6, 4, 8)
+    this.dayType = Day.REGULAR_LEAVE
   })
 
   When('不考慮變形工時的狀況', function () {
@@ -145,12 +148,12 @@ defineSupportCode(function ({ Given, When, Then }) {
     expect(penalty.possibilities[2].imprisonment.max).eq(years)
   })
 
-  Then('根據勞基法 {int} 條，罰款 {int} 元至 {int} 元', function (article, min, max) {
+  Then('根據勞基法 {int} 條，罰款 {int} 元至 {int} 元', function (id, min, max) {
     const result: Result = this.result
     const penalties = result.violations.map(v => v.penalize())
     const penalty = penalties.filter(penalty => {
       return penalty.article.lawTitleAbbr === '勞基法' &&
-        penalty.article.id === article.toString()
+        penalty.article.id === id.toString()
     })[0]
     expect(penalty.possibilities.length).eq(1)
     expect(penalty.possibilities[0].fine.min).eq(min)

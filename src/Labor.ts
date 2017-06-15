@@ -79,6 +79,33 @@ export default class Labor {
     return this
   }
 
+  paidLeaves (date: Date): Result {
+    const result = new Result()
+
+    const diff = moment(date).diff(moment(this._onboard), 'months') / 12
+
+    if (diff < 0.5) {
+      result.value.leaves = 0
+    } else if (diff < 1) {
+      result.value.leaves = 3
+    } else if (diff < 2) {
+      result.value.leaves = 7
+    } else if (diff < 3) {
+      result.value.leaves = 10
+    } else if (diff < 5) {
+      result.value.leaves = 14
+    } else if (diff < 10) {
+      result.value.leaves = 15
+    } else {
+      // 十年以上者，每一年加給一日，加至三十日為止。
+      result.value.leaves = Math.min(15 + Math.floor(diff - 10), 30)
+    }
+
+    result.according.push(new Article('勞動基準法', '38'))
+    result.value.unit = 'day'
+    return result
+  }
+
   setHourlyWage (hourly: number): Labor {
     this._hourlyWage = hourly
     return this

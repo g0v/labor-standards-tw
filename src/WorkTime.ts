@@ -104,7 +104,7 @@ export default class WorkTime {
     this.times.push({date, hours, dayType})
   }
 
-  overtimePay (accident?: boolean, aggreed?: boolean): Result {
+  overtimePay (accident?: boolean, agreed?: boolean): Result {
     const result = new Result()
     const wage = this.labor.getHourlyWage()
 
@@ -162,7 +162,7 @@ export default class WorkTime {
             result.value.overtimePay = wage * 8 +
                                       (time.hours - 8) * wage * 4 / 3
           }
-        } else if (aggreed && !accident) {
+        } else if (agreed && !accident) {
           const explanation = new Article('函釋', '（76）台勞動字第 1742 號函')
           explanation.setUrl('https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&N2=1742&cnt=1&now=1&lnabndn=1&recordno=1')
           explanation.setBody([
@@ -185,7 +185,7 @@ export default class WorkTime {
         }
       } else if (time.dayType === Day.REST_DAY) {
         result.according.push(new Article('勞動基準法', '24'))
-        if (aggreed) {
+        if (agreed) {
           let hours = time.hours
           if (time.hours <= 4) {
             hours = 4

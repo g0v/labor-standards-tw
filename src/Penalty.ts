@@ -1,6 +1,6 @@
 import Article from './Article'
 
-interface Posibility {
+interface Possibility {
   fine: {
     min: number,
     max: number
@@ -12,7 +12,7 @@ interface Posibility {
 }
 
 export default class Penalty {
-  possibilities: Posibility[]
+  possibilities: Possibility[]
   article: Article
 
   constructor (article: Article) {

@@ -91,7 +91,7 @@ defineSupportCode(function ({ Given, When, Then }) {
   })
 
   When('不考慮變形工時的狀況', function () {
-    // do nothin
+    // do nothing
   })
 
   When('驗證是否在合法的時間範圍內工作', function () {

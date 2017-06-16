@@ -8,10 +8,10 @@ defineSupportCode(function ({ Given, When, Then }) {
   })
 
   Then('他 可 申請退休', function () {
-    expect(this.result.value).eq(true)
+    expect(this.result.value.retirement).eq(true)
   })
 
   Then('他 不可 申請退休', function () {
-    expect(this.result.value).eq(false)
+    expect(this.result.value.retirement).eq(false)
   })
 })

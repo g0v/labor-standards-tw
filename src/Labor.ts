@@ -80,6 +80,20 @@ export default class Labor {
     return this
   }
 
+  retire (date: Date): Result {
+    const result = new Result()
+
+    const years = moment(date).diff(this._onboard, 'years')
+    const retirement = (years >= 15 && this.getAge() >= 55) ||
+                       (years >= 25) ||
+                       (years >= 10 && this.getAge() >= 60)
+
+    result.value.retirement = retirement
+    result.according.push(new Article('勞動基準法', '53'))
+
+    return result
+  }
+
   calculateHourlyWage (): Result {
     const result = new Result()
     const explanation = new Article('函釋', '勞動 2字第 0960130677 號函')

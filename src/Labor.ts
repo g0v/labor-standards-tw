@@ -74,7 +74,7 @@ export default class Labor {
     return this
   }
 
-  monthSalary (salary: number): Labor {
+  monthlySalary (salary: number): Labor {
     this._monthlySalary = salary
     this.setHourlyWage(salary / 30 / 8)
     return this
@@ -110,6 +110,31 @@ export default class Labor {
 
     result.value.wage = this.getHourlyWage()
     result.according.push(explanation)
+
+    return result
+  }
+
+  beDismissed (date: Date): Result {
+    const result = new Result()
+
+    const years = moment(date).diff(this._onboard, 'years', true)
+    const months = moment(date).diff(this._onboard, 'months', true)
+
+    if (years < 0.25) {
+      result.value.noticeDays = 0
+    } else if (years < 1) {
+      result.value.noticeDays = 10
+    } else if (years < 3) {
+      result.value.noticeDays = 20
+    } else {
+      result.value.noticeDays = 30
+    }
+
+    result.value.severancePay = this._monthlySalary * Math.floor(years)
+    result.value.severancePay += this._monthlySalary * (Math.ceil(months - Math.floor(years) * 12) / 12)
+
+    result.according.push(new Article('勞動基準法', '16'))
+    result.according.push(new Article('勞動基準法', '17'))
 
     return result
   }

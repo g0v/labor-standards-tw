@@ -1,7 +1,6 @@
 #language: zh-TW
 
 功能: 退休
-  @dev
   場景大綱: 退休條件
     假設 一個 <age> 歲的勞工
     當 在一公司工作 <years> 年

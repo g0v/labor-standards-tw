@@ -1,3 +1,5 @@
+/* tslint:disable:no-unused-expression */
+
 import { defineSupportCode } from 'cucumber'
 import { expect } from 'chai'
 import { Duration, WorkTime, Labor, Result, Day } from '../../src/index'
@@ -10,12 +12,12 @@ defineSupportCode(function ({ Given, When, Then }) {
 
   Given('一個勞工月薪為 {int} 元', function (salary) {
     const labor: Labor = this.labor
-    labor.monthSalary(salary)
+    labor.monthlySalary(salary)
   })
 
   Given('月薪為 {int} 元', function (salary) {
     const labor: Labor = this.labor
-    labor.monthSalary(salary)
+    labor.monthlySalary(salary)
   })
 
   When('工作 {float} 小時', function (hours) {
@@ -110,27 +112,18 @@ defineSupportCode(function ({ Given, When, Then }) {
   Then('違反 {stringInDoubleQuotes} {int} 條', function (lawTitle: string, id: number) {
     const result: Result = this.result
     const violations = result.violations
-
-    expect(violations.some(violation => {
-      return (
-        violation.lawTitle === lawTitle ||
-        violation.lawTitleAbbr === lawTitle
-      ) &&
-        violation.id === id.toString()
-    }))
+    expect(violations.find(v => v.lawTitle === lawTitle &&
+                           v.id === id.toString())
+                           ).is.ok
   })
 
   Then('違反 {stringInDoubleQuotes} {int} 條第 {int} 項', function (lawTitle: string, id: number, paragraph: number) {
     const result: Result = this.result
     const violations = result.violations
-
-    expect(violations.some(violation => {
-      return (
-        violation.lawTitle === lawTitle ||
-        violation.lawTitleAbbr === lawTitle
-      ) &&
-        violation.id === id.toString() && violation.paragraph === paragraph - 1
-    }))
+    expect(violations.find(v => v.lawTitle === lawTitle &&
+                           v.id === id.toString() &&
+                           v.paragraph === paragraph - 1)
+                           ).is.ok
   })
 
   Then('根據勞基法 {int} 條，罰款 {int} 元以下或處 {int} 個月以下有期徒刑、拘役或合併前面兩者罰則', function (id, max, years) {

@@ -35,8 +35,8 @@ defineSupportCode(function ({ Given, When, Then }) {
     const result: Result = this.result
 
     expect(result.value.overtimePay).eq(overtimePay)
-    expect(result.according.find(article => article.id === id.toString())).is.not.null
-    expect(result.according.find(article => article.id === explanation)).is.not.null
+    expect(result.according.find(article => article.id === id.toString())).is.ok
+    expect(result.according.find(article => article.id === explanation)).is.ok
   })
 
   When('沒有發生天災、事變或突發事件', function () {
@@ -49,13 +49,13 @@ defineSupportCode(function ({ Given, When, Then }) {
 
   When('根據勞基法 {int} 條，有額外補休', function (id) {
     const result: Result = this.result
-    expect(result.according.find(article => article.id === id.toString())).is.not.null
+    expect(result.according.find(article => article.id === id.toString())).is.ok
     expect(result.value.extraLeave).eq(true)
   })
 
   Then('根據函釋 {stringInDoubleQuotes}，加給工資為 {int} 元', function (explanation, overtimePay) {
     const result: Result = this.result
-    expect(result.according.find(article => article.id === explanation)).is.not.null
+    expect(result.according.find(article => article.id === explanation)).is.ok
     expect(result.value.overtimePay).eq(overtimePay)
   })
 
@@ -66,6 +66,6 @@ defineSupportCode(function ({ Given, When, Then }) {
   Then('根據勞基法 {int} 條，實領加班費為 {int} 元', function (id, overtimePay) {
     const result: Result = this.result
     expect(result.value.overtimePay).eq(overtimePay)
-    expect(result.according.find(article => article.id === id)).is.not.null
+    expect(result.according.find(article => article.id === id.toString())).is.ok
   })
 })

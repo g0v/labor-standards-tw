@@ -77,8 +77,20 @@ export default class WorkTime {
                         `目前有 ${this.times.length} 個區段`)
       }
 
+      const time = this.times[0]
+
+      result.value.regularHours = Math.min(time.hours, 8)
+      result.value.overtimeHours = time.hours - result.value.regularHours
+      result.according.push(new Article('勞動基準法', '30', 0))
+      result.according.push(new Article('勞動基準法', '32', 1))
+
+      if (time.hours > 12) {
+        result.value.legal = false
+        result.violations.push(new Article('勞動基準法', '32', 1))
+      }
+
       if (isChildLabor) {
-        if (this.times[0].hours > 8) {
+        if (time.hours > 8) {
           result.value.legal = false
           result.violations.push(new Article('勞動基準法', '47'))
         }
@@ -95,6 +107,24 @@ export default class WorkTime {
           result.value.legal = false
           result.violations.push(new Article('勞動基準法', '47'))
         }
+      }
+    } else if (this.duration === Duration.MONTH) {
+      result.according.push(new Article('勞動基準法', '32', 1))
+
+      let monthlyOvertimeHours = 0
+      let monthlyRegularHours = 0
+      this.times.forEach(time => {
+        let regularHours = Math.min(time.hours, 8)
+        monthlyOvertimeHours += (time.hours - regularHours)
+        monthlyRegularHours += regularHours
+      })
+
+      result.value.overtimeHours = monthlyOvertimeHours
+      result.value.regularHours = monthlyRegularHours
+
+      if (monthlyOvertimeHours > 46) {
+        result.value.legal = false
+        result.violations.push(new Article('勞動基準法', '32', 1))
       }
     }
 

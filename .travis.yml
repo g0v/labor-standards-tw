@@ -10,10 +10,6 @@ env:
     - CI_TASK=lint
     - CI_TASK=test
 
-matrix:
-  allow_failures:
-    - env: CI_TASK=test
-
 script:
   - npm run $CI_TASK
 

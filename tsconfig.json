@@ -12,5 +12,13 @@
   ],
   "exclude": [
     "./dist/"
-  ]
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "useBabel": true,
+    "babelOptions": {
+      "presets": [
+        "env"
+      ]
+    }
+  }
 }

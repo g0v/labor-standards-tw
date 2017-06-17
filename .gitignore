@@ -2,5 +2,7 @@ node_modules
 .nyc_output/
 .vscode
 npm-debug.log
-dist/
 typings
+package-lock.json
+dist/features/
+dist/src/

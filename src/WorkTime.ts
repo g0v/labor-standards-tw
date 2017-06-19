@@ -134,7 +134,7 @@ export default class WorkTime {
     this.times.push({date, hours, dayType})
   }
 
-  overtimePay (accident?: boolean, agreed?: boolean): Result {
+  overtimePay (accident: boolean = false, agreed: boolean = true): Result {
     const result = new Result()
     const wage = this.labor.getHourlyWage()
 

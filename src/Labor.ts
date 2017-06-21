@@ -192,7 +192,7 @@ export default class Labor {
     const result: Result = new Result()
     result.according.push(new Article('勞動基準法', '50'))
     result.value = {
-      leave: week,
+      leaves: week,
       unit: 'week',
       wages: this._monthlySalary / 30 * 7 * week * ratio
     }

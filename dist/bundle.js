@@ -15956,7 +15956,7 @@ var Labor = function () {
             var result = new _1.Result();
             result.according.push(new _1.Article('勞動基準法', '50'));
             result.value = {
-                leave: week,
+                leaves: week,
                 unit: 'week',
                 wages: this._monthlySalary / 30 * 7 * week * ratio
             };
@@ -16119,7 +16119,10 @@ var WorkTime = function () {
         }
     }, {
         key: "overtimePay",
-        value: function overtimePay(accident, agreed) {
+        value: function overtimePay() {
+            var accident = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+            var agreed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
             var result = new _1.Result();
             var wage = this.labor.getHourlyWage();
             var explanation102498 = new _1.Article('函釋', '台八十三勞動一字第 102498 號函');

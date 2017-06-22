@@ -205,6 +205,7 @@ export default class WorkTime {
           ])
           result.according.push(explanation)
           result.value.extraLeave = false
+          result.value.legal = false
           result.violations.push(new Article('勞動基準法', '40'))
 
           if (time.hours <= 8) {
@@ -229,6 +230,7 @@ export default class WorkTime {
                                      (hours - 2) * wage * 5 / 3
 
           if (hours > 12) {
+            result.value.legal = false
             result.violations.push(new Article('勞動基準法', '32'))
           }
         }

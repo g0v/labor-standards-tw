@@ -16172,6 +16172,7 @@ var WorkTime = function () {
                         explanation.setBody(['一  勞動基準法第三十六條規定：「勞工每七日中至少應有一日之休息，' + '作為例假」，此項例假依該法規定，事業單位如非因同法第四十條所' + '列天災、事變或突發事件等法定原因，縱使勞工同意，亦不得使勞工', '在該假日工作。', '二  事業單位違反上開法令規定，除應依法處理並督責改進外，如勞工已' + '有於例假日出勤之事實，其當日出勤之工資，仍應加倍發給。']);
                         result.according.push(explanation);
                         result.value.extraLeave = false;
+                        result.value.legal = false;
                         result.violations.push(new _1.Article('勞動基準法', '40'));
                         if (time.hours <= 8) {
                             result.value.overtimePay = wage * 8;
@@ -16192,6 +16193,7 @@ var WorkTime = function () {
                         }
                         result.value.overtimePay = 2 * wage * 4 / 3 + (hours - 2) * wage * 5 / 3;
                         if (hours > 12) {
+                            result.value.legal = false;
                             result.violations.push(new _1.Article('勞動基準法', '32'));
                         }
                     }

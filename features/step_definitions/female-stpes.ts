@@ -40,7 +40,7 @@ defineSupportCode(function ({ Given, When, Then }) {
 
   Then('根據勞基法 {int} 條，可以請 {int} 周的產假', function (article, weeks) {
     const result: Result = this.result
-    expect(result.value.leave).eq(weeks)
+    expect(result.value.leaves).eq(weeks)
     expect(result.value.unit).eq('week')
   })
 })

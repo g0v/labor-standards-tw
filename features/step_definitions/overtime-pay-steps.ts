@@ -8,7 +8,7 @@ import { Duration, WorkTime, Labor, Result } from '../../src'
 defineSupportCode(function ({ Given, When, Then }) {
   Given('一個月薪制的勞工，平均時薪為 {int} 元', function (hourlySalary) {
     const labor: Labor = this.labor
-    labor.setHourlyWage(hourlySalary)
+    labor.setHourlyWages(hourlySalary)
   })
 
   When('計算加班費時', function () {

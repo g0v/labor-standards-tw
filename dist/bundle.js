@@ -15856,7 +15856,7 @@ var Labor = function () {
         key: "monthlySalary",
         value: function monthlySalary(salary) {
             this._monthlySalary = salary;
-            this.setHourlyWage(salary / 30 / 8);
+            this.setHourlyWages(salary / 30 / 8);
             return this;
         }
     }, {
@@ -15870,13 +15870,13 @@ var Labor = function () {
             return result;
         }
     }, {
-        key: "calculateHourlyWage",
-        value: function calculateHourlyWage() {
+        key: "calculateHourlyWages",
+        value: function calculateHourlyWages() {
             var result = new _1.Result();
             var explanation = new _1.Article('函釋', '勞動 2字第 0960130677 號函');
             explanation.setUrl('https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&N2=0960130677&cnt=1&now=1&lnabndn=1&recordno=1');
             explanation.setBody(['按月計酬之勞工於逾法定正常工時之時段延長工時，應依勞動基準法第 ' + '24 條規定計給延時工資；其據以核計延時工資之「平日每小時工資額」' + '究應如何計算，應視勞動契約之內容而定。原約定月薪給付總額相當於' + ' 240 小時者（即「平日每小時工資額」係以月薪總額除以 30 再除以 8 ' + '核計者），除勞資雙方重行約定者外，其「平日每小時工資額」仍可依據' + '原公式推算（如月薪為 17280  元者即為 72 元），不因按時發布之基本' + '工資調升至 95 元而當然變動。']);
-            result.value.wage = this.getHourlyWage();
+            result.value.wages = this.getHourlyWages();
             result.according.push(explanation);
             return result;
         }
@@ -15927,15 +15927,15 @@ var Labor = function () {
             return result;
         }
     }, {
-        key: "setHourlyWage",
-        value: function setHourlyWage(hourly) {
-            this._hourlyWage = hourly;
+        key: "setHourlyWages",
+        value: function setHourlyWages(hourly) {
+            this._hourlyWages = hourly;
             return this;
         }
     }, {
-        key: "getHourlyWage",
-        value: function getHourlyWage() {
-            return this._hourlyWage;
+        key: "getHourlyWages",
+        value: function getHourlyWages() {
+            return this._hourlyWages;
         }
     }, {
         key: "takeMaternityLeave",
@@ -15956,6 +15956,7 @@ var Labor = function () {
             var result = new _1.Result();
             result.according.push(new _1.Article('勞動基準法', '50'));
             result.value = {
+                legal: true,
                 leaves: week,
                 unit: 'week',
                 wages: this._monthlySalary / 30 * 7 * week * ratio
@@ -15983,7 +15984,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Result = function Result() {
     _classCallCheck(this, Result);
 
-    this.value = {};
+    this.value = { legal: true };
     this.according = [];
     this.violations = [];
 };
@@ -16124,7 +16125,7 @@ var WorkTime = function () {
             var agreed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
             var result = new _1.Result();
-            var wage = this.labor.getHourlyWage();
+            var wages = this.labor.getHourlyWages();
             var explanation102498 = new _1.Article('函釋', '台八十三勞動一字第 102498 號函');
             explanation102498.setUrl('https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&N2=102498&cnt=1&now=1&lnabndn=1&recordno=1');
             explanation102498.setBody(['勞動基準法第三十九條及第四十條規定，勞工於假日' + '工作時，工資應加倍發給。所稱「加倍發給」，係指當日工資照給外，' + '再加發一日工資。此乃因勞工於假日工作，即使未滿八小時，' + '亦已無法充分運用假日之故，與同法第三十二條延長每日工資應依第二十四條' + '按平日每小時工資額加或加倍發給工資之規定不同。']);
@@ -16140,21 +16141,21 @@ var WorkTime = function () {
                     if (overtimeHours === 0) {
                         result.value.overtimePay = 0;
                     } else if (overtimeHours <= 2) {
-                        result.value.overtimePay = overtimeHours * wage * 4 / 3;
+                        result.value.overtimePay = overtimeHours * wages * 4 / 3;
                     } else if (overtimeHours > 2 && overtimeHours <= 4) {
-                        result.value.overtimePay = 2 * wage * 4 / 3 + (overtimeHours - 2) * wage * 5 / 3;
+                        result.value.overtimePay = 2 * wages * 4 / 3 + (overtimeHours - 2) * wages * 5 / 3;
                     } else {
                         result.value.legal = false;
-                        result.value.overtimePay = 2 * wage * 4 / 3 + (overtimeHours - 2) * wage * 5 / 3;
+                        result.value.overtimePay = 2 * wages * 4 / 3 + (overtimeHours - 2) * wages * 5 / 3;
                         result.violations.push(new _1.Article('勞動基準法', '32', 1));
                     }
                 } else if (time.dayType === _1.Day.HOLIDAY) {
                     result.according.push(new _1.Article('勞動基準法', '39'));
                     result.according.push(explanation102498);
                     if (time.hours <= 8) {
-                        result.value.overtimePay = wage * 8;
+                        result.value.overtimePay = wages * 8;
                     } else {
-                        result.value.overtimePay = wage * 8 + (time.hours - 8) * wage * 2;
+                        result.value.overtimePay = wages * 8 + (time.hours - 8) * wages * 2;
                     }
                 } else if (time.dayType === _1.Day.REGULAR_LEAVE) {
                     result.according.push(new _1.Article('勞動基準法', '40'));
@@ -16162,9 +16163,9 @@ var WorkTime = function () {
                     if (accident) {
                         result.value.extraLeave = true;
                         if (time.hours <= 8) {
-                            result.value.overtimePay = wage * 8;
+                            result.value.overtimePay = wages * 8;
                         } else {
-                            result.value.overtimePay = wage * 8 + (time.hours - 8) * wage * 4 / 3;
+                            result.value.overtimePay = wages * 8 + (time.hours - 8) * wages * 4 / 3;
                         }
                     } else if (agreed && !accident) {
                         var explanation = new _1.Article('函釋', '（76）台勞動字第 1742 號函');
@@ -16175,9 +16176,9 @@ var WorkTime = function () {
                         result.value.legal = false;
                         result.violations.push(new _1.Article('勞動基準法', '40'));
                         if (time.hours <= 8) {
-                            result.value.overtimePay = wage * 8;
+                            result.value.overtimePay = wages * 8;
                         } else {
-                            result.value.overtimePay = wage * 8 + (time.hours - 8) * wage * 2;
+                            result.value.overtimePay = wages * 8 + (time.hours - 8) * wages * 2;
                         }
                     }
                 } else if (time.dayType === _1.Day.REST_DAY) {
@@ -16191,7 +16192,7 @@ var WorkTime = function () {
                         } else if (time.hours <= 12) {
                             hours = 12;
                         }
-                        result.value.overtimePay = 2 * wage * 4 / 3 + (hours - 2) * wage * 5 / 3;
+                        result.value.overtimePay = 2 * wages * 4 / 3 + (hours - 2) * wages * 5 / 3;
                         if (hours > 12) {
                             result.value.legal = false;
                             result.violations.push(new _1.Article('勞動基準法', '32'));

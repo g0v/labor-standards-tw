@@ -136,7 +136,7 @@ export default class WorkTime {
 
   overtimePay (accident: boolean = false, agreed: boolean = true): Result {
     const result = new Result()
-    const wage = this.labor.getHourlyWage()
+    const wages = this.labor.getHourlyWages()
 
     const explanation102498 = new Article('函釋', '台八十三勞動一字第 102498 號函')
     explanation102498.setUrl('https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&N2=102498&cnt=1&now=1&lnabndn=1&recordno=1')
@@ -162,23 +162,23 @@ export default class WorkTime {
         if (overtimeHours === 0) {
           result.value.overtimePay = 0
         } else if (overtimeHours <= 2) {
-          result.value.overtimePay = overtimeHours * wage * 4 / 3
+          result.value.overtimePay = overtimeHours * wages * 4 / 3
         } else if (overtimeHours > 2 && overtimeHours <= 4) {
-          result.value.overtimePay = 2 * wage * 4 / 3 +
-                                    (overtimeHours - 2) * wage * 5 / 3
+          result.value.overtimePay = 2 * wages * 4 / 3 +
+                                    (overtimeHours - 2) * wages * 5 / 3
         } else {
           result.value.legal = false
-          result.value.overtimePay = 2 * wage * 4 / 3 +
-                              (overtimeHours - 2) * wage * 5 / 3
+          result.value.overtimePay = 2 * wages * 4 / 3 +
+                              (overtimeHours - 2) * wages * 5 / 3
           result.violations.push(new Article('勞動基準法', '32', 1))
         }
       } else if (time.dayType === Day.HOLIDAY) {
         result.according.push(new Article('勞動基準法', '39'))
         result.according.push(explanation102498)
         if (time.hours <= 8) {
-          result.value.overtimePay = wage * 8
+          result.value.overtimePay = wages * 8
         } else {
-          result.value.overtimePay = wage * 8 + (time.hours - 8) * wage * 2
+          result.value.overtimePay = wages * 8 + (time.hours - 8) * wages * 2
         }
       } else if (time.dayType === Day.REGULAR_LEAVE) {
         result.according.push(new Article('勞動基準法', '40'))
@@ -187,10 +187,10 @@ export default class WorkTime {
         if (accident) {
           result.value.extraLeave = true
           if (time.hours <= 8) {
-            result.value.overtimePay = wage * 8
+            result.value.overtimePay = wages * 8
           } else {
-            result.value.overtimePay = wage * 8 +
-                                      (time.hours - 8) * wage * 4 / 3
+            result.value.overtimePay = wages * 8 +
+                                      (time.hours - 8) * wages * 4 / 3
           }
         } else if (agreed && !accident) {
           const explanation = new Article('函釋', '（76）台勞動字第 1742 號函')
@@ -209,9 +209,9 @@ export default class WorkTime {
           result.violations.push(new Article('勞動基準法', '40'))
 
           if (time.hours <= 8) {
-            result.value.overtimePay = wage * 8
+            result.value.overtimePay = wages * 8
           } else {
-            result.value.overtimePay = wage * 8 + (time.hours - 8) * wage * 2
+            result.value.overtimePay = wages * 8 + (time.hours - 8) * wages * 2
           }
         }
       } else if (time.dayType === Day.REST_DAY) {
@@ -226,8 +226,8 @@ export default class WorkTime {
             hours = 12
           }
 
-          result.value.overtimePay = 2 * wage * 4 / 3 +
-                                     (hours - 2) * wage * 5 / 3
+          result.value.overtimePay = 2 * wages * 4 / 3 +
+                                     (hours - 2) * wages * 5 / 3
 
           if (hours > 12) {
             result.value.legal = false

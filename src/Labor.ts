@@ -8,7 +8,7 @@ export default class Labor {
   private _authorityAgreed: boolean
   private _monthlySalary: number
   private _onboard: Date
-  private _hourlyWage: number
+  private _hourlyWages: number
 
   graduate (edu: Education, graduated: boolean): Labor {
     this._graduations[edu] = graduated
@@ -76,7 +76,7 @@ export default class Labor {
 
   monthlySalary (salary: number): Labor {
     this._monthlySalary = salary
-    this.setHourlyWage(salary / 30 / 8)
+    this.setHourlyWages(salary / 30 / 8)
     return this
   }
 
@@ -94,7 +94,7 @@ export default class Labor {
     return result
   }
 
-  calculateHourlyWage (): Result {
+  calculateHourlyWages (): Result {
     const result = new Result()
     const explanation = new Article('函釋', '勞動 2字第 0960130677 號函')
     explanation.setUrl('https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&N2=0960130677&cnt=1&now=1&lnabndn=1&recordno=1')
@@ -108,7 +108,7 @@ export default class Labor {
       '工資調升至 95 元而當然變動。'
     ])
 
-    result.value.wage = this.getHourlyWage()
+    result.value.wages = this.getHourlyWages()
     result.according.push(explanation)
 
     return result
@@ -166,13 +166,13 @@ export default class Labor {
     return result
   }
 
-  setHourlyWage (hourly: number): Labor {
-    this._hourlyWage = hourly
+  setHourlyWages (hourly: number): Labor {
+    this._hourlyWages = hourly
     return this
   }
 
-  getHourlyWage (): number {
-    return this._hourlyWage
+  getHourlyWages (): number {
+    return this._hourlyWages
   }
 
   takeMaternityLeave (start: Date, miscarriage: boolean = false, pregnantMonth: number = 0 ) {
@@ -192,6 +192,7 @@ export default class Labor {
     const result: Result = new Result()
     result.according.push(new Article('勞動基準法', '50'))
     result.value = {
+      legal: true,
       leaves: week,
       unit: 'week',
       wages: this._monthlySalary / 30 * 7 * week * ratio

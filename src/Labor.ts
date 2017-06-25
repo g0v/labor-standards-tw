@@ -34,6 +34,7 @@ export default class Labor {
       result.value.type = ChildLaborType.ILLEGAL
       result.according.push(article)
       result.violations.push(violation)
+      result.value.legal = false
     } else if (age >= 16 && age < 18) {
       result.value.type = ChildLaborType.PRE_ADULT
       result.according.push(new Article('勞動基準法', '44'))

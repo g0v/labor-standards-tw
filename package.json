@@ -7,7 +7,8 @@
     "build": "webpack",
     "lint": "tslint --project tsconfig.json",
     "test": "cucumber.js --compiler ts:ts-node/register --format-options '{\"snippetInterface\": \"synchronous\"}'",
-    "test:dev": "cucumber.js --tags @dev --compiler ts:ts-node/register --format-options '{\"snippetInterface\": \"synchronous\"}'"
+    "test:dev": "cucumber.js --tags @dev --compiler ts:ts-node/register --format-options '{\"snippetInterface\": \"synchronous\"}'",
+    "test:win": "cucumberjs --compiler ts:ts-node/register"
   },
   "author": "Yuren Ju <yurenju@gmail.com>",
   "license": "MIT",

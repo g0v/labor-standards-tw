@@ -15808,6 +15808,7 @@ var Labor = function () {
                 result.value.type = _1.ChildLaborType.ILLEGAL;
                 result.according.push(article);
                 result.violations.push(violation);
+                result.value.legal = false;
             } else if (age >= 16 && age < 18) {
                 result.value.type = _1.ChildLaborType.PRE_ADULT;
                 result.according.push(new _1.Article('勞動基準法', '44'));

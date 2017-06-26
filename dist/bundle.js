@@ -15916,7 +15916,7 @@ var Labor = function () {
         value: function beDismissed(date) {
             var result = new _1.Result();
             var years = moment(date).diff(this._onboard, 'years', true);
-            var months = moment(date).diff(this._onboard, 'months', true);
+            var days = moment(date).subtract(Math.floor(years), 'years').diff(this._onboard, 'days') + 1;
             if (years < 0.25) {
                 result.value.noticeDays = 0;
             } else if (years < 1) {
@@ -15927,10 +15927,8 @@ var Labor = function () {
                 result.value.noticeDays = 30;
             }
             var severancePay = this._monthlySalary * Math.floor(years) / 2;
-            severancePay += this._monthlySalary * (Math.ceil(months - Math.floor(years) * 12) / 12) / 2;
+            severancePay += this._monthlySalary / 12 / 30 / 2 * days;
             result.value.severancePay = Math.min(severancePay, this._monthlySalary * 6);
-            result.according.push(new _1.Article('勞動基準法', '16'));
-            result.according.push(new _1.Article('勞動基準法', '17'));
             result.according.push(new _1.Article('勞工退休金條例', '12', 0));
             return result;
         }

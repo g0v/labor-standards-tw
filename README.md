@@ -11,7 +11,7 @@
 首先可以使用 `npm` 安裝本函式庫：
 
 ```shell
-npm install labor-standards-tw --save
+npm install g0v/labor-standards-tw --save
 ```
 
 安裝後，在 node.js 環境底下可以用 `require()` 引入函示庫，如在瀏覽器環境，可以用 webpack 後使用 `import` 語法引入：

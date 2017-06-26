@@ -1,5 +1,8 @@
 import Penalty from './Penalty'
+// 勞動基準法
 const lsa = require('../data/lsa.json')
+// 	勞工退休金條例
+const lpa = require('../data/labor-pension-act.json')
 
 export default class Article {
   lawTitle: string
@@ -18,6 +21,10 @@ export default class Article {
     if (lawTitle === '勞動基準法') {
       this.lawTitleAbbr = lsa['LAWS']['法規']['法規簡稱'] || ''
       const articles = lsa['LAWS']['法規']['法規內容']['條文']
+      this.entity = articles.find(article => article['條號'] === id)
+    } else if (lawTitle === '勞工退休金條例') {
+      this.lawTitleAbbr = lpa['LAWS']['法規']['法規簡稱'] || ''
+      const articles = lpa['LAWS']['法規']['法規內容']['條文']
       this.entity = articles.find(article => article['條號'] === id)
     }
   }

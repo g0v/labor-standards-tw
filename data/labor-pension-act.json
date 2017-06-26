@@ -1,0 +1,912 @@
+{
+  "LAWS": {
+    "UpdateDate": "20170526",
+    "法規": {
+      "法規性質": "法律",
+      "法規名稱": "勞工退休金條例",
+      "法規網址": "http://law.moj.gov.tw/LawClass/LawContent.aspx?PCODE=N0030020",
+      "法規類別": "行政＞勞動部＞勞動福祉退休目",
+      "最新異動日期": "20161116",
+      "生效日期": "",
+      "生效內容": {},
+      "廢止註記": "",
+      "是否英譯註記": "Y",
+      "英文法規名稱": "Labor Pension Act",
+      "沿革內容": "1.中華民國九十三年六月三十日總統華總一義字第 09300121821  號令制\n  定公布全文 58 條；並自公布後一年施行\n2.中華民國九十六年七月四日總統華總一義字第 09600083771  號令修正\n  公布第 53 條條文；修正之第 1  項及第 2  項規定，溯自九十四年七\n  月一日生效\n3.中華民國一百零三年一月十五日總統華總一義字第 10300004871  號令\n  修正公布第 5、7、12、14、15、17、19、21、33、35、36、38、39、\n  49、50、53、58  條條文；增訂第 8-1、24-1、24-2、35-1、35-2  條\n  條文；刪除第 22 條條文；並自公布日施行\n  中華民國一百零三年二月十四日行政院院臺規字第 1030124618 號公告\n  第 2  條所列屬「行政院勞工委員會」之權責事項，自一百零三年二月\n  十七日起改由「勞動部」管轄；第 5  條、第 6  條第 1  項、第 8  \n  條之 1  第 5  項、第 9  條第 3  項序文、第 15 條第 1  項、第 2\n  項、第 3  項、第 17 條第 1  項、第 18 條、第 19 條第 1  項、第\n  2 項、第 3  項、第 4  項、第 20 條第 1  項、第 23 條第 3  項、\n  第 28 條第 1  項、第 34 條第 1  項、第 35 條之 2、第 36 條第 2\n  項、第 4  項、第 40 條第 1  項、第 2  項、第 42 條、第 43 條、\n  第 46 條、第 54 條第 2  項所列屬「勞工保險局」之權責事項，自一\n  百零三年二月十七日起改由「勞動部勞工保險局」管轄；第 44 條所列\n  屬「勞工保險局」之權責事項，自一百零三年二月十七日起，分別改由\n  「勞動部勞工保險局」、「勞動部勞動基金運用局」管轄；第 4  條所\n  列屬「勞工退休基金監理委員會」之權責事項，自一百零三年二月十七\n  日起改由「勞動部」管轄；第 33 條第 2  項、第 34 條第 1  項、第\n  2 項、第 41 條、第 42 條、第 43 條所列屬「勞工退休基金監理委員\n  會」之權責事項，自一百零三年二月十七日起，監理業務改由「勞動部\n  」管轄；勞工退休基金投資及運用業務，改由「勞動部勞動基金運用局\n  」管轄\n4.中華民國一百零四年七月一日總統華總一義字第 10400077121  號令修\n  正公布第 2、29  條條文\n5.中華民國一百零五年十一月十六日總統華總一義字第 10500140121  號\n  令修正公布第 5、24、46、48  條條文",
+      "法規內容": {
+        "編章節": [
+          "第 一 章 總則",
+          "第 二 章 制度之適用與銜接",
+          "第 三 章 退休金專戶之提繳與請領",
+          "第 四 章 年金保險",
+          "第 五 章 監督及經費",
+          "第 六 章 罰則",
+          "第 七 章 附則"
+        ],
+        "條文": [
+          {
+            "條號": "1",
+            "條文內容": {
+              "zh": [
+                "為增進勞工退休生活保障，加強勞雇關係，促進社會及經濟發展，特制定本條例。",
+                "勞工退休金事項，優先適用本條例。本條例未規定者，適用其他法律之規定。"
+              ],
+              "en": [
+                "The Act is enacted to protect workers' livelihood after retirement, strengthen the relations between workers and employers, and promote social and economic developments.",
+                "The Act takes precedent than other statutes with respect to labor pensions. Matters that they are not provided herein shall be governed by other statutes."
+              ]
+            }
+          },
+          {
+            "條號": "2",
+            "條文內容": {
+              "zh": [
+                "本條例所稱主管機關：在中央為勞動部；在直轄市為直轄市政府；在縣（市）為縣（市）政府。"
+              ],
+              "en": [
+                "The term \"competent authority\" referred to in the Act shall be Ministry of Labor at the central level, the municipal government at the municipal level, and county(city) government at the county(city) level."
+              ]
+            }
+          },
+          {
+            "條號": "3",
+            "條文內容": {
+              "zh": [
+                "本條例所稱勞工、雇主、事業單位、勞動契約、工資及平均工資之定義，依勞動基準法第二條規定。"
+              ],
+              "en": [
+                "The terms \"worker\", \"employer\", \"business entity\", \"labor contract\", \"wage\" and \"average wage\" referred to in the Act shall be defined in accordance with Article 2 of the Labor Standards Act."
+              ]
+            }
+          },
+          {
+            "條號": "4",
+            "條文內容": {
+              "zh": [
+                "中央主管機關為勞工退休基金之審議、監督、考核以及有關本條例年金保險之實施，應組成勞工退休基金監理委員會 (以下稱監理會) 。",
+                "監理會應獨立行使職權，其組織、會議及其他相關事項，另以法律定之。",
+                "監理會成立後，勞動基準法第五十六條第二項規定勞工退休基金管理業務，歸入監理會統籌辦理。"
+              ],
+              "en": [
+                "The Central Competent Authority shall establish the Labor Pension Fund Supervisory Committee (here-in-after referred to as the Supervisory Committee) to review, supervise and audit the Labor Pension Fund (here-in-after referred to as the Fund), and to implement the annuity insurance scheme referred to in the Act.",
+                "The Supervisory Committee shall exercise its authority independently, and its organization, meeting and other related matters shall be prescribed by other statutes.",
+                "After the establishment of the Supervisory Committee, the administration of the Labor Retirement Fund established in accordance with Paragraph 2 to Article 56 of the Labor Standards Act shall be generally coordinated and handled by the Supervisory Committee."
+              ]
+            }
+          },
+          {
+            "條號": "5",
+            "條文內容": {
+              "zh": [
+                "勞工退休金之收支、保管、滯納金之加徵及罰鍰處分等業務，由中央主管機關委任勞動部勞工保險局（以下簡稱勞保局）辦理之。"
+              ],
+              "en": [
+                "The Central Competent Authority shall entrust the Bureau of Labor Insurance, Ministry of Labor（hereinafter \"the Bureau \"）to take charge of the revenues, expenditures and safeguard of labor pension, and the imposition of late payment charges."
+              ]
+            }
+          },
+          {
+            "條號": "6",
+            "條文內容": {
+              "zh": [
+                "雇主應為適用本條例之勞工，按月提繳退休金，儲存於勞保局設立之勞工退休金個人專戶。",
+                "除本條例另有規定者外，雇主不得以其他自訂之勞工退休金辦法，取代前項規定之勞工退休金制度。"
+              ],
+              "en": [
+                "Employers shall on a monthly basis contribute labor pension to individual accounts of labor pension at the Bureau for employees applicable to the Act.",
+                "Unless otherwise provided for in the Act, an employer shall not create his/her own labor pension mechanism to replace the labor pension system prescribed in the preceding paragraph."
+              ]
+            }
+          },
+          {
+            "條號": "7",
+            "條文內容": {
+              "zh": [
+                "本國籍人員、前項第二款及第三款規定之人員具下列身分之一，得自願依本條例規定提繳及請領退休金：\n一、實際從事勞動之雇主。\n二、自營作業者。\n三、受委任工作者。\n四、不適用勞動基準法之勞工。"
+              ],
+              "en": [
+                "ROC nationals and persons referred to in subparagraphs 2 and 3 of the preceding paragraph who satisfy any one of the following statuses may voluntarily make payments and claim for pension in accordance with the Act:\n1.Employers who actually engage in labor work;2.Self-employed operators;3.Commissioned workers;4.Workers not applicable under the Labor Standards Act."
+              ]
+            }
+          },
+          {
+            "條號": "8",
+            "條文內容": {
+              "zh": [
+                "本條例施行前已適用勞動基準法之勞工，於本條例施行後仍服務於同一事業單位者，得選擇繼續適用勞動基準法之退休金規定。但於離職後再受僱時，應適用本條例之退休金制度。",
+                "公營事業於本條例施行後移轉民營，公務員兼具勞工身分者繼續留用，得選擇適用勞動基準法之退休金規定或本條例之退休金制度。"
+              ],
+              "en": [
+                "Employees, who were covered by the Labor Standards Act prior to the enforcement of the Act and still work for the same business entity after the enforcement of the Act, may choose to be continuously applicable to the retirement mechanism in the Labor Standards Act；provided, however, that if they resign from their current jobs and are re-employed, they shall be subject to the pension system of the Act.",
+                "A civil servant also with employee status, who continues working at a business entity that was formerly a public-owned but has been privatized after the enforcement of the Act, may choose the retirement mechanism prescribed in the Labor Standards Act or the pension system of the Act."
+              ]
+            }
+          },
+          {
+            "條號": "8-1",
+            "條文內容": {
+              "zh": [
+                "第七條第一項第二款、第三款人員及於中華民國九十九年七月一日後始取得本國籍之勞工，於本條例一百零二年十二月三十一日修正之條文施行之日起，應適用本條例之退休金制度。但其於修正之條文施行前已受僱且仍服務於同一事業單位，於修正之條文施行之日起六個月內，以書面向雇主表明繼續適用勞動基準法之退休金規定者，不在此限。",
+                "前項人員於修正之條文施行後始取得各該身分者，以取得身分之日起適用本條例之退休金制度。但其於修正之條文施行前已受僱且仍服務於同一事業單位者，準用前項但書規定。",
+                "曾依前二項規定向雇主表明繼續適用勞動基準法之退休金規定者，不得再變更選擇適用本條例之退休金制度。",
+                "勞工依第一項及第二項規定適用本條例退休金制度者，其適用本條例前之工作年資依第十一條規定辦理。",
+                "雇主應為依第一項及第二項規定適用本條例退休金制度之勞工，向勞保局辦理提繳手續，並至遲於第一項及第二項規定期限屆滿之日起十五日內申報。"
+              ],
+              "en": [
+                "Persons referred to in subparagraphs 2 and 3 of Paragraph 1, Article 7 and workers who have obtained ROC citizenship after July 1, 2010, shall be applicable to the pension system of this Act from the date when the amended articles came into effect on December 31, 2013. However, this shall not apply to those who are hired prior to the enactment of the amended articles and remain working for the same business entity thereafter, and who also notify the employers in writing, within six months from the  date of enactment of the amended articles, to continue to be applicable to the pension regulations of the Labor Standards Act.",
+                "Persons in the preceding paragraph who obtained their respective statuses after the enactment of the amended articles shall be applicable to the pension system in this Act from the date said statuses are obtained. However, the proviso in the preceding paragraph shall apply, mutatis mutandis, to those who were hired prior to the enactment of amended articles and remaining for the same business entity thereafter.",
+                "Those who have notified their employers in accordance with the preceding two paragraphs to continue to be applicable to the pension regulation of the Labor Standards Act may not choose to be applicable to the pension system of this Act.",
+                "Workers who are applicable in accordance with Paragraphs 1 and 2 to the pension system of this Act, their seniority prior to the applicability of this Act shall be governed in accordance with Article 11.Employers shall file for deposit and payment procedures with the Bureau of Labor Insurance for their workers who are applicable in accordance with Paragraphs 1 and 2 to the pension system of this Act. Filing of such request shall not be later than 15 days from the specified deadline in Paragraphs 1 and 2."
+              ]
+            }
+          },
+          {
+            "條號": "9",
+            "條文內容": {
+              "zh": [
+                "雇主應自本條例公布後至施行前一日之期間內，就本條例之勞工退休金制度及勞動基準法之退休金規定，以書面徵詢勞工之選擇；勞工屆期未選擇者，自本條例施行之日起繼續適用勞動基準法之退休金規定。",
+                "勞工選擇繼續自本條例施行之日起適用勞動基準法之退休金規定者，於五年內仍得選擇適用本條例之退休金制度。",
+                "雇主應為適用本條例之退休金制度之勞工，依下列規定向勞保局辦理提繳手續：\n一、依第一項規定選擇適用者，應於本條例施行後十五日內申報。\n二、依第二項規定選擇適用者，應於選擇適用之日起十五日內申報。\n三、本條例施行後新成立之事業單位，應於成立之日起十五日內申報。"
+              ],
+              "en": [
+                "Within the period from the promulgation of the Act to one day prior to the enforcement of the Act, employers shall inquire in writing their employees about their options between the pension system of the Act or retirement mechanism in the Labor Standards Act; employees who have not made a firm option after the expiration of prescribed period shall continuously be applicable to the retirement mechanism in the Labor Standards Act on the date of enforcement of the Act.",
+                "Employees, who continuously choose to be applicable to the retirement mechanism in the Labor Standards Act on the date of enforcement of the Act, may within five years choose to be applicable to the pension system in the Act.",
+                "Employers shall in accordance with the following provisions file the application for contribution to the Bureau for employees applicable to the pension system in the Act:\n1.For those who choose to be applicable in accordance with Paragraph 1, the application shall be filed within 15 days after the enforcement of the Act.\n2.For those who choose to be applicable in accordance with Paragraph 1, the application shall be filed within 15 days on the date of their choice.\n3.For business entities that are newly established after the enforcement of the Act, the application shall be filed within 15 days on the date of their establishment."
+              ]
+            }
+          },
+          {
+            "條號": "10",
+            "條文內容": {
+              "zh": [
+                "勞工適用本條例之退休金制度後，不得再變更選擇適用勞動基準法之退休金規定。"
+              ],
+              "en": [
+                "When employees are applicable to the pension system in the Act, they shall no longer choose to be applicable to the retirement mechanism in the Labor Standards Act."
+              ]
+            }
+          },
+          {
+            "條號": "11",
+            "條文內容": {
+              "zh": [
+                "本條例施行前已適用勞動基準法之勞工，於本條例施行後，仍服務於同一事業單位而選擇適用本條例之退休金制度者，其適用本條例前之工作年資，應予保留。",
+                "前項保留之工作年資，於勞動契約依勞動基準法第十一條、第十三條但書、第十四條、第二十條、第五十三條、第五十四條或職業災害勞工保護法第二十三條、第二十四條規定終止時，雇主應依各法規定，以契約終止時之平均工資，計給該保留年資之資遣費或退休金，並於終止勞動契約後三十日內發給。",
+                "第一項保留之工作年資，於勞動契約存續期間，勞雇雙方約定以不低於勞動基準法第五十五條及第八十四條之二規定之給與標準結清者，從其約定。",
+                "公營事業之公務員兼具勞工身分者，於民營化之日，其移轉民營前年資，依民營化前原適用之退休相關法令領取退休金。但留用人員應停止其領受月退休金及相關權利，至離職時恢復。"
+              ],
+              "en": [
+                "Employees, who were covered by the Labor Standards Act prior to the enforcement of the Act, still work for the same business entity after the enforcement of the Act and choose to be applicable to the pension system in the Act, their seniority prior to their application to the Act shall be reserved.",
+                "When the labor contract is terminated in accordance with Article 11, the proviso of Article 13, Article 14, Article 20, Article 53 and Article 54 of the Labor Standards Act or Article 23 and Article 24 of the Protection for workers Incurring Occupational Accidents Act, an employer shall in accordance with the foresaid statutes use the average wage at the time of terminating labor contract to calculate the severance or retirement payment for the reserved seniority referred to in the preceding paragraph, and the severance or retirement payment shall be paid within 30 days after the termination of labor contract.",
+                "During the continuing period of a labor contract, when an employer and an employee mutually agree to pay off the employee's reserved seniority referred to in Paragraph 1 with a criterion no less than the payment criteria prescribed by Article 55 or Article 84-2 of the Labor Standards Act, and such an agreement shall be complied.",
+                "A civil servant also with employee status shall on the date of privatization claim retirement payments for their seniority prior to the privatization in accordance with relevant statutes and regulations applicable to retirement prior to the privatization. However, the remaining civil servants shall suspend their monthly pension payments and related rights until they leave the privatized enterprise."
+              ]
+            },
+            "罰則參考": [
+              {
+                "paragraph": 1,
+                "penalty": {
+                  "id": "47"
+                }
+              }
+            ]
+          },
+          {
+            "條號": "12",
+            "條文內容": {
+              "zh": [
+                "勞工適用本條例之退休金制度者，適用本條例後之工作年資，於勞動契約依勞動基準法第十一條、第十三條但書、第十四條及第二十條或職業災害勞工保護法第二十三條、第二十四條規定終止時，其資遣費由雇主按其工作年資，每滿一年發給二分之一個月之平均工資，未滿一年者，以比例計給；最高以發給六個月平均工資為限，不適用勞動基準法第十七條之規定。",
+                "依前項規定計算之資遣費，應於終止勞動契約後三十日內發給。",
+                "選擇繼續適用勞動基準法退休金規定之勞工，其資遣費與退休金依同法第十七條、第五十五條及第八十四條之二規定發給。"
+              ],
+              "en": [
+                "Workers who are applicable to the pension system of this Act, and whose seniority that is applicable after this Act is terminated by labor contract in accordance with Article 11, the proviso of Article 13, Article 14 and Article 20 of the Labor Standards Act or Article 23 and Article 24 of Protection of Workers Suffering from Occupational Injuries and Diseases Act, shall have their severance pay paid by the employer based on their seniority: an equivalence of half a month of average wage for every full year of employment, and in proportion for employment less than one full year; the foresaid severance shall not exceed more than six months of average wage, and is not applicable to Article 17 of the Labor Standards Act.",
+                "Severance pay calculated pursuant to the preceding paragraph shall be paid within 30 days after the termination of labor contract.",
+                "Workers choosing to continue to be applicable to the pension regulations of the Labor Standards Act shall have their severance paid in accordance with Article 17, Article 55 and Article 84 of the Labor Standards Act."
+              ]
+            },
+            "罰則參考": [
+              {
+                "paragraph": 0,
+                "penalty": {
+                  "id": "47"
+                }
+              },
+              {
+                "paragraph": 1,
+                "penalty": {
+                  "id": "47"
+                }
+              }
+            ]
+          },
+          {
+            "條號": "13",
+            "條文內容": {
+              "zh": [
+                "為保障勞工之退休金，雇主應依選擇適用勞動基準法退休制度與保留適用本條例前工作年資之勞工人數、工資、工作年資、流動率等因素精算其勞工退休準備金之提撥率，繼續依勞動基準法第五十六條第一項規定，按月於五年內足額提撥勞工退休準備金，以作為支付退休金之用。",
+                "勞雇雙方依第十一條第三項規定，約定結清之退休金，得自勞動基準法第五十六條第一項規定之勞工退休準備金專戶支應。",
+                "依第十一條第四項規定應發給勞工之退休金，應依公營事業移轉民營條例第九條規定辦理。"
+              ],
+              "en": [
+                "For protecting employees' retirement payment, employers shall precisely calculate the appropriation rate of labor retirement reserve fund in accordance with such factors as the number, wages, seniority and turnover rate of those employees who are applicable to the retirement mechanism in the Labor Standards Act and reserve their seniority prior to the application of the Act, and shall continuously appropriate labor retirement reserve fund sufficiently each month in accordance with Paragraph 1 to Article 56 of the Labor Standards Act for five years to pay for employees' retirement payment.",
+                "When an employer and an employee agree to pay off the retirement payment in accordance with Paragraph 3 to Article 11, it may be paid from the labor retirement reserve fund account established in accordance with Paragraph 1 to Article 56 of the Labor Standards Act.",
+                "The retirement payments that shall be given to employees in accordance with Paragraph 4 to Article 11 shall be handled pursuant to Article 9 of the Act of Privatization of Government-Owned Enterprises."
+              ]
+            }
+          },
+          {
+            "條號": "14",
+            "條文內容": {
+              "zh": [
+                "雇主應為第七條第一項規定之勞工負擔提繳之退休金，不得低於勞工每月工資百分之六。",
+                "雇主得為第七條第二項第三款或第四款規定之人員，於每月工資百分之六範圍內提繳退休金。",
+                "勞工得在其每月工資百分之六範圍內，自願提繳退休金，其自願提繳部分，得自當年度個人綜合所得總額中全數扣除。",
+                "前項規定，於依第七條第二項規定自願提繳退休金者，準用之。",
+                "前四項所定每月工資，由中央主管機關擬訂月提繳工資分級表，報請行政院核定之。"
+              ],
+              "en": [
+                "The amount of labor pension borne by the employer pursuant to Article 7, Paragraph 1 shall not be less than six percent of the worker's monthly wage.",
+                "The amount of labor pension borne by the employer for staff governed under  Article 7, Paragraph 2, subparagraph 3 or 4 may be within six percent of the worker's monthly wage.",
+                "Workers may also voluntarily contribute within six percent of their monthly wage to the labor pension. The amount of labor pension voluntarily contributed may be deducted from the gross consolidated income of the year.",
+                "The preceding paragraph shall apply, mutatis mutandis, to those who voluntarily contribute to their labor pension in accordance with Article 7, Paragraph 2.The monthly wages specified in the preceding four paragraphs shall be prescribed in the Table of Monthly Contribution Wage Classification by the central competent authority and submitted to the Executive Yuan for approval."
+              ]
+            }
+          },
+          {
+            "條號": "15",
+            "條文內容": {
+              "zh": [
+                "於同一雇主或依第七條第二項、前條第三項自願提繳者，一年內調整勞工退休金之提繳率，以二次為限。調整時，雇主應於調整當月底前，填具提繳率調整表通知勞保局，並自通知之次月一日起生效；其提繳率計算至百分率小數點第一位為限。",
+                "勞工之工資如在當年二月至七月調整時，其雇主應於當年八月底前，將調整後之月提繳工資通知勞保局；如在當年八月至次年一月調整時，應於次年二月底前通知勞保局，其調整均自通知之次月一日起生效。",
+                "雇主為第七條第一項所定勞工申報月提繳工資不實或未依前項規定調整月提繳工資者，勞保局查證後得逕行更正或調整之，並通知雇主，且溯自提繳日或應調整之次月一日起生效。"
+              ],
+              "en": [
+                "Those hired by the same employer or voluntarily contribute to the labor pension in accordance with Article 7, Paragraph 2  or Paragraph 3 of the preceding Article may adjust their contribution rate within one year, however such adjustment is limited to two times. Upon the adjustment, the employer shall fill out a contribution rate adjustment form and submit to the Bureau before the end of the month the adjustment is made, and the adjustment shall become effective on the first day of the month following the submission; the contribution rate shall be counted to the first decimal point of a percentage.",
+                "For workers whose wage is adjusted between February to July of the current year, the employer shall notify the Bureau of the monthly contribution wage after adjustment by the end of August of the current year; when the adjustment is made between August of the current year to January of the following year, notification to the Bureau shall be made by the end of February of the following year; All adjustments shall become effective from the first day of the following month after the notification.",
+                "When an employer files a falsified monthly contribution wage for workers governed by Article 7, Paragraph 1 or fails to adjust the monthly contribution wage in accordance with the preceding Paragraph, the Bureau may take the liberty to correct or adjust after verification and notify the employer concerned. The correction or adjustment shall become effective retroactively from the date of contribution payment or the first day of the following month from the time of supposed adjustment."
+              ]
+            }
+          },
+          {
+            "條號": "16",
+            "條文內容": {
+              "zh": [
+                "勞工退休金自勞工到職之日起提繳至離職當日止。但選擇自本條例施行之日起適用本條例之退休金制度者，其提繳自選擇適用本條例之退休金制度之日起至離職當日止。"
+              ],
+              "en": [
+                "An employer shall contribute labor pension for an employee from the first date of employment to the date that the employee resigns; however, if an employee chooses to be applicable to the pension system in the Act since the date of its enforcement, his/her contribution shall be made from the date of choosing to be applicable to the pension system in the Act to the date of resignation."
+              ]
+            }
+          },
+          {
+            "條號": "17",
+            "條文內容": {
+              "zh": [
+                "依第七條第二項自願提繳退休金者，由雇主或自營作業者向勞保局辦理開始或停止提繳手續，並按月扣、收繳提繳數額。",
+                "前項自願提繳退休金者，自申報自願提繳之日起至申報停止提繳之當日止提繳退休金。"
+              ],
+              "en": [
+                "For those who voluntarily contribute to the labor pension in accordance with Article 7, Paragraph 2, their employers or self-employed operators shall file with the Bureau to commence or terminate the contribution, and shall deduct, collect and make the contribution on a monthly basis.",
+                "Those who voluntarily contribute to the labor pension referred to in the preceding Paragraph shall contribute from the filing date of voluntary contribution to the filing date of termination."
+              ]
+            }
+          },
+          {
+            "條號": "18",
+            "條文內容": {
+              "zh": [
+                "雇主應於勞工到職、離職、復職或死亡之日起七日內，列表通知勞保局，辦理開始或停止提繳手續。"
+              ],
+              "en": [
+                "An employer shall make and file a list with the Bureau within seven days from the date when an employee commences his/her job, resigns, is reinstated, or dies to process the commencement or termination of contribution."
+              ]
+            }
+          },
+          {
+            "條號": "19",
+            "條文內容": {
+              "zh": [
+                "雇主應提繳及收取之退休金數額，由勞保局繕具繳款單於次月二十五日前寄送事業單位，雇主應於再次月底前繳納。",
+                "勞工自願提繳退休金者，由雇主向其收取後，連同雇主負擔部分，向勞保局繳納。其退休金之提繳，自申報自願提繳之日起至離職或申報停繳之日止。",
+                "雇主未依限存入或存入金額不足時，勞保局應限期通知其繳納。",
+                "自營作業者之退休金提繳，應以勞保局指定金融機構辦理自動轉帳方式繳納之，勞保局不另寄發繳款單。"
+              ],
+              "en": [
+                "The Bureau shall prepare and mail a payment statement of the amount of labor pension that employer shall contribute and collect to the business entity prior to the 25th of the following month; the employer shall make the contribution prior to the end of the month following the foresaid following month.",
+                "For employees who voluntarily contribute to the labor pension, the employer shall collect their voluntarily contributions along with the portion contributed by the employer to the Bureau. Their contributions shall be made from the filing date of voluntary contribution to the date of resignation or the filing date of termination.",
+                "If an employer fails to contribute within a given period or sufficiently, the Bureau shall notify the employer to contribute within a specified period.Labor pension contributed by  self-employed operator shall be made through automatic transfer service of banking institutions designated by the Bureau; the Bureau will not mail a separate payment statement."
+              ]
+            }
+          },
+          {
+            "條號": "20",
+            "條文內容": {
+              "zh": [
+                "勞工留職停薪、入伍服役、因案停職或被羈押未經法院判決確定前，雇主應於發生事由之日起七日內以書面向勞保局申報停止提繳其退休金。勞工復職時，雇主應以書面向勞保局申報開始提繳退休金。",
+                "因案停職或被羈押勞工復職後，應由雇主補發停職期間之工資者，雇主應於復職當月之再次月底前補提繳退休金。"
+              ],
+              "en": [
+                "An employer shall apply and report in writing to the Bureau for terminating the contribution to the pension within seven days from the date when an employee is on leave without pay, serving in military, suspended from duties because of lawsuit or detained prior to a final judgment of the court. The employer shall apply and report in writing to the Bureau for commencing the contribution when the employee is reinstated.",
+                "When an employer is required to make up the wages for a reinstated employee for the period of suspension from duties because of lawsuit or detention, the employer shall make up the contribution to the pension for such period by the end of the month that is two months after the month that the employee was reinstated."
+              ]
+            }
+          },
+          {
+            "條號": "21",
+            "條文內容": {
+              "zh": [
+                "雇主提繳之金額，應每月以書面通知勞工。",
+                "雇主應置備僱用勞工名冊，其內容包括勞工到職、離職、出勤工作紀錄、工資、每月提繳紀錄及相關資料，並保存至勞工離職之日起五年止。",
+                "勞工依本條例規定選擇適用退休金制度相關文件之保存期限，依前項規定辦理。"
+              ],
+              "en": [
+                "The amount of contribution made by the employer shall be notified monthly in writing to the workers.",
+                "The employer shall have on file a worker roster that includes information on the dates when employment commenced, dates of resignation, attendance record, wages, monthly contribution record and other related information; such information shall be preserved for five years from the date the worker resigned.",
+                "Workers choosing to be applicable to the pension system in accordance with this Act, the preservation of their related documents shall be handled according to the provisions in the preceding paragraph."
+              ]
+            }
+          },
+          {
+            "條號": "22",
+            "條文內容": {
+              "zh": [],
+              "en": []
+            }
+          },
+          {
+            "條號": "23",
+            "條文內容": {
+              "zh": [
+                "退休金之領取及計算方式如下：\n一、月退休金：勞工個人之退休金專戶本金及累積收益，依據年金生命表，以平均餘命及利率等基礎計算所得之金額，作為定期發給之退休金。\n二、一次退休金：一次領取勞工個人退休金專戶之本金及累積收益。",
+                "依本條例提繳之勞工退休金運用收益，不得低於當地銀行二年定期存款利率；如有不足由國庫補足之。",
+                "第一項第一款所稱年金生命表、平均餘命、利率及金額之計算，由勞保局擬訂，報請中央主管機關核定。"
+              ],
+              "en": [
+                "The labor pension shall be paid and calculated as follows:\n1.For monthly pension payment, the principal and accrued dividends from an employee's individual account of labor pension are paid in fixed installments. The amount of each installment shall be calculated based upon the life chart of annuity, average life expectancy, interest rate and other factors.\n2.For lump-sum payment of retirement, the principal and accrued dividends from an employee's individual account of labor pension are claimed in lump sum at one time.",
+                "The return rate generated from the utilization of employees' pension contributed in accordance with the Act shall not be less than the interest rate of a two-year fixed term deposit by local banks; in the event of any deficiency, the Treasury shall make up the shortfall.",
+                "The terms life chart of annuity, average life expectancy, interest rate and calculation of amount referred to in Subparagraph 1 of Paragraph 1 shall be prescribed by the Bureau and submitted to the Central Competent Authority for approval."
+              ]
+            }
+          },
+          {
+            "條號": "24",
+            "條文內容": {
+              "zh": [
+                "勞工年滿六十歲，得依下列規定之方式請領退休金：\n一、工作年資滿十五年以上者，選擇請領月退休金或一次退休金。\n二、工作年資未滿十五年者，請領一次退休金。",
+                "依前項第一款規定選擇請領退休金方式，經勞保局核付後，不得變更。",
+                "第一項工作年資採計，以實際提繳退休金之年資為準。年資中斷者，其前後提繳年資合併計算。",
+                "勞工不適用勞動基準法時，於有第一項規定情形者，始得請領。"
+              ],
+              "en": [
+                "A worker who is sixty years or older may claim for retirement payment according to the following regulations：1.Workers whose seniority exceeds fifteen years may choose to receive either monthly pension payments or a lump-sum pension payment.",
+                "2.Workers whose seniority is less than fifteen years shall claim for a lump-sum pension payment.",
+                "For workers referred to in subparagraph 1 of the preceding paragraph that have selected the form of payment, after the Bureau has approved the form of payment, changes cannot be made.",
+                "Seniority referred to in Paragraph 1 shall be calculated based upon the period of which the contributions to the pension have been made. If the seniority of an employee is interrupted, both his／her seniority before and after the interruption shall be combined in calculation.",
+                "A worker who is not applicable to the Labor Standards Act shall claim for pension only when he／she meets the requirement prescribed in Paragraph 1."
+              ]
+            }
+          },
+          {
+            "條號": "24-1",
+            "條文內容": {
+              "zh": [
+                "勞工領取退休金後繼續工作者，其提繳年資重新計算，雇主仍應依本條例規定提繳勞工退休金；勞工領取年資重新計算之退休金及其收益次數，一年以一次為限。"
+              ],
+              "en": [
+                "Workers who continue to work after having received the pension, their subsequent seniority shall be reset. Employers shall continue to contribute to the labor pension in accordance with this Act. The number of times in which workers receive the reset pension  or related dividends shall be limited to once a year."
+              ]
+            }
+          },
+          {
+            "條號": "24-2",
+            "條文內容": {
+              "zh": [
+                "勞工未滿六十歲，有下列情形之一，其工作年資滿十五年以上者，得請領月退休金或一次退休金。但工作年資未滿十五年者，應請領一次退休金：\n一、領取勞工保險條例所定之失能年金給付或失能等級三等以上之一次失能給付。\n二、領取國民年金法所定之身心障礙年金給付或身心障礙基本保證年金給付。\n三、非屬前二款之被保險人，符合得請領第一款失能年金給付或一次失能給付之失能種類、狀態及等級，或前款身心障礙年金給付或身心障礙基本保證年金給付之障礙種類、項目及狀態。",
+                "依前項請領月退休金者，由勞工決定請領之年限。"
+              ],
+              "en": [
+                "Workers who are under sixty years of age and whose seniority exceed fifteen years may claim for monthly pension or lump-sum pension if any of the following situations applies. However, workers whose seniority is less than fifteen years shall claim for lump-sum pension:1.Receiving disability pension or lump-sum disability payment for Level 3 and above disabilities prescribed in the Labor Insurance Act.",
+                "2.Receiving mental/physical disability pension or mental/physical disability basic guaranteed pension prescribed in the National Pension Act.",
+                "3.The insured not prescribed in the preceding two subparagraphs but conformed to the type, condition and level of disability eligible for claiming disability pension or lump-sum disability payment prescribed in Subparagraph 1, or the type, condition and level of mental/physical disability eligible for claiming mental/physical disability pension or mental/physical disability basic guaranteed pension prescribed in the preceding subparagraph.",
+                "Workers claiming for monthly pension in accordance with the preceding Paragraph may on their own decide the number of years of claim."
+              ]
+            }
+          },
+          {
+            "條號": "25",
+            "條文內容": {
+              "zh": [
+                "勞工開始請領月退休金時，應一次提繳一定金額，投保年金保險，作為超過第二十三條第三項所定平均餘命後之年金給付之用。",
+                "前項規定提繳金額、提繳程序及承保之保險人資格，由中央主管機關定之。"
+              ],
+              "en": [
+                "When a worker starts to claim for the monthly pension payment, he/she shall pay a one-time premium for annuity insurance to cover his/her annuity benefits if he/she lives beyond the average life expectancy prescribed in Paragraph 3 to Article 23.",
+                "The amount of premium, contribution procedures and qualifications of the insurer(s) of annuity insurance referred to in the preceding paragraph shall be prescribed by the Central Competent Authority."
+              ]
+            }
+          },
+          {
+            "條號": "26",
+            "條文內容": {
+              "zh": [
+                "勞工於請領退休金前死亡者，應由其遺屬或指定請領人請領一次退休金。",
+                "已領取月退休金勞工於未屆第二十三條第三項所定平均餘命前死亡者，停止給付月退休金。其個人退休金專戶結算剩餘金額，由其遺屬或指定請領人領回。"
+              ],
+              "en": [
+                "If a worker dies before claiming for the pension, his/her survivors or designated person(s) shall claim for the lump-sum payment of retirement.",
+                "If a worker, who has received the monthly pension payment, dies before he/she reaches the average life expectancy prescribed in Paragraph 3 to Article 23, the monthly pension payment shall be terminated. The residual amount in his/her individual account of labor pension shall be calculated and paid to his/her survivors or designated person(s)."
+              ]
+            }
+          },
+          {
+            "條號": "27",
+            "條文內容": {
+              "zh": [
+                "依前條規定請領退休金遺屬之順位如下：\n一、配偶及子女。\n二、父母。\n三、祖父母。\n四、孫子女。\n五、兄弟、姊妹。",
+                "前項遺屬同一順位有數人時，應共同具領，如有未具名之遺屬者，由具領之遺屬負責分配之；如有死亡或拋棄或因法定事由喪失繼承權時，由其餘遺屬請領之。但生前預立遺囑指定請領人者，從其遺囑。",
+                "勞工死亡後無第一項之遺屬或指定請領人者，其退休金專戶之本金及累積收益，應歸入勞工退休基金。"
+              ],
+              "en": [
+                "The orders of survivors who may claim for the pension in accordance with the preceding Article are as follows:\n1.Spouse and children.\n2.Parents.\n3.Grandparents.\n4.Grandchildren.\n5.Siblings.",
+                "If there is more than one person in any of the above orders, they shall jointly claim for the pension; otherwise, the one who claims for the pension shall distribute such pension between or among the survivors in the same order. In the event of death, waiver of inheritance, or disqualification of heirs due to legal reasons, the pension shall be claimed by other survivors. However, if a living will is made to designate a claimant for the pension, such a will shall be complied with.",
+                "If a deceased worker has no heir or designated claimant referred to in Paragraph 1, the principal and the return accrued in his/her individual account of labor pension shall belong to the Fund."
+              ]
+            }
+          },
+          {
+            "條號": "28",
+            "條文內容": {
+              "zh": [
+                "勞工或其遺屬或指定請領人請領退休金時，應填具申請書，並檢附相關文件向勞保局請領；相關文件之內容及請領程序，由勞保局定之。",
+                "請領手續完備，經審查應予發給月退休金者，應自收到申請書次月起按季發給；其為請領一次退休金者，應自收到申請書之日起三十日內發給。",
+                "勞工或其遺屬或指定請領人請領之退休金結算基準，由中央主管機關定之。",
+                "第一項退休金請求權，自得請領之日起，因五年間不行使而消滅。"
+              ],
+              "en": [
+                "A worker, his/her survivor(s), or his/her designated person(s) shall file and submit an application and relevant documents to the Bureau to claim for the pension; the application procedures and documents required shall be prescribed by the Bureau.",
+                "When the application procedures have been completed and if the monthly pension payment is approved, the payment shall be made on a quarterly basis from the month following the receipt of the application; if the lump-sum payment of retirement is approved, the payment shall be made after thirty days from the day of receiving the application.",
+                "The basis of calculating the final amount of pension to be claimed by a worker, his/her survivor(s) or his/her designated person(s) shall be prescribed by the Central Competent Authority.",
+                "The right to claim for the pension referred to in Paragraph 1 shall be extinguished if such right is not exercised within five years from the date that the pension can be claimed."
+              ]
+            }
+          },
+          {
+            "條號": "29",
+            "條文內容": {
+              "zh": [
+                "勞工之退休金及請領勞工退休金之權利，不得讓與、扣押、抵銷或供擔保。",
+                "勞工依本條例規定請領月退休金者，得檢具勞保局出具之證明文件，於金融機構開立專戶，專供存入月退休金之用。",
+                "前項專戶內之存款，不得作為抵銷、扣押、供擔保或強制執行之標的。"
+              ],
+              "en": [
+                "A worker’s pension and his right to claim the pension shall not be assigned, offset, mortgaged, or guaranteed.",
+                "Applicants claiming monthly pension pursuant to this Act shall open a specific account with the documents provided by the Bureau at a financial institution for the deposit of monthly pension.",
+                "The deposits in the specific   account of the preceding Paragraph shall not be the objects of offset, mortgage, security or compulsory execution."
+              ]
+            }
+          },
+          {
+            "條號": "30",
+            "條文內容": {
+              "zh": [
+                "雇主應為勞工提繳之金額，不得因勞工離職，扣留勞工工資作為賠償或要求勞工繳回。約定離職時應賠償或繳回者，其約定無效。"
+              ],
+              "en": [
+                "An employer shall not deduct the contribution made by him/her from an employee's wage as a compensation or ask an employee to refund the contribution made when the employee resigns. If there is an agreement that an employee shall compensate or refund the contribution made upon resignation, the agreement shall be null and void."
+              ]
+            }
+          },
+          {
+            "條號": "31",
+            "條文內容": {
+              "zh": [
+                "雇主未依本條例之規定按月提繳或足額提繳勞工退休金，致勞工受有損害者，勞工得向雇主請求損害賠償。",
+                "前項請求權，自勞工離職時起，因五年間不行使而消滅。"
+              ],
+              "en": [
+                "When an employer fails to contribute to the pension on monthly basis or in full for an employee in accordance with the Act and causes damages to the employee, the employee shall claim damages from the employer.",
+                "The right for an employee to file the claim referred to in the preceding paragraph shall be extinguished if such right is not exercised within five years from the date of resignation."
+              ]
+            }
+          },
+          {
+            "條號": "32",
+            "條文內容": {
+              "zh": [
+                "勞工退休基金之來源如下：\n一、勞工個人專戶之退休金。\n二、基金運用之收益。\n三、收繳之滯納金。\n四、其他收入。"
+              ],
+              "en": [
+                "Sources of the Fund are as follows:\n1.Pension in employees' individual accounts.\n2.Profits from the utilization of the Fund.\n3.Late payment charges.\n4.Other revenues."
+              ]
+            }
+          },
+          {
+            "條號": "33",
+            "條文內容": {
+              "zh": [
+                "勞工退休基金除作為給付勞工退休金及投資運用之用外，不得扣押、供擔保或移作他用；其管理、運用及盈虧分配之辦法，由中央主管機關擬訂，報請行政院核定之。",
+                "勞工退休基金之經營及運用，監理會得委託金融機構辦理。委託經營規定、範圍及經費，由監理會擬訂，報請中央主管機關核定之。"
+              ],
+              "en": [
+                "The Labor Pension Fund, besides being used for paying workers' pensions and investment, shall not be attached, mortgaged and guaranteed, or used for other purposes. Regulations concerning the management, utilization and profit/loss allocation thereof shall be prescribed by the central competent authority and submitted to the Executive Yuan for approval.",
+                "The Supervisory Committee may commission financial institutions to manage and utilize the Labor Pension Fund. Regulations concerning the management, scope and expenses of the commissioning shall be prescribed by the Supervisory Committee and submitted to the central competent authority for approval."
+              ]
+            }
+          },
+          {
+            "條號": "34",
+            "條文內容": {
+              "zh": [
+                "勞保局對於勞工退休金及勞工退休基金之財務收支，應分戶立帳，並與其辦理之其他業務分開處理；其相關之會計報告及年度決算，應依有關法令規定辦理，並提監理會審核。",
+                "勞工退休基金之收支、運用及其積存金額，應按月提監理會審議並報請中央主管機關備查，中央主管機關應按年公告之。"
+              ],
+              "en": [
+                "The Bureau shall establish independent accounts for handling the revenues and expenditures of the labor pension and the Fund, and shall handle them separately from its other businesses; the Bureau shall prepare relevant accounting report and final financial settlement in accordance with related statutes and regulations and submit to the Supervisory Committee for review and approval.",
+                "The report concerning revenues, expenditures, utilization and the accumulated amount of the Fund shall be on monthly basis submitted to the Supervisory Committee for review and further submitted by the Supervisory Committee to the Central Competent Authority for record and reference, and the Central Competent Authority shall publicly announce it on yearly basis."
+              ]
+            }
+          },
+          {
+            "條號": "35",
+            "條文內容": {
+              "zh": [
+                "事業單位僱用勞工人數二百人以上，經工會同意，或無工會者，經勞資會議同意後，得為以書面選擇投保年金保險之勞工，投保符合保險法規定之年金保險。",
+                "前項選擇投保年金保險之勞工，雇主得不依第六條第一項規定為其提繳勞工退休金。",
+                "第一項所定年金保險之收支、核准及其他應遵行事項之辦法，由中央主管機關定之；事業單位採行前項規定之年金保險者，應報請中央主管機關核准。",
+                "第一項年金保險之平均收益率不得低於第二十三條之標準。"
+              ],
+              "en": [
+                "A business entity with over 200 workers may, with the consent of labor union or with the approval of labor-management conference when no labor union exists, insure with the Annuities Insurance pursuant to the Insurance Act for workers who choose in writing to insure with the Annuities Insurance.",
+                "For workers choosing to insure with the Annuities Insurance of the preceding Paragraph, the employer may contribute labor pension not in accordance with Article 6, Paragraph 1.",
+                "Regulations concerning revenues, expenditures, approval and other related matters of compliance of the Annuities Insurance referred to in Paragraph 1 shall be prescribed by the central competent authority.  Business entities adopting the Annuities Insurance referred to in the preceding Paragraph shall file with the central competent authority for approval.",
+                "The average return rate of Annuities Insurance referred to in Paragraph 1 shall not be less than the rate prescribed in Article 23."
+              ]
+            }
+          },
+          {
+            "條號": "35-1",
+            "條文內容": {
+              "zh": [
+                "保險人應依保險法規定專設帳簿，記載其投資資產之價值。",
+                "勞工死亡後無遺屬或指定請領人者，其年金保險退休金之本金及累積收益，應歸入年金保險專設帳簿之資產。"
+              ],
+              "en": [
+                "The insurer shall, in accordance with insurance laws and regulations, set up designated account to record the value of their investment assets.",
+                "Upon death of a worker who has no designated beneficiary(ies) or survivor(s), the principal and accumulated returns of their pension payment of Annuities Insurance shall be subsumed in the assets of designated account for Annuities Insurance."
+              ]
+            }
+          },
+          {
+            "條號": "35-2",
+            "條文內容": {
+              "zh": [
+                "實施年金保險之事業單位內適用本條例之勞工，得以一年一次為限，變更原適用之退休金制度，改為參加個人退休金專戶或年金保險，原已提存之退休金或年金保險費，繼續留存。雇主應於勞工書面選擇變更之日起十五日內，檢附申請書向勞保局及保險人申報。"
+              ],
+              "en": [
+                "Workers who are applicable to this Act working in business entities that implement the Annuities Insurance scheme may, at the limit of  one time per year, change their original applicable pension mechanism to individual pension fund account or Annuities Insurance. The pension or premium of annuity insurance already contributed or paid shall be continuously reserved. The employer concerned shall file with the application form to the Bureau and the insurer within fifteen days from the date the worker changed in writing their choice."
+              ]
+            }
+          },
+          {
+            "條號": "36",
+            "條文內容": {
+              "zh": [
+                "雇主每月負擔之年金保險費，不得低於勞工每月工資百分之六。",
+                "前項雇主應負擔之年金保險費，及勞工自願提繳之年金保險費數額，由保險人繕具繳款單於次月二十五日前寄送事業單位，雇主應於再次月月底前繳納。雇主應提繳保險費之收繳情形，保險人應於繳納期限之次月七日前通知勞保局。",
+                "勞工自願提繳年金保險費者，由雇主向其收取後，連同雇主負擔部分，向保險人繳納。其保險費之提繳，自申報自願提繳之日起至離職或申報停繳之日止。",
+                "雇主逾期未繳納年金保險費者，保險人應即進行催收，並限期雇主於應繳納期限之次月月底前繳納，催收結果應於再次月之七日前通知勞保局。"
+              ],
+              "en": [
+                "The premium per month by an employer to the Annuities Insurance may not be less than six percent of worker's monthly wage.",
+                "The insurer shall prepare and mail a payment statement listing the amount of premium the employer shall pay and the amount worker who voluntarily pays in the preceding Paragraph to the business entity prior to the 25th day of the following month, and the employer shall pay prior to the end of the month following the foresaid following month. The insurer shall inform the Bureau of the situation of premium collection that an employer shall pay prior to the seventh day of the following month.Workers who voluntarily pay the premium to the Annuities Insurance, shall have the premium collected by their employers along with the portion paid by their employers to the insurer. Payment shall be made from the filing date of voluntary payment to the date of resignation or the filing date of termination.",
+                "If an employer fails to pay within a given period or sufficiently, the insurer shall immediately collect the overdue receivables and within a given period notify the employer to pay prior to the end of the following month The result of overdue receivables shall be notified to the Bureau prior to the seventh day of the month following the foresaid following month."
+              ]
+            }
+          },
+          {
+            "條號": "37",
+            "條文內容": {
+              "zh": [
+                "年金保險之契約應由雇主擔任要保人，勞工為被保險人及受益人。事業單位以向一保險人投保為限。保險人之資格，由中央主管機關會同該保險業務之主管機關定之。"
+              ],
+              "en": [
+                "An employer shall be the proposer of annuity insurance contract, and an employee shall be the insured and the beneficiary. A business entity can only purchase annuity insurance from a single insurer. Qualifications of the insurer shall be jointly prescribed by the Central Competent Authority and the insurance competent authority."
+              ]
+            }
+          },
+          {
+            "條號": "38",
+            "條文內容": {
+              "zh": [
+                "勞工離職後再就業，所屬年金保險契約應由新雇主擔任要保人，繼續提繳保險費。新舊雇主開辦或參加之年金保險提繳率不同時，其差額由勞工自行負擔。但新雇主自願負擔者，不在此限。",
+                "前項勞工之新雇主未辦理年金保險者，應依第六條第一項規定提繳退休金。除勞雇雙方另有約定外，所屬年金保險契約之保險費由勞工全額自行負擔；勞工無法提繳時，年金保險契約之存續，依保險法及各該保險契約辦理。",
+                "第一項勞工離職再就業時，得選擇由雇主依第六條第一項規定提繳退休金。",
+                "勞工離職再就業，前後適用不同退休金制度時，選擇移轉年金保險之保單價值準備金至個人退休金專戶，或個人退休金專戶之本金及收益至年金保險者，應全額移轉，且其已提繳退休金之存儲期間，不得低於四年。"
+              ],
+              "en": [
+                "When a worker resigned and re-employed, the new employer shall be their proposer of the Annuities Insurance contract and continue to pay the premium. When the contribution rate to the Annuities Insurance premium born by the new employer and the  previous employer is not the same, the worker shall be responsible for the difference. However, the foresaid provision shall not apply if the new employer is willing to pay the difference.",
+                "If the new employer of the worker referred to in the preceding Paragraph does not purchase the Annuities Insurance, they shall contribute to the labor pension according to Article 6, Paragraph 1. Unless a separate agreement between the employer and the worker is made, the worker shall be responsible for the full amount of the premium of the Annuities Insurance. When the worker cannot pay the premium, the continuity of the Annuities Insurance contract shall be dealt with in accordance with the Insurance Act and the foresaid insurance contract.",
+                "When a worker referred to in Paragraph 1 resigned and re-employed, they may choose to have the new employer contributes to the labor pension in accordance with Article 6, Paragraph 1.",
+                "When a worker is applicable to different pension mechanisms after resigning and re-employment, and choose to transfer the reserved policy value of the Annuities Insurance to their individual pension fund account or transfer the principal and accumulated returns in their individual pension fund account to Annuities Insurance, the full amount shall be transferred. The period of depositing pension fund that they have contributed shall not be less than four years."
+              ]
+            }
+          },
+          {
+            "條號": "39",
+            "條文內容": {
+              "zh": [
+                "第七條至第十三條、第十四條第二項至第五項、第十五條、第十六條、第二十條、第二十一條、第二十四條、第二十四條之一、第二十四條之二、第二十七條第一項、第二項、第二十九條至第三十一條規定，於本章所定年金保險準用之。"
+              ],
+              "en": [
+                "Articles 7 to 13, Paragraphs 2 to 5 to Article 14, Article 15, Article 16, Article 20, Article 21, Article 24, Article 24-1, Article 24-2, Paragraph 1 and Paragraph 2 to Article 27, and Articles 29 to 31 shall apply, mutatis mutandis, to the Annuities Insurance prescribed in this Chapter."
+              ]
+            },
+            "罰則參考": [
+              {
+                "penalty": {
+                  "id": "47"
+                }
+              }
+            ]
+          },
+          {
+            "條號": "40",
+            "條文內容": {
+              "zh": [
+                "為確保勞工權益，主管機關、勞動檢查機構或勞保局必要時得查對事業單位勞工名冊及相關資料。",
+                "勞工發現雇主違反本條例規定時，得向雇主、勞保局、勞動檢查機構或主管機關提出申訴，雇主不得因勞工提出申訴，對其做出任何不利之處分。"
+              ],
+              "en": [
+                "The competent authorities, labor inspection agencies or the Bureau for protecting worker interests may, if necessary, check and verify the name list of employees and other relevant information and materials of business entities.",
+                "A worker may, upon discovering any violation of the Act by the employer, file a complaint with the employer, the Bureau, labor inspection agencies or the competent authorities; an employer shall not take any unfavorable measure against the worker who filed the complaint."
+              ]
+            }
+          },
+          {
+            "條號": "41",
+            "條文內容": {
+              "zh": [
+                "受委託運用勞工退休基金之金融機構，發現有意圖干涉、操縱、指示其運用或其他有損勞工利益之情事者，應通知監理會。監理會認有處置必要者，應即通知中央主管機關採取必要措施。"
+              ],
+              "en": [
+                "The financial institution that is commissioned to utilize the Fund shall report to the Supervision Committee any undue interference, manipulation, instruction to utilize, or other situations detrimental to worker benefits. The Supervision Committee deems it as necessary and shall notify the Central Competent Authority to take necessary measures."
+              ]
+            }
+          },
+          {
+            "條號": "42",
+            "條文內容": {
+              "zh": [
+                "主管機關、監理會、勞保局、受委託之金融機構及其相關機關、團體所屬人員，除不得對外公布業務處理上之秘密或謀取非法利益，並應善盡管理人忠誠義務，為勞工及雇主謀取最大之經濟利益。"
+              ],
+              "en": [
+                "Any person working at the competent authorities, the Supervision Committee, the Bureau, commissioned financial institutions and other relevant agencies or organizations shall refrain from disclosing confidential information obtained from performing his/her duties or seeking illegal profits, and shall perform fiduciary duties with prudent care for acquiring the maximal economic interests for workers and employers."
+              ]
+            }
+          },
+          {
+            "條號": "43",
+            "條文內容": {
+              "zh": [
+                "監理會及勞保局籌辦及辦理本條例規定行政所須之費用，由中央主管機關編列預算支應。"
+              ],
+              "en": [
+                "The Central Competent Authority shall prepare the budget for paying the expenses required for the Supervision Committee and the Bureau to prepare and implement the administration prescribed in the Act."
+              ]
+            }
+          },
+          {
+            "條號": "44",
+            "條文內容": {
+              "zh": [
+                "勞保局辦理本條例規定業務之一切帳冊、單據及業務收支，均免課稅捐。"
+              ],
+              "en": [
+                "All account records, receipts, revenues and expenditures for the Bureau to handle businesses prescribed in the Act shall be exempted from taxation."
+              ]
+            }
+          },
+          {
+            "條號": "45",
+            "條文內容": {
+              "zh": [
+                "受委託運用勞工退休基金之機構違反第三十三條第二項規定，將勞工退休基金用於非指定之投資運用項目者，處新臺幣二百萬元以上一千萬元以下罰鍰，中央主管機關並應限期令其附加利息歸還。"
+              ],
+              "en": [
+                "If the commissioned financial institution, which is in violation of Paragraph 2 to Article 33 to utilize the Fund in items other than those of specified investment and utilization, shall be fined no less than N.T.$2,000,000 but not exceeding N.T.$10,000,000, and the Central Competent Authority shall also order it to refund with interest accrued within a given period."
+              ]
+            }
+          },
+          {
+            "條號": "46",
+            "條文內容": {
+              "zh": [
+                "保險人違反第三十六條第二項規定，未於期限內通知勞保局者，處新臺幣六萬元以上三十萬元以下罰鍰，並限期令其改善；屆期未改善者，應按次處罰。"
+              ],
+              "en": [
+                "When an insurer is in violation of Paragraph 2 of Article 36 and fails to notify the Bureau within a given period, it shall be fined no less than N.T.$60,000 but not exceeding N.T.$300,000 and such insurers shall be ordered to make improvements within a given period；those failing to make improvements within the given period shall be fined consecutively."
+              ]
+            }
+          },
+          {
+            "條號": "47",
+            "條文內容": {
+              "zh": [
+                "雇主違反第十一條第二項、第十二條第一項、第二項或第三十九條規定給付標準及期限者，處新臺幣二十五萬元以下罰鍰。"
+              ],
+              "en": [
+                "When an employer is in violation of the payment criterion and time limit prescribed in Paragraph 2 to Article 11, Paragraphs 1 and 2 to Article 12, or Article 39, he/she shall be fined no more than N.T.$250,000."
+              ]
+            },
+            "罰則": [
+              {
+                "for": [
+                  {
+                    "id": "11",
+                    "paragraph": 1
+                  },
+                  {
+                    "id": "12",
+                    "paragraph": 0
+                  },
+                  {
+                    "id": "12",
+                    "paragraph": 1
+                  },
+                  {
+                    "id": "39"
+                  }
+                ],
+                "possibilities": [
+                  {
+                    "fine": {
+                      "max": 250000
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "條號": "48",
+            "條文內容": {
+              "zh": [
+                "事業單位違反第四十條規定，拒絕提供資料或對提出申訴勞工為不利處分者，處新臺幣三萬元以上三十萬元以下罰鍰。"
+              ],
+              "en": [
+                "When a business entity is in violation of Article 40 by refusing to provide information and materials or taking any unfavorable measure against the employee who files a complaint, it shall be fined no less than N.T.$30,000 but not exceeding N.T.$300,000."
+              ]
+            }
+          },
+          {
+            "條號": "49",
+            "條文內容": {
+              "zh": [
+                "雇主違反第八條之一第五項、第九條、第十八條、第二十條第一項、第二十一條第二項、第三十五條之二或第三十九條規定，未辦理申報提繳、停繳手續、置備名冊或保存文件，經限期改善，屆期未改善者，處新臺幣二萬元以上十萬元以下罰鍰，並按月處罰至改正為止。"
+              ],
+              "en": [
+                "When an employer violates Article 8-1, Article 9, Article 18, Paragraph 1 to Article 20, Paragraph 2 to Article 21, Article 35 or Article 39, and fails to file the application for contribution, file the application for termination of contribution, prepare the worker roster or preserve documents, they shall be notified to improve within a given period; failure to improve by the end of given period shall be fined no less than NT$20,000 but not exceeding NT$100,000. The fine shall be consecutively imposed on a monthly basis until the date of correction."
+              ]
+            }
+          },
+          {
+            "條號": "50",
+            "條文內容": {
+              "zh": [
+                "雇主違反第十三條第一項規定，未繼續按月提撥勞工退休準備金者，處新臺幣二萬元以上三十萬元以下罰鍰，並應按月處罰，不適用勞動基準法第七十九條第一項第一款之罰鍰規定。",
+                "主管機關對於前項應執行而未執行時，應以公務員考績法令相關處罰規定辦理。",
+                "第一項收繳之罰鍰，歸入勞動基準法第五十六條第二項勞工退休基金。"
+              ],
+              "en": [
+                "When an employer violates Article 13, Paragraph 1 and fails to continuously appropriate to the labor pension reserve fund each month, they shall be fined no less than NT$20,000 but not exceeding NT$300,000. The fine shall be imposed consecutively on a monthly basis. The fine prescribed in Article 79, Paragraph 1 subparagraph 1of the Labor Standards Act shall not apply.",
+                "If the competent authority fails to impose the fine in accordance with the preceding Paragraph, their personnel concerned shall be subject to the relevant penal provisions prescribed by the statutes and regulations for the evaluation of civil servants.",
+                "The fines collected in accordance with Paragraph 1 shall be put into the Labor Retirement Fund referred to in Article 56, Paragraph 2 of the Labor Standards Act."
+              ]
+            }
+          },
+          {
+            "條號": "51",
+            "條文內容": {
+              "zh": [
+                "雇主違反第三十條或第三十九條規定，扣留勞工工資者，處新臺幣一萬元以上五萬元以下罰鍰。"
+              ],
+              "en": [
+                "When an employer is in violation of Article 30 or Article 39, and deducts wages of employees, he/she shall be fined no less than N.T.$10,000 but not exceeding N.T.$50,000."
+              ]
+            }
+          },
+          {
+            "條號": "52",
+            "條文內容": {
+              "zh": [
+                "雇主違反第十五條第二項、第二十一條第一項或第三十九條申報、通知規定者，處新臺幣五千元以上二萬五千元以下罰鍰。"
+              ],
+              "en": [
+                "When an employer is in violation of Paragraph 2 to Article 15, Paragraph 1 to Article 21, or Article 39, and fails to file the application or notify, he/she shall be fined no less than N.T.$ 5,000 but not exceeding N.T.$ 25,000."
+              ]
+            }
+          },
+          {
+            "條號": "53",
+            "條文內容": {
+              "zh": [
+                "雇主違反第十四條第一項、第十九條第一項或第二十條第二項規定，未按時提繳或繳足退休金者，自期限屆滿之次日起至完繳前一日止，每逾一日加徵其應提繳金額百分之三之滯納金至應提繳金額之一倍為止。",
+                "前項雇主欠繳之退休金，經限期命令其繳納，逾期不繳納者依法移送強制執行。雇主如有不服，得依法提起行政救濟。",
+                "雇主違反第三十六條及第三十九條規定，未按時繳納或繳足保險費者，處其應負擔金額同額之罰鍰，並按月處罰至改正為止。",
+                "第一項及第二項之規定，溯自中華民國九十四年七月一日生效。"
+              ],
+              "en": [
+                "When an employer violates Paragraph 1 to Article 14, Paragraph 1 to Article 19, or Paragraph 2 to Article 20, and fails to contribute within the time limit or contribute the full amount of labor pension, they are required to pay late payment charge at three percent of the amount of contribution compounded on a daily basis for the period from the date following the date of expiration of the time limit until the date preceding the settlement date; however, the amount of such charge shall not exceed the amount of contribution.",
+                "When an employer fails to contribute the labor pension referred to in the preceding Paragraph, if they have been notified to contribute within a given period but fails to contribute by the end of the given period, they shall be referred to for compulsory execution in accordance with related statutes. If the employer refuses to comply, they may apply for administrative remedy in accordance with related statutes.",
+                "When an employer violates Article 36 and Article 39, and fails to contribute within the time limit or contribute the full amount of premium, they shall be fined the same amount equal to the amount of premium and fined consecutively on a monthly basis until the date of correction.",
+                "Paragraphs 1 and 2 shall become effective retroactively on July 1, 2005."
+              ]
+            }
+          },
+          {
+            "條號": "54",
+            "條文內容": {
+              "zh": [
+                "依本條例加徵之滯納金及所處之罰鍰，受處分人應於收受通知之日起三十日內繳納；屆期未繳納者，依法移送強制執行。",
+                "第三十九條所定年金保險之罰鍰處分及強制執行業務，委任勞保局辦理之。"
+              ],
+              "en": [
+                "The late payment charge and fine imposed in accordance with the Act shall be paid within thirty days after the date that the violator receives the notification; if they are not paid within a given period, he/she shall be referred to for compulsory execution in accordance with related statutes.",
+                "The businesses of imposing fine and enforcing compulsory execution concerning the annuity insurance prescribed in Article 39 shall be entrusted to the Bureau for handling."
+              ]
+            }
+          },
+          {
+            "條號": "55",
+            "條文內容": {
+              "zh": [
+                "法人之代表人或其他從業人員、自然人之代理人或受僱人，因執行業務違反本條例規定，除依本章規定處罰行為人外，對該法人或自然人並應處以各該條所定之罰鍰。但法人之代表人或自然人對於違反之發生，已盡力為防止行為者，不在此限。",
+                "法人之代表人或自然人教唆或縱容為違反之行為者，以行為人論。"
+              ],
+              "en": [
+                "If the representative or any other staff member of a legal entity, the agent of a legal entity or a natural person, an employee or any other staff member violates the Act in the rendering of his respective services, the violator shall be punished pursuant to this Chapter; in addition, the legal entity itself or the natural person shall also be subject to punishment by such fine or administrative fine as prescribed in the respective articles of the Act; unless the representative of the legal entity or the natural person has done his/her best to avoid the occurrence of the violation.",
+                "The representative of a legal entity or the natural person shall be deemed as an offender, if he/she instigate or ignores the violation."
+              ]
+            }
+          },
+          {
+            "條號": "56",
+            "條文內容": {
+              "zh": [
+                "事業單位因分割、合併或轉讓而消滅者，其積欠勞工之退休金，應由受讓之事業單位當然承受。"
+              ],
+              "en": [
+                "When a business entity is extinguished due to division, merger/acquisition, or transfer, the succeeding business entity shall be strictly liable for any labor pension not contributed."
+              ]
+            }
+          },
+          {
+            "條號": "57",
+            "條文內容": {
+              "zh": [
+                "本條例施行細則，由中央主管機關定之。"
+              ],
+              "en": [
+                "The enforcement rules of the Act shall be prescribed by the Central Competent Authority."
+              ]
+            }
+          },
+          {
+            "條號": "58",
+            "條文內容": {
+              "zh": [
+                "本條例自公布後一年施行。",
+                "本條例修正條文，除已另定施行日期者外，自公布日施行。"
+              ],
+              "en": [
+                "This Act shall become effective after one year from the date of promulgation.The amended articles in this Act, with the exception to those promulgated on different dates, shall become effective from the date of promulgation."
+              ]
+            }
+          }
+        ]
+      },
+      "法規簡稱": "勞退條例"
+    }
+  }
+}

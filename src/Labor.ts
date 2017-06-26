@@ -148,11 +148,14 @@ export default class Labor {
       result.value.noticeDays = 30
     }
 
-    result.value.severancePay = this._monthlySalary * Math.floor(years)
-    result.value.severancePay += this._monthlySalary * (Math.ceil(months - Math.floor(years) * 12) / 12)
+    let severancePay = this._monthlySalary * Math.floor(years) / 2
+    severancePay += this._monthlySalary * (Math.ceil(months - Math.floor(years) * 12) / 12) / 2
+
+    result.value.severancePay = Math.min(severancePay, this._monthlySalary * 6)
 
     result.according.push(new Article('勞動基準法', '16'))
     result.according.push(new Article('勞動基準法', '17'))
+    result.according.push(new Article('勞工退休金條例', '12', 0))
 
     return result
   }

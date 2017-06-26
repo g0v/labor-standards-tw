@@ -6,7 +6,7 @@ import { Result, Labor } from '../../src/index'
 defineSupportCode(function ({ Given, When, Then }) {
   Given('他的平均薪資為 {int} 元', function (salary) {
     const labor: Labor = this.labor
-    labor.monthlySalary(salary)
+    labor.setMonthlySalary(salary)
   })
 
   When('公司解僱該勞工', function () {

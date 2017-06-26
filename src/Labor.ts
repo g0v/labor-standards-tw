@@ -15,6 +15,57 @@ export default class Labor {
     return this
   }
 
+  authorityAgree (agreed: boolean): Labor {
+    this._authorityAgreed = agreed
+    return this
+  }
+
+  setAge (age: number): Labor {
+    this._age = age
+    return this
+  }
+
+  getAge (): number {
+    return this._age
+  }
+
+  setGender (gender: Gender): Labor {
+    this._gender = gender
+    return this
+  }
+
+  getGender (): Gender {
+    return this._gender
+  }
+
+  onBoard (onboard: Date): Labor {
+    this._onboard = onboard
+    return this
+  }
+
+  getOnBoardDate (): Date {
+    return this._onboard
+  }
+
+  setHourlyWages (hourly: number): Labor {
+    this._hourlyWages = hourly
+    return this
+  }
+
+  getHourlyWages (): number {
+    return this._hourlyWages
+  }
+
+  setMonthlySalary (salary: number): Labor {
+    this._monthlySalary = salary
+    this.setHourlyWages(salary / 30 / 8)
+    return this
+  }
+
+  getMonthlySalary (): number {
+    return this._monthlySalary
+  }
+
   validateChildLabor (): Result {
     const result = new Result()
     const age = this.getAge()
@@ -45,40 +96,6 @@ export default class Labor {
     }
 
     return result
-  }
-
-  authorityAgree (agreed: boolean): Labor {
-    this._authorityAgreed = agreed
-    return this
-  }
-
-  setAge (age: number): Labor {
-    this._age = age
-    return this
-  }
-
-  getAge (): number {
-    return this._age
-  }
-
-  setGender (gender: Gender): Labor {
-    this._gender = gender
-    return this
-  }
-
-  getGender (): Gender {
-    return this._gender
-  }
-
-  onBoard (onboard: Date): Labor {
-    this._onboard = onboard
-    return this
-  }
-
-  monthlySalary (salary: number): Labor {
-    this._monthlySalary = salary
-    this.setHourlyWages(salary / 30 / 8)
-    return this
   }
 
   retire (date: Date): Result {
@@ -165,15 +182,6 @@ export default class Labor {
     result.according.push(new Article('勞動基準法', '38'))
     result.value.unit = 'day'
     return result
-  }
-
-  setHourlyWages (hourly: number): Labor {
-    this._hourlyWages = hourly
-    return this
-  }
-
-  getHourlyWages (): number {
-    return this._hourlyWages
   }
 
   takeMaternityLeave (start: Date, miscarriage: boolean = false, pregnantMonth: number = 0 ) {

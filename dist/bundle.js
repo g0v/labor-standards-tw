@@ -15789,37 +15789,6 @@ var Labor = function () {
             return this;
         }
     }, {
-        key: "validateChildLabor",
-        value: function validateChildLabor() {
-            var result = new _1.Result();
-            var age = this.getAge();
-            var agreed = this._authorityAgreed;
-            var graduated = this._graduations[_1.Education.JUNIOR_HIGH_SCHOOL];
-            if (age >= 15 && age < 16) {
-                result.value.type = _1.ChildLaborType.CHILD_LABOR;
-                result.according.push(new _1.Article('勞動基準法', '44'));
-            } else if (age < 15 && (agreed || graduated)) {
-                result.value.type = _1.ChildLaborType.FOLLOW_CHILD_LABOR_ARTICLES;
-                result.according.push(new _1.Article('勞動基準法', '44'));
-                result.according.push(new _1.Article('勞動基準法', '45'));
-            } else if (age < 15 && !agreed && !graduated) {
-                var article = new _1.Article('勞動基準法', '44');
-                var violation = new _1.Article('勞動基準法', '45');
-                result.value.type = _1.ChildLaborType.ILLEGAL;
-                result.according.push(article);
-                result.violations.push(violation);
-                result.value.legal = false;
-            } else if (age >= 16 && age < 18) {
-                result.value.type = _1.ChildLaborType.PRE_ADULT;
-                result.according.push(new _1.Article('勞動基準法', '44'));
-                result.according.push(new _1.Article('勞動基準法', '46'));
-            } else {
-                result.value.type = _1.ChildLaborType.ADULT;
-                result.according.push(new _1.Article('勞動基準法', '44'));
-            }
-            return result;
-        }
-    }, {
         key: "authorityAgree",
         value: function authorityAgree(agreed) {
             this._authorityAgreed = agreed;
@@ -15854,11 +15823,63 @@ var Labor = function () {
             return this;
         }
     }, {
-        key: "monthlySalary",
-        value: function monthlySalary(salary) {
+        key: "getOnBoardDate",
+        value: function getOnBoardDate() {
+            return this._onboard;
+        }
+    }, {
+        key: "setHourlyWages",
+        value: function setHourlyWages(hourly) {
+            this._hourlyWages = hourly;
+            return this;
+        }
+    }, {
+        key: "getHourlyWages",
+        value: function getHourlyWages() {
+            return this._hourlyWages;
+        }
+    }, {
+        key: "setMonthlySalary",
+        value: function setMonthlySalary(salary) {
             this._monthlySalary = salary;
             this.setHourlyWages(salary / 30 / 8);
             return this;
+        }
+    }, {
+        key: "getMonthlySalary",
+        value: function getMonthlySalary() {
+            return this._monthlySalary;
+        }
+    }, {
+        key: "validateChildLabor",
+        value: function validateChildLabor() {
+            var result = new _1.Result();
+            var age = this.getAge();
+            var agreed = this._authorityAgreed;
+            var graduated = this._graduations[_1.Education.JUNIOR_HIGH_SCHOOL];
+            if (age >= 15 && age < 16) {
+                result.value.type = _1.ChildLaborType.CHILD_LABOR;
+                result.according.push(new _1.Article('勞動基準法', '44'));
+            } else if (age < 15 && (agreed || graduated)) {
+                result.value.type = _1.ChildLaborType.FOLLOW_CHILD_LABOR_ARTICLES;
+                result.according.push(new _1.Article('勞動基準法', '44'));
+                result.according.push(new _1.Article('勞動基準法', '45'));
+            } else if (age < 15 && !agreed && !graduated) {
+                var article = new _1.Article('勞動基準法', '44');
+                var violation = new _1.Article('勞動基準法', '45');
+                result.value.type = _1.ChildLaborType.ILLEGAL;
+                result.according.push(article);
+                result.violations.push(violation);
+                result.value.legal = false;
+            } else if (age >= 16 && age < 18) {
+                result.value.type = _1.ChildLaborType.PRE_ADULT;
+                result.according.push(new _1.Article('勞動基準法', '44'));
+                result.according.push(new _1.Article('勞動基準法', '46'));
+            } else {
+                result.value.type = _1.ChildLaborType.ADULT;
+                result.according.push(new _1.Article('勞動基準法', '44'));
+            }
+            return result;
         }
     }, {
         key: "retire",
@@ -15926,17 +15947,6 @@ var Labor = function () {
             result.according.push(new _1.Article('勞動基準法', '38'));
             result.value.unit = 'day';
             return result;
-        }
-    }, {
-        key: "setHourlyWages",
-        value: function setHourlyWages(hourly) {
-            this._hourlyWages = hourly;
-            return this;
-        }
-    }, {
-        key: "getHourlyWages",
-        value: function getHourlyWages() {
-            return this._hourlyWages;
         }
     }, {
         key: "takeMaternityLeave",

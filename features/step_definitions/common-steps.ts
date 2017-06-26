@@ -12,12 +12,12 @@ defineSupportCode(function ({ Given, When, Then }) {
 
   Given('一個勞工月薪為 {int} 元', function (salary) {
     const labor: Labor = this.labor
-    labor.monthlySalary(salary)
+    labor.setMonthlySalary(salary)
   })
 
   Given('月薪為 {int} 元', function (salary) {
     const labor: Labor = this.labor
-    labor.monthlySalary(salary)
+    labor.setMonthlySalary(salary)
   })
 
   When('工作 {float} 小時', function (hours) {

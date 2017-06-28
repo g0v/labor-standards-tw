@@ -149,6 +149,14 @@ export default class WorkTime {
     result.value.legal = true
     result.according.push(new Article('勞動基準法', '24', 0))
 
+    if (!agreed) {
+      const article = new Article('勞動基準法', '42')
+      result.value.legal = false
+      result.according.push(article)
+      result.violations.push(article)
+      return result
+    }
+
     if (this.duration === Duration.DAY) {
       if (this.times.length !== 1) {
         throw new Error(`單日計算加班費僅支援加入一個時間區段，` +

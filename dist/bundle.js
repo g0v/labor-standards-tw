@@ -16151,6 +16151,13 @@ var WorkTime = function () {
             explanation102498.setBody(['勞動基準法第三十九條及第四十條規定，勞工於假日' + '工作時，工資應加倍發給。所稱「加倍發給」，係指當日工資照給外，' + '再加發一日工資。此乃因勞工於假日工作，即使未滿八小時，' + '亦已無法充分運用假日之故，與同法第三十二條延長每日工資應依第二十四條' + '按平日每小時工資額加或加倍發給工資之規定不同。']);
             result.value.legal = true;
             result.according.push(new _1.Article('勞動基準法', '24', 0));
+            if (!agreed) {
+                var article = new _1.Article('勞動基準法', '42');
+                result.value.legal = false;
+                result.according.push(article);
+                result.violations.push(article);
+                return result;
+            }
             if (this.duration === _1.Duration.DAY) {
                 if (this.times.length !== 1) {
                     throw new Error("\u55AE\u65E5\u8A08\u7B97\u52A0\u73ED\u8CBB\u50C5\u652F\u63F4\u52A0\u5165\u4E00\u500B\u6642\u9593\u5340\u6BB5\uFF0C" + ("\u76EE\u524D\u6709 " + this.times.length + " \u500B\u5340\u6BB5"));

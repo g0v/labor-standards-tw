@@ -1,39 +1,60 @@
 import {Duration, Labor, Result, ChildLaborType, Article, Day, Org, Gender} from './'
 
+/**
+ * 工作時間資訊，包含日期，幾個小時以及工作天是哪種類型（是正常工作日、例假日或其他）
+ *
+ * @interface Time
+ */
 interface Time {
   date: Date
   hours: number
   dayType?: Day
 }
 
+/**
+ * 工作時間類別，用來檢測工作時間是否違法以及加班費的計算
+ * @export
+ * @class WorkTime
+ */
 export default class WorkTime {
-  duration: Duration
-  labor: Labor
-  times: Time[]
-  _approvedByOrg: boolean
-  _signed841: boolean
-  _providedProperFacilities: boolean
+  private _duration: Duration
+  private _labor: Labor
+  private _times: Time[]
+  private _approvedByOrg: boolean
+  private _signed841: boolean
+  private _providedProperFacilities: boolean
 
+  /**
+   * 建立一個工作時間的物件
+   * @param {Duration} duration 檢測工作時間的長度，可能是單天，單周或單月
+   * @param {Labor} labor 勞工，勞工不同的狀態，計算上會有不同
+   * @memberof WorkTime
+   */
   constructor (duration: Duration, labor: Labor) {
-    this.duration = duration
-    this.labor = labor
-    this.times = []
+    this._duration = duration
+    this._labor = labor
+    this._times = []
   }
 
+  /**
+   * 驗證工作時間是否合法
+   * @returns {Result} 結果
+   * @memberof WorkTime
+   */
   validate (): Result {
     const result = new Result()
-    const type = this.labor.validateChildLabor().value.type
+    const type = this._labor.validateChildLabor().value.type
     result.value.legal = true
 
     const isChildLabor = type === ChildLaborType.CHILD_LABOR ||
                          type === ChildLaborType.FOLLOW_CHILD_LABOR_ARTICLES
 
-    if (isChildLabor && this.times.some(t => t.dayType === Day.REGULAR_LEAVE)) {
+    if (isChildLabor && this._times.some(t => t.dayType === Day.REGULAR_LEAVE)) {
       result.value.legal = false
       result.violations.push(new Article('勞動基準法', '47'))
     }
 
-    const lateThen20 = this.times.some(t => {
+    const lateThen20 = this._times.some(t => {
       const date = new Date(t.date.getTime())
       const start = date.getHours()
       const d = date.setHours(start + t.hours)
@@ -42,7 +63,7 @@ export default class WorkTime {
       return end > 20
     })
 
-    const between22and6 = this.times.some(t => {
+    const between22and6 = this._times.some(t => {
       const date = new Date(t.date.getTime())
       const start = date.getHours()
       const d = date.setHours(start + t.hours)
@@ -51,7 +72,7 @@ export default class WorkTime {
       return start <= 6 || end <= 6 || start >= 22 || end >= 22
     })
 
-    if (this.labor.getGender() === Gender.FEMALE) {
+    if (this._labor.getGender() === Gender.FEMALE) {
       if (between22and6) {
         if (this._approvedByOrg && this._providedProperFacilities) {
           result.value.legal = true
@@ -71,13 +92,13 @@ export default class WorkTime {
       result.violations.push(new Article('勞動基準法', '48'))
     }
 
-    if (this.duration === Duration.DAY) {
-      if (this.times.length !== 1) {
+    if (this._duration === Duration.DAY) {
+      if (this._times.length !== 1) {
         throw new Error(`單日工時驗證僅支援加入一個時間區段，` +
-                        `目前有 ${this.times.length} 個區段`)
+                        `目前有 ${this._times.length} 個區段`)
       }
 
-      const time = this.times[0]
+      const time = this._times[0]
 
       result.value.regularHours = Math.min(time.hours, 8)
       result.value.overtimeHours = time.hours - result.value.regularHours
@@ -95,25 +116,25 @@ export default class WorkTime {
           result.violations.push(new Article('勞動基準法', '47'))
         }
       }
-    } else if (this.duration === Duration.WEEK) {
-      if (this.times.length > 7) {
+    } else if (this._duration === Duration.WEEK) {
+      if (this._times.length > 7) {
         throw new Error(`單周工時驗證僅支援小於 7 個時間區段，` +
-                        `目前有 ${this.times.length} 個區段`)
+                        `目前有 ${this._times.length} 個區段`)
       }
 
       if (isChildLabor) {
-        const total = this.times.map(t => t.hours).reduce((a, b) => a + b)
+        const total = this._times.map(t => t.hours).reduce((a, b) => a + b)
         if (total > 40) {
           result.value.legal = false
           result.violations.push(new Article('勞動基準法', '47'))
         }
       }
-    } else if (this.duration === Duration.MONTH) {
+    } else if (this._duration === Duration.MONTH) {
       result.according.push(new Article('勞動基準法', '32', 1))
 
       let monthlyOvertimeHours = 0
       let monthlyRegularHours = 0
-      this.times.forEach(time => {
+      this._times.forEach(time => {
         let regularHours = Math.min(time.hours, 8)
         monthlyOvertimeHours += (time.hours - regularHours)
         monthlyRegularHours += regularHours
@@ -130,13 +151,28 @@ export default class WorkTime {
 
     return result
   }
+
+  /**
+   * 加一段工作時間進入要驗證的區段。在單周或單月的驗證中可以支援多段時間。
+   * @param {Date} date 日期
+   * @param {number} hours 工作時數
+   * @param {Day} [dayType=Day.REGULAR_DAY] 工作天類型，可能是一般工作天或例假日等
+   * @memberof WorkTime
+   */
   add (date: Date, hours: number, dayType: Day = Day.REGULAR_DAY) {
-    this.times.push({date, hours, dayType})
+    this._times.push({date, hours, dayType})
   }
 
+  /**
+   * 計算加班費
+   * @param {boolean} [accident=false] 是否有天災、事變或突發事件
+   * @param {boolean} [agreed=true] 勞工是否同意加班
+   * @returns {Result} 結果
+   * @memberof WorkTime
+   */
   overtimePay (accident: boolean = false, agreed: boolean = true): Result {
     const result = new Result()
-    const wages = this.labor.getHourlyWages()
+    const wages = this._labor.getHourlyWages()
 
     const explanation102498 = new Article('函釋', '台八十三勞動一字第 102498 號函')
     explanation102498.setUrl('https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&N2=102498&cnt=1&now=1&lnabndn=1&recordno=1')
@@ -157,13 +193,13 @@ export default class WorkTime {
       return result
     }
 
-    if (this.duration === Duration.DAY) {
-      if (this.times.length !== 1) {
+    if (this._duration === Duration.DAY) {
+      if (this._times.length !== 1) {
         throw new Error(`單日計算加班費僅支援加入一個時間區段，` +
-          `目前有 ${this.times.length} 個區段`)
+          `目前有 ${this._times.length} 個區段`)
       }
 
-      const time = this.times[0]
+      const time = this._times[0]
       const overtimeHours = Math.max(0, time.hours - 8)
 
       if (time.dayType === Day.REGULAR_DAY) {
@@ -248,17 +284,39 @@ export default class WorkTime {
     return result
   }
 
-  approvedBy (org: Org, approved: boolean) {
+  /**
+   * 這樣的工作時間是否有經過工會或勞資會議的同意
+   * @param {Org} org 工會或勞資會議
+   * @param {boolean} approved 是否同意
+   * @returns {WorkTime} 回傳原本的物件用於 method chaining
+   * @memberof WorkTime
+   */
+  approvedBy (org: Org, approved: boolean): WorkTime {
     this._approvedByOrg = approved
     return this
   }
 
-  signed841 (signed: boolean) {
+  /**
+   * 這樣的工作時間是否簽署了勞基法 84-1 條所提及的合約
+   *
+   * @param {boolean} signed 是否簽屬
+   * @returns {WorkTime} 回傳原本的物件用於 method chaining
+   * @memberof WorkTime
+   */
+  signed841 (signed: boolean): WorkTime {
     this._signed841 = signed
     return this
   }
 
-  providedProperFacilities (provided: boolean) {
+  /**
+   * 雇主是否提供提供必要之安全衛生設施與無大眾運輸工具可資運用時，
+   * 是否提供交通工具或安排女工宿舍。
+   *
+   * @param {boolean} provided 是否提供
+   * @returns {WorkTime} 回傳原本的物件用於 method chaining
+   * @memberof WorkTime
+   */
+  providedProperFacilities (provided: boolean): WorkTime {
     this._providedProperFacilities = provided
     return this
   }

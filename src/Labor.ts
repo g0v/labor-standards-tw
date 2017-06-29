@@ -1,6 +1,12 @@
 import {Article, Education, Result, ChildLaborType, Gender} from './'
 import * as moment from 'moment'
 
+/**
+ * 勞工類別，用於儲存勞工的各種狀態。
+ *
+ * @export
+ * @class Labor
+ */
 export default class Labor {
   private _gender: Gender
   private _age: number
@@ -10,62 +16,150 @@ export default class Labor {
   private _onboard: Date
   private _hourlyWages: number
 
+  /**
+   * 是否畢業於特定學歷，比如說是否有高中畢業、是否有國中畢業。
+   *
+   * @param {Education} edu 學歷
+   * @param {boolean} graduated 是否有畢業
+   * @returns {Labor} 回傳勞工物件用於 method chaining
+   * @memberof Labor
+   */
   graduate (edu: Education, graduated: boolean): Labor {
     this._graduations[edu] = graduated
     return this
   }
 
+  /**
+   * 設定是否有主管機關同意，用於童工的規定，勞動基準法 45 條第一項規定：
+   * 「雇主不得僱用未滿十五歲之人從事工作。但國民中學畢業或經主管機關認定其工作性質
+   * 及環境無礙其身心健康而許可者，不在此限。」
+   *
+   * @param {boolean} agreed 主管機關是否同意
+   * @returns {Labor} 回傳勞工物件用於 method chaining
+   * @memberof Labor
+   */
   authorityAgree (agreed: boolean): Labor {
     this._authorityAgreed = agreed
     return this
   }
 
+  /**
+   * 設定年齡
+   *
+   * @param {number} age 年齡
+   * @returns {Labor} 回傳勞工物件用於 method chaining
+   * @memberof Labor
+   */
   setAge (age: number): Labor {
     this._age = age
     return this
   }
 
+  /**
+   * 取得年齡
+   *
+   * @returns {number} 年齡
+   * @memberof Labor
+   */
   getAge (): number {
     return this._age
   }
 
+  /**
+   * 設定性別，預設性別為「不指定」
+   *
+   * @param {Gender} gender 性別
+   * @returns {Labor} 回傳勞工物件用於 method chaining
+   * @memberof Labor
+   */
   setGender (gender: Gender): Labor {
     this._gender = gender
     return this
   }
 
+  /**
+   * 取得性別
+   *
+   * @returns {Gender} 性別
+   * @memberof Labor
+   */
   getGender (): Gender {
     return this._gender
   }
 
+  /**
+   * 設定到職日期
+   *
+   * @param {Date} onboard 到職日期
+   * @returns {Labor} 回傳勞工物件用於 method chaining
+   * @memberof Labor
+   */
   onBoard (onboard: Date): Labor {
     this._onboard = onboard
     return this
   }
 
+  /**
+   * 取得到職日期
+   *
+   * @returns {Date} 到職日期
+   * @memberof Labor
+   */
   getOnBoardDate (): Date {
     return this._onboard
   }
 
+  /**
+   * 設定計算加班費用的平均時薪
+   *
+   * @param {number} hourly 平均時薪
+   * @returns {Labor} 回傳勞工物件用於 method chaining
+   * @memberof Labor
+   */
   setHourlyWages (hourly: number): Labor {
     this._hourlyWages = hourly
     return this
   }
 
+  /**
+   * 取得計算加班費用的平均時薪
+   *
+   * @returns {number} 平均時薪
+   * @memberof Labor
+   */
   getHourlyWages (): number {
     return this._hourlyWages
   }
 
+  /**
+   * 設定月薪，設定月薪時同時會計算加班費用的平均時薪。
+   *
+   * @param {number} salary 月薪
+   * @returns {Labor} 回傳勞工物件用於 method chaining
+   * @memberof Labor
+   */
   setMonthlySalary (salary: number): Labor {
     this._monthlySalary = salary
     this.setHourlyWages(salary / 30 / 8)
     return this
   }
 
+  /**
+   * 取得月薪
+   *
+   * @returns {number} 月薪
+   * @memberof Labor
+   */
   getMonthlySalary (): number {
     return this._monthlySalary
   }
 
+  /**
+   * 驗證此員工是否為童工
+   *
+   * @returns {Result} 驗證結果
+   * @memberof Labor
+   */
   validateChildLabor (): Result {
     const result = new Result()
     const age = this.getAge()
@@ -98,6 +192,13 @@ export default class Labor {
     return result
   }
 
+  /**
+   * 驗證該員工是否可以退休
+   *
+   * @param {Date} date 預定要退休的日期
+   * @returns {Result} 驗證結果
+   * @memberof Labor
+   */
   retire (date: Date): Result {
     const result = new Result()
 
@@ -112,6 +213,12 @@ export default class Labor {
     return result
   }
 
+  /**
+   * 計算加班費所需要用的平均時薪
+   *
+   * @returns {Result} 計算結果
+   * @memberof Labor
+   */
   calculateHourlyWages (): Result {
     const result = new Result()
     const explanation = new Article('函釋', '勞動 2字第 0960130677 號函')
@@ -132,6 +239,13 @@ export default class Labor {
     return result
   }
 
+  /**
+   * 取得員工被資遣時的相關資訊
+   *
+   * @param {Date} date 被資遣的日期
+   * @returns {Result} 取得相關資訊的結果
+   * @memberof Labor
+   */
   beDismissed (date: Date): Result {
     const result = new Result()
 
@@ -160,6 +274,14 @@ export default class Labor {
     return result
   }
 
+  /**
+   * 取得該勞工應該有多少特休
+   *
+   * @param {Date} date 用預計算年資的日期，通常會用今天。但如果有需要知道未來的
+   *                    某一天的特休有幾天也可以用那天的日期來計算特休假的數量
+   * @returns {Result} 計算的結果
+   * @memberof Labor
+   */
   paidLeaves (date: Date): Result {
     const result = new Result()
 
@@ -187,7 +309,16 @@ export default class Labor {
     return result
   }
 
-  takeMaternityLeave (start: Date, miscarriage: boolean = false, pregnantMonth: number = 0 ) {
+  /**
+   * 取得請產假 / 小產產假的資訊
+   *
+   * @param {Date} start 產假預計開始的日期
+   * @param {boolean} [miscarriage=false] 狀況是否為小產，預設為否
+   * @param {number} [pregnantMonth=0] 懷孕幾個月
+   * @returns {Result} 產假資訊的結果
+   * @memberof Labor
+   */
+  takeMaternityLeave (start: Date, miscarriage: boolean = false, pregnantMonth: number = 0 ): Result {
     if (this.getGender() !== Gender.FEMALE) {
       throw new Error('此勞工不為女性，不能請產假')
     }

@@ -74,10 +74,10 @@ export default class Article {
    * @param {number} [paragraph] 具體要引用法條的「項」，選填
    * @memberof Article
    */
-  constructor (lawTitle?: string, id?: string, paragraph?: number) {
-    this.lawTitle = lawTitle || ''
-    this.id = id || ''
-    this.paragraph = paragraph || -1
+  constructor (lawTitle: string = '', id: string = '', paragraph: number = -1) {
+    this.lawTitle = lawTitle
+    this.id = id
+    this.paragraph = paragraph
 
     if (lawTitle === '勞動基準法') {
       this.lawTitleAbbr = lsa['LAWS']['法規']['法規簡稱'] || ''

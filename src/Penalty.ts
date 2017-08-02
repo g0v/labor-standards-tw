@@ -49,7 +49,7 @@ export default class Penalty {
 
     if (penalties.length === 1) {
       this.possibilities = penalties[0].possibilities
-    } else if (this.article.paragraph === undefined) {
+    } else if (this.article.paragraph === -1) {
       throw new Error('本條文有多於一項，但是罰則是第幾項沒寫清楚')
     } else {
       this.possibilities =

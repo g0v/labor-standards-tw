@@ -75,9 +75,9 @@ export default class Article {
    * @memberof Article
    */
   constructor (lawTitle?: string, id?: string, paragraph?: number) {
-    this.lawTitle = lawTitle
-    this.id = id
-    this.paragraph = paragraph
+    this.lawTitle = lawTitle || ''
+    this.id = id || ''
+    this.paragraph = paragraph || -1
 
     if (lawTitle === '勞動基準法') {
       this.lawTitleAbbr = lsa['LAWS']['法規']['法規簡稱'] || ''
@@ -135,11 +135,11 @@ export default class Article {
    * @memberof Article
    */
   penalize (): Penalty {
-    let article: Article
+    let article: Article = new Article()
     if (this.entity['罰則參考'].length === 1) {
       const { id, paragraph } = this.entity['罰則參考'][0].penalty
       article = new Article(this.lawTitle, id, paragraph)
-    } else if (this.paragraph !== undefined) {
+    } else if (this.paragraph !== -1) {
       const ref = this.entity['罰則參考']
                       .find(ref => ref.paragraph === this.paragraph)
 

@@ -152,6 +152,14 @@ export default class WorkTime {
     return result
   }
 
+  calculateRestTime (hours: number): Result {
+    let restTime = Math.floor(hours / 4) * 30 / 60
+    const result = new Result()
+    result.value.restTime = restTime
+    result.according.push(new Article('勞動基準法', '35'))
+    return result
+  }
+
   /**
    * 加一段工作時間進入要驗證的區段。在單周或單月的驗證中可以支援多段時間。
    * @param {Date} date 日期

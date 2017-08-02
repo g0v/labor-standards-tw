@@ -1,4 +1,4 @@
-import {Article, Education, Result, ChildLaborType, Gender} from './'
+import { Article, Education, Result, ChildLaborType, Gender } from './'
 import * as moment from 'moment'
 
 /**

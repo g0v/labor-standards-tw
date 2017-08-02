@@ -1,4 +1,4 @@
-import {Duration, Labor, Result, ChildLaborType, Article, Day, Org, Gender} from './'
+import { Duration, Labor, Result, ChildLaborType, Article, Day, Org, Gender } from './'
 
 /**
  * 工作時間資訊，包含日期，幾個小時以及工作天是哪種類型（是正常工作日、例假日或其他）

@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-expression */
 
-import {defineSupportCode} from 'cucumber'
-import {expect} from 'chai'
+import { defineSupportCode } from 'cucumber'
+import { expect } from 'chai'
 
 import { Result, Labor } from '../../src/index'
 

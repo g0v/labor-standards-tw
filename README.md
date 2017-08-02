@@ -2,6 +2,10 @@
 
 台灣勞動基準法的函式庫，可用於計算加班費、特休假、確認班表是否違法等。
 
+目錄：
+* [如何使用](#如何使用)
+* [協助開發](#協助開發)
+
 ## 如何使用
 
 首先可以使用 `npm` 安裝本函式庫：
@@ -77,7 +81,7 @@ expect(penalty.possibilities.length).eq(3)
 
 更詳細的用法，請參考程式內的 jsdoc 註解，或是 cucumber 的 [測試案例](https://github.com/g0v/labor-standards-tw/tree/master/features/step_definitions)
 
-## 開發環境
+## 協助開發
 
 本專案使用 node.js v6 LTS，如果你有許多專案使用不同版本的 node.js，推薦你使用 [nvm](https://github.com/creationix/nvm)
 

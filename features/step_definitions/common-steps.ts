@@ -152,4 +152,15 @@ defineSupportCode(function ({ Given, When, Then }) {
     expect(penalty.possibilities[0].fine.min).eq(min)
     expect(penalty.possibilities[0].fine.max).eq(max)
   })
+
+  When('計算休息時間時', function () {
+    const worktime = new WorkTime(Duration.DAY, this.labor)
+    this.result = worktime.calculateRestTime(this.workHours)
+  })
+
+  Then('根據勞基法 {int} 條，有 {float} 小時的休息時間', function (lawId, float) {
+    const result: Result = this.result
+    expect(result.according[0].id).equal(lawId.toString())
+    expect(result.value.restTime).equal(float)
+  })
 })

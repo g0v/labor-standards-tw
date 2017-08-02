@@ -91,7 +91,9 @@ interface Value {
    * @type {number}
    * @memberof Value
    */
-  overtimeHours?: number
+  overtimeHours?: number,
+
+  restTime?: number
 }
 
 /**

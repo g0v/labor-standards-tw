@@ -1,6 +1,5 @@
 node_modules
 .nyc_output/
-.vscode
 npm-debug.log
 typings
 package-lock.json

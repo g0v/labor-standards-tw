@@ -2,10 +2,6 @@
 
 台灣勞動基準法的函式庫，可用於計算加班費、特休假、確認班表是否違法等。
 
-## 開發環境
-
-本專案使用 node.js v6 LTS，如果你有許多專案使用不同版本的 node.js，推薦你使用 [nvm](https://github.com/creationix/nvm)
-
 ## 如何使用
 
 首先可以使用 `npm` 安裝本函式庫：
@@ -81,9 +77,44 @@ expect(penalty.possibilities.length).eq(3)
 
 更詳細的用法，請參考程式內的 jsdoc 註解，或是 cucumber 的 [測試案例](https://github.com/g0v/labor-standards-tw/tree/master/features/step_definitions)
 
+## 開發環境
+
+本專案使用 node.js v6 LTS，如果你有許多專案使用不同版本的 node.js，推薦你使用 [nvm](https://github.com/creationix/nvm)
+
+### 如何開發
+
+你可以先使用 `npm install` 安裝所有相依性套件。接著用 `npm test` 可以執行所有測試。
+
+如果需要除錯，可以使用 Visual Studio Code，在你需要下斷點的地方鍵入 `debugger;` 跳到除錯的頁籤，並且執行 `Debug` task。
+
+比如說你想要在 `Labor.ts` 底下的 `retire()` 下斷點，就把 `debugger` 加在第一行如下面程式片段：
+
+```typescript
+retire (date: Date): Result {
+  debugger; // 加入在這裡
+  const result = new Result()
+
+  const years = moment(date).diff(this._onboard, 'years')
+  const retirement = (years >= 15 && this.getAge() >= 55) ||
+                      (years >= 25) ||
+                      (years >= 10 && this.getAge() >= 60)
+
+  result.value.retirement = retirement
+  result.according.push(new Article('勞動基準法', '53'))
+
+  return result
+}
+```
+
+執行 `Debug` task 後，就會停在中斷點，並且可以逐步執行。
+
+![Screenshot for debugging](http://i.imgur.com/wdjJw6a.png)
+
 ### 如何貢獻
 
 如果你發現程式碼有錯誤，或任何需要改進的地方，請到 [issues](https://github.com/g0v/labor-standards-tw/issues) 頁面開一個新的 issue。
+
+如果想協助本專案，請到 [Github issue](https://github.com/g0v/labor-standards-tw/issues) 逛逛，看看有沒有還沒解掉的 issues 可以協助。
 
 若要提交你的修改，請送 pull request 到本專案，travis-ci 上面會有基本的語法與 coding style 檢查後，接著經由團隊成員審核後就會將您的變更合併入專案當中。
 

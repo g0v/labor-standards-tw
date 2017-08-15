@@ -1,6 +1,8 @@
 # labor-standards-tw
 
-台灣勞動基準法的函式庫，可用於計算加班費、特休假、確認班表是否違法等。
+台灣勞動基準法的函式庫，可用於計算違法罰款、加班費、特休假、確認班表是否違法等。
+
+Taiwan `Labor Standards Act` Library for calculating penalty, overtime wages, annual paid leaves & checking shift work schedule is legal or not.
 
 目錄：
 * [如何使用](#如何使用)

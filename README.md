@@ -4,7 +4,7 @@
 
 Taiwan `Labor Standards Act` Library for calculating penalty, overtime wages, annual paid leaves & checking shift work schedule is legal or not.
 
-目錄：
+## 目錄
 * [如何使用](#如何使用)
 * [協助開發](#協助開發)
 

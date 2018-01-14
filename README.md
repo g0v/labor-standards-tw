@@ -120,7 +120,7 @@ retire (date: Date): Result {
 
 如果你發現程式碼有錯誤，或任何需要改進的地方，請到 [issues](https://github.com/g0v/labor-standards-tw/issues) 頁面開一個新的 issue。
 
-如果想協助本專案，請到 [Github issue](https://github.com/g0v/labor-standards-tw/issues) 逛逛，看看有沒有還沒解掉的 issues 可以協助。
+如果想協助本專案，請到 [Github issue](https://github.com/g0v/labor-standards-tw/issues) 逛逛，看看有沒有還沒解掉的 issues 可以協助。
 
 若要提交你的修改，請送 pull request 到本專案，travis-ci 上面會有基本的語法與 coding style 檢查後，接著經由團隊成員審核後就會將您的變更合併入專案當中。
 

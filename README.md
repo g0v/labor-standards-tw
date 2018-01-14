@@ -91,7 +91,7 @@ expect(penalty.possibilities.length).eq(3)
 
 你可以先使用 `npm install` 安裝所有相依性套件。接著用 `npm test` 可以執行所有測試。
 
-如果需要除錯，可以使用 Visual Studio Code，在你需要下斷點的地方鍵入 `debugger;` 跳到除錯的頁籤，並且執行 `Debug` task。
+如果需要除錯，可以使用 Visual Studio Code，在你需要下斷點的地方鍵入 `debugger;` 跳到除錯的頁籤，並且執行 `Debug` task。
 
 比如說你想要在 `Labor.ts` 底下的 `retire()` 下斷點，就把 `debugger` 加在第一行如下面程式片段：
 
